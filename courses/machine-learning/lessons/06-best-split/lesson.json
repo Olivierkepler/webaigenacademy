@@ -1,0 +1,18 @@
+{
+  "id": "06-best-split",
+  "slug": "best-split",
+  "title": "Best Split",
+  "order": 6,
+  "section": "Decision Trees",
+  "difficulty": "Beginner",
+  "duration": "15 min",
+  "description": "Compare candidate splits and choose the one with the lowest weighted Gini.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": ["best-split-finder"],
+  "takeaways": [
+    "Decision trees evaluate many candidate splits.",
+    "The best split minimizes weighted Gini impurity.",
+    "Tie-breaking rules matter when scores are equal."
+  ]
+}

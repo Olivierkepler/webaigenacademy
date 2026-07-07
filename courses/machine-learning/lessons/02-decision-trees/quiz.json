@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "What does max_depth control in a decision tree?",
+      "options": [
+        "How deep the tree can grow",
+        "The number of trees in the forest",
+        "The learning rate"
+      ],
+      "answer": "How deep the tree can grow"
+    }
+  ]
+}

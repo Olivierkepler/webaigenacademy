@@ -1,0 +1,18 @@
+{
+  "id": "01-introduction",
+  "slug": "introduction",
+  "title": "Introduction",
+  "order": 1,
+  "section": "Getting Started",
+  "difficulty": "Beginner",
+  "duration": "15 min",
+  "description": "Run your first Python code and understand how ML code starts.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": [],
+  "takeaways": [
+    "Machine learning learns patterns from data instead of hard-coded rules.",
+    "Supervised, unsupervised, and reinforcement learning are the main types.",
+    "Python notebooks are a practical way to start experimenting with ML code."
+  ]
+}

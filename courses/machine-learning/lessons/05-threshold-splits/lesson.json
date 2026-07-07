@@ -1,0 +1,18 @@
+{
+  "id": "05-threshold-splits",
+  "slug": "threshold-splits",
+  "title": "Threshold Splits",
+  "order": 5,
+  "section": "Decision Trees",
+  "difficulty": "Beginner",
+  "duration": "15 min",
+  "description": "See how feature thresholds divide data into left and right groups.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": ["threshold-split-demo"],
+  "takeaways": [
+    "A threshold split divides samples using feature <= threshold.",
+    "Different thresholds create different left and right groups.",
+    "Each split changes the weighted Gini score."
+  ]
+}

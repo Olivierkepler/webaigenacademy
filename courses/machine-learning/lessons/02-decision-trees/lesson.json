@@ -1,0 +1,18 @@
+{
+  "id": "02-decision-trees",
+  "slug": "decision-trees",
+  "title": "Decision Trees",
+  "order": 2,
+  "section": "Decision Trees",
+  "difficulty": "Beginner",
+  "duration": "20 min",
+  "description": "Learn how decision trees classify data using simple rules.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": [],
+  "takeaways": [
+    "Decision trees split data using simple if-then rules.",
+    "The Iris dataset is a classic dataset for classification practice.",
+    "max_depth controls how complex a decision tree can become."
+  ]
+}

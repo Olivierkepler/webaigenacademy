@@ -1,0 +1,18 @@
+{
+  "id": "10-stopping-conditions",
+  "slug": "stopping-conditions",
+  "title": "Stopping Conditions",
+  "order": 10,
+  "section": "Decision Trees",
+  "difficulty": "Intermediate",
+  "duration": "15 min",
+  "description": "Learn when decision trees stop splitting and how to control overfitting.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": [],
+  "takeaways": [
+    "Trees stop when nodes are pure or reach a depth limit.",
+    "max_depth, min_samples_split, and min_samples_leaf control growth.",
+    "Stopping early helps prevent overfitting."
+  ]
+}

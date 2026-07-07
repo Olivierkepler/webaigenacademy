@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "How does a random forest make a final prediction?",
+      "options": [
+        "By voting across many trees",
+        "By using only the deepest tree",
+        "By picking one random tree"
+      ],
+      "answer": "By voting across many trees"
+    }
+  ]
+}

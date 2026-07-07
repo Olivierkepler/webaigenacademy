@@ -1,0 +1,18 @@
+{
+  "id": "07-entropy",
+  "slug": "entropy",
+  "title": "Entropy",
+  "order": 7,
+  "section": "Decision Trees",
+  "difficulty": "Intermediate",
+  "duration": "15 min",
+  "description": "Learn entropy as an alternative impurity measure for classification splits.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": [],
+  "takeaways": [
+    "Entropy measures uncertainty in a node.",
+    "Like Gini, lower entropy means a purer node.",
+    "Decision trees can use entropy instead of Gini to guide splits."
+  ]
+}

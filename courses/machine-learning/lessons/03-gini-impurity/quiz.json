@@ -1,0 +1,10 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "What is the Gini impurity of a perfectly pure node?",
+      "options": ["0", "0.5", "1"],
+      "answer": "0"
+    }
+  ]
+}

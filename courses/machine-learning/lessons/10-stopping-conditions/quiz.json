@@ -1,0 +1,10 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "Which parameter limits how deep a tree can grow?",
+      "options": ["max_depth", "learning_rate", "n_estimators"],
+      "answer": "max_depth"
+    }
+  ]
+}

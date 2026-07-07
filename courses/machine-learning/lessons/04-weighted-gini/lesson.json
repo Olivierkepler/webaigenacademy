@@ -1,0 +1,18 @@
+{
+  "id": "04-weighted-gini",
+  "slug": "weighted-gini",
+  "title": "Weighted Gini",
+  "order": 4,
+  "section": "Decision Trees",
+  "difficulty": "Beginner",
+  "duration": "15 min",
+  "description": "Learn how weighted Gini combines impurity across left and right child nodes.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": ["weighted-gini-calculator"],
+  "takeaways": [
+    "A split creates left and right child groups.",
+    "Weighted Gini averages child impurities by group size.",
+    "The best split minimizes weighted Gini impurity."
+  ]
+}

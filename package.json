@@ -1,0 +1,33 @@
+{
+  "name": "webaigenacademy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "sync:course-notebooks": "sh scripts/sync-course-notebooks.sh",
+    "build:jupyterlite": "npm run sync:course-notebooks && sh -c 'JUPYTER=\"${JUPYTER:-jupyter}\"; [ -x .venv-jupyterlite/bin/jupyter ] && JUPYTER=.venv-jupyterlite/bin/jupyter; \"$JUPYTER\" lite build --contents jupyterlite-content --output-dir public/jupyterlite && mkdir -p public/lessons && cp jupyterlite-content/lessons/*.ipynb public/lessons/'"
+  },
+  "dependencies": {
+    "katex": "^0.17.0",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

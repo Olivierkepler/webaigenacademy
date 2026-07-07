@@ -1,0 +1,18 @@
+{
+  "id": "03-random-forest",
+  "slug": "random-forest",
+  "title": "Random Forest",
+  "order": 11,
+  "section": "Classification Models",
+  "difficulty": "Intermediate",
+  "duration": "25 min",
+  "description": "Combine many decision trees to build a stronger random forest model.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": ["random-forest-voting-demo"],
+  "takeaways": [
+    "A random forest combines many decision trees into one ensemble model.",
+    "Voting across trees often produces more stable predictions.",
+    "Random forests are a strong baseline for tabular classification problems."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "machine-learning",
+  "title": "Machine Learning",
+  "description": "Learn machine learning fundamentals through guided notebooks and exercises.",
+  "lessonOrder": [
+    "01-introduction",
+    "02-decision-trees",
+    "03-gini-impurity",
+    "04-weighted-gini",
+    "05-threshold-splits",
+    "06-best-split",
+    "07-entropy",
+    "08-classification-error",
+    "09-regression-trees",
+    "10-stopping-conditions",
+    "03-random-forest"
+  ]
+}

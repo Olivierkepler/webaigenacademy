@@ -1,0 +1,18 @@
+{
+  "id": "09-regression-trees",
+  "slug": "regression-trees",
+  "title": "Regression Trees",
+  "order": 9,
+  "section": "Decision Trees",
+  "difficulty": "Intermediate",
+  "duration": "20 min",
+  "description": "Learn how decision trees predict continuous values instead of class labels.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": [],
+  "takeaways": [
+    "Regression trees predict numeric targets instead of classes.",
+    "Leaf values are often the mean target in that region.",
+    "Impurity for regression uses measures like MSE."
+  ]
+}

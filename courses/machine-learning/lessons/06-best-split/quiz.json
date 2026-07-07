@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "The best split is the one with:",
+      "options": [
+        "The lowest weighted Gini",
+        "The highest weighted Gini",
+        "The most samples on the left"
+      ],
+      "answer": "The lowest weighted Gini"
+    }
+  ]
+}

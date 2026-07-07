@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "In a threshold split, samples on the left satisfy:",
+      "options": [
+        "feature <= threshold",
+        "feature > threshold",
+        "feature == threshold only"
+      ],
+      "answer": "feature <= threshold"
+    }
+  ]
+}

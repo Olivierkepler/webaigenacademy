@@ -1,0 +1,10 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "What does machine learning learn from?",
+      "options": ["Data", "Magic", "Random guessing"],
+      "answer": "Data"
+    }
+  ]
+}

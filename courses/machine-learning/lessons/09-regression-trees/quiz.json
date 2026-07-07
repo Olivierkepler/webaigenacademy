@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "A regression tree leaf typically predicts:",
+      "options": [
+        "The mean target value in that leaf",
+        "The majority class label",
+        "A random number"
+      ],
+      "answer": "The mean target value in that leaf"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Python deps for building JupyterLite lesson contents into public/jupyterlite.
+# Install into a venv, then run: npm run build:jupyterlite
+jupyterlite-core==0.6.4
+jupyterlite-pyodide-kernel==0.6.1
+jupyter-server>=2.0

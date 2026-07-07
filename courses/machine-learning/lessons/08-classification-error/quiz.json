@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "Classification error in a node is:",
+      "options": [
+        "1 minus the proportion of the majority class",
+        "The same as Gini impurity",
+        "Always equal to 0.5"
+      ],
+      "answer": "1 minus the proportion of the majority class"
+    }
+  ]
+}

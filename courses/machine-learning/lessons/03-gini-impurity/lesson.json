@@ -1,0 +1,18 @@
+{
+  "id": "03-gini-impurity",
+  "slug": "gini-impurity",
+  "title": "Gini Impurity",
+  "order": 3,
+  "section": "Decision Trees",
+  "difficulty": "Beginner",
+  "duration": "15 min",
+  "description": "Learn how Gini impurity measures class mixing in a node.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": ["gini-calculator"],
+  "takeaways": [
+    "Gini impurity measures how mixed the classes are in a node.",
+    "A pure node has Gini impurity of 0.",
+    "Maximum impurity for two classes occurs when classes are evenly split."
+  ]
+}

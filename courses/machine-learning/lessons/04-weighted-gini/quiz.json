@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "Weighted Gini accounts for child group size by:",
+      "options": [
+        "Multiplying each child Gini by its fraction of total samples",
+        "Adding child Gini values without weights",
+        "Choosing only the larger child group"
+      ],
+      "answer": "Multiplying each child Gini by its fraction of total samples"
+    }
+  ]
+}

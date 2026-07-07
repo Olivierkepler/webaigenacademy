@@ -1,0 +1,10 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "A perfectly pure node has entropy of:",
+      "options": ["0", "0.5", "1"],
+      "answer": "0"
+    }
+  ]
+}
