@@ -19,7 +19,11 @@ const metadata = JSON.parse(
 );
 const courseLessons = path.join(root, "courses/machine-learning/lessons");
 const outputDir = path.join(root, "jupyterlite-content/lessons");
+const publicLessonsDir = path.join(root, "public/lessons");
 const legacyFilenames = { introduction: "ml-introduction" };
+
+fs.mkdirSync(outputDir, { recursive: true });
+fs.mkdirSync(publicLessonsDir, { recursive: true });
 
 for (const lessonId of metadata.lessonOrder) {
   const lessonPath = path.join(courseLessons, lessonId, "lesson.json");
@@ -27,8 +31,10 @@ for (const lessonId of metadata.lessonOrder) {
   const lesson = JSON.parse(fs.readFileSync(lessonPath, "utf-8"));
   const filename = `${legacyFilenames[lesson.slug] ?? lesson.slug}.ipynb`;
   const destination = path.join(outputDir, filename);
+  const publicDestination = path.join(publicLessonsDir, filename);
 
   fs.copyFileSync(notebookPath, destination);
+  fs.copyFileSync(notebookPath, publicDestination);
   console.log(`Synced ${lessonId} -> ${filename}`);
 }
 EOF

@@ -2,7 +2,7 @@
   "id": "03-random-forest",
   "slug": "random-forest",
   "title": "Random Forest",
-  "order": 11,
+  "order": 12,
   "section": "Classification Models",
   "difficulty": "Intermediate",
   "duration": "25 min",

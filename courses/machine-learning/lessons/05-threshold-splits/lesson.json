@@ -2,7 +2,7 @@
   "id": "05-threshold-splits",
   "slug": "threshold-splits",
   "title": "Threshold Splits",
-  "order": 5,
+  "order": 3,
   "section": "Decision Trees",
   "difficulty": "Beginner",
   "duration": "15 min",

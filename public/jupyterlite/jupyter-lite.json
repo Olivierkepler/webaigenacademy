@@ -4,6 +4,7 @@
     "appUrl": "./lab",
     "appVersion": "0.6.4",
     "baseUrl": "./",
+    "contentsStorageName": "WebAIGen Academy Practice Labs",
     "defaultKernelName": "python",
     "faviconUrl": "./lab/favicon.ico",
     "federated_extensions": [
@@ -301,7 +302,8 @@
           "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=6428e372c283ca4b67a641295c5d9c8abeed5cf341b24ffe41b313fcdcaf9be4"
         ]
       }
-    }
+    },
+    "workspacesStorageName": "WebAIGen Academy Workspaces"
   },
   "jupyter-lite-schema-version": 0
 }

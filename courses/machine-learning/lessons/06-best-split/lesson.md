@@ -1,6 +1,6 @@
-# Best Split
+# Build the Root
 
-A decision tree does not pick the first reasonable split—it evaluates **every** candidate and chooses the winner.
+A decision tree does not pick the first reasonable split—it evaluates **every** candidate and chooses the winner for the **root** node.
 
 ## Big idea
 

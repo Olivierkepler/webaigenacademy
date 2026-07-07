@@ -1,0 +1,18 @@
+{
+  "id": "11-recursion",
+  "slug": "recursion",
+  "title": "Recursion: Build the Full Tree",
+  "order": 7,
+  "section": "Decision Trees",
+  "difficulty": "Beginner",
+  "duration": "20 min",
+  "description": "Learn how decision trees repeat the split search on each impure child until the tree is complete.",
+  "notebook": "notebook.ipynb",
+  "quiz": "quiz.json",
+  "visualizations": [],
+  "takeaways": [
+    "After the root split, impure child nodes are split again using the same process.",
+    "Pure child nodes become leaves with a class prediction.",
+    "Recursion continues until all leaves are pure or stopping rules apply."
+  ]
+}

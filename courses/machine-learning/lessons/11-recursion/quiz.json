@@ -1,0 +1,14 @@
+{
+  "title": "Quick Quiz",
+  "questions": [
+    {
+      "question": "After the root split, what happens to an impure child node?",
+      "options": [
+        "The algorithm searches for another best split on that node",
+        "It is always deleted",
+        "It becomes a leaf with no prediction"
+      ],
+      "answer": "The algorithm searches for another best split on that node"
+    }
+  ]
+}

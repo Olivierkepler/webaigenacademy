@@ -1,18 +1,18 @@
 {
   "id": "06-best-split",
   "slug": "best-split",
-  "title": "Best Split",
+  "title": "Build the Root",
   "order": 6,
   "section": "Decision Trees",
   "difficulty": "Beginner",
   "duration": "15 min",
-  "description": "Compare candidate splits and choose the one with the lowest weighted Gini.",
+  "description": "Compare all candidate splits and choose the root of the tree.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
   "visualizations": ["best-split-finder"],
   "takeaways": [
-    "Decision trees evaluate many candidate splits.",
-    "The best split minimizes weighted Gini impurity.",
-    "Tie-breaking rules matter when scores are equal."
+    "The root split compares every feature and threshold candidate.",
+    "The winning root split has the lowest weighted Gini impurity.",
+    "A pure child branch can become a leaf immediately."
   ]
 }

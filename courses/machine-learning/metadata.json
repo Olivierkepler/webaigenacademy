@@ -5,10 +5,11 @@
   "lessonOrder": [
     "01-introduction",
     "02-decision-trees",
+    "05-threshold-splits",
     "03-gini-impurity",
     "04-weighted-gini",
-    "05-threshold-splits",
     "06-best-split",
+    "11-recursion",
     "07-entropy",
     "08-classification-error",
     "09-regression-trees",

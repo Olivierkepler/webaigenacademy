@@ -10,6 +10,17 @@ type NotebookModalProps = {
 
 export default function NotebookModal({ notebook }: NotebookModalProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [sessionKey, setSessionKey] = useState<string | null>(null);
+
+  const openLab = () => {
+    setSessionKey(String(Date.now()));
+    setIsOpen(true);
+  };
+
+  const closeLab = () => {
+    setIsOpen(false);
+    setSessionKey(null);
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -18,7 +29,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        closeLab();
       }
     };
 
@@ -35,7 +46,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
     <>
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={openLab}
         className={`inline-flex items-center rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-500 ${typography.button}`}
       >
         Open Practice Lab
@@ -51,7 +62,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
           <button
             type="button"
             className="absolute inset-0 bg-zinc-950/70 backdrop-blur-sm"
-            onClick={() => setIsOpen(false)}
+            onClick={closeLab}
             aria-label="Close practice lab"
           />
 
@@ -60,7 +71,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
               <h3 className={typography.modalTitle}>Practice Lab</h3>
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={closeLab}
                 className={`rounded-lg border border-zinc-300 px-3 py-1.5 transition hover:border-emerald-500 hover:text-emerald-700 dark:border-zinc-700 dark:hover:border-emerald-500 dark:hover:text-emerald-400 ${typography.button}`}
               >
                 Close
@@ -68,7 +79,9 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
             </div>
 
             <div className="min-h-0 flex-1 overflow-hidden p-2 [&_iframe]:h-full [&_iframe]:min-h-[70vh]">
-              <Notebook notebook={notebook} />
+              {sessionKey ? (
+                <Notebook notebook={notebook} sessionKey={sessionKey} />
+              ) : null}
             </div>
           </div>
         </div>

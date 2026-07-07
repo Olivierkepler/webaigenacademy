@@ -2,7 +2,7 @@
   "id": "04-weighted-gini",
   "slug": "weighted-gini",
   "title": "Weighted Gini",
-  "order": 4,
+  "order": 5,
   "section": "Decision Trees",
   "difficulty": "Beginner",
   "duration": "15 min",

@@ -2,7 +2,7 @@
   "id": "03-gini-impurity",
   "slug": "gini-impurity",
   "title": "Gini Impurity",
-  "order": 3,
+  "order": 4,
   "section": "Decision Trees",
   "difficulty": "Beginner",
   "duration": "15 min",
