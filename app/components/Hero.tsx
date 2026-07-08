@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-    
+
 const COURSE_PATH = "/learn/machine-learning";
 
 type HeroCard = {
@@ -13,7 +13,7 @@ type HeroCard = {
   duration: string;
   level: string;
   href: string;
-  visual: string;
+  image: string;
 };
 
 const heroCards: HeroCard[] = [
@@ -24,7 +24,7 @@ const heroCards: HeroCard[] = [
     duration: "1 week to complete",
     level: "Introductory level",
     href: `${COURSE_PATH}/introduction`,
-    visual: "from-orange-500 via-zinc-800 to-zinc-950",
+    image: "/images/technician2.jpeg",
   },
   {
     slug: "decision-trees",
@@ -33,7 +33,7 @@ const heroCards: HeroCard[] = [
     duration: "2 weeks to complete",
     level: "Introductory level",
     href: `${COURSE_PATH}/decision-trees`,
-    visual: "from-emerald-500 via-zinc-800 to-zinc-950",
+    image: "/images/technicians.jpg",
   },
   {
     slug: "random-forest",
@@ -42,7 +42,7 @@ const heroCards: HeroCard[] = [
     duration: "1 week to complete",
     level: "Intermediate level",
     href: `${COURSE_PATH}/random-forest`,
-    visual: "from-sky-500 via-zinc-800 to-zinc-950",
+    image: "/images/technician2.jpeg",
   },
 ];
 
@@ -144,43 +144,41 @@ export default function Hero() {
   }, [cardStep]);
 
   return (
-    <section className="relative overflow-hidden  bg-zinc-950 text-zinc-100 shadow-2xl">
+    <section className="relative overflow-hidden bg-white text-zinc-900  transition-colors duration-200 dark:bg-zinc-950 dark:text-zinc-100">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.28),transparent_32%),linear-gradient(to_bottom_right,#09090b,#18181b,#09090b)]" /> */}
-
+        {/* Panel 1 */}
         <div
-          className="absolute -right-32 -top-28 h-[420px] w-[720px] bg-white/[0.04]"
+          className="absolute -right-32 -top-28 h-[420px] w-[720px] bg-white/5 dark:bg-zinc-900/10"
           style={{
             clipPath: "polygon(25% 0%, 100% 0%, 100% 100%, 0% 35%)",
           }}
         />
-
+        {/* Panel 2 */}
         <div
-          className="absolute bottom-0 left-0 h-[360px] w-[620px] bg-white/[0.035]"
+          className="absolute bottom-0 left-0 h-[360px] w-[620px] bg-white/5 dark:bg-zinc-900/10"
           style={{
             clipPath: "polygon(0 0, 26% 0, 100% 100%, 0 100%)",
           }}
         />
-
-        {/* <div className="absolute left-10 top-10 h-40 w-40 rounded-full bg-orange-500/20 blur-3xl" /> */}
-        <div className="absolute bottom-10 right-20 h-52 w-52 rounded-full bg-sky-500/10 blur-3xl" />
+        {/* Subtle accent orb */}
+        <div className="absolute bottom-10 right-20 h-52 w-52 rounded-full bg-sky-400/10 blur-3xl dark:bg-sky-500/10" />
       </div>
 
       <div className="relative grid gap-12 px-7 py-14 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-12 lg:px-14 lg:py-20">
         {/* Left */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-orange-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF6F00] dark:text-[#FFB74D]">
             WebAIGen Academy
           </p>
 
-          <h1 className="mt-5 max-w-2xl text-4xl font-medium leading-[1.02] tracking-tight text-white sm:text-6xl">
+          <h1 className="mt-5 max-w-2xl text-4xl font-medium leading-[1.02] tracking-tight text-zinc-950 dark:text-white sm:text-6xl">
             Level up your
             <br />
             AI skills.
           </h1>
 
-          <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-zinc-300 sm:text-lg">
+          <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-zinc-700 dark:text-zinc-300 sm:text-lg">
             Learn machine learning with interactive browser-based lessons,
             runnable Python notebooks, and quick quizzes that help you build
             confidence as you go.
@@ -196,7 +194,7 @@ export default function Hero() {
 
             <Link
               href={COURSE_PATH}
-              className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
+              className="rounded-full border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-white dark:hover:bg-zinc-700/70"
             >
               View syllabus
             </Link>
@@ -215,25 +213,32 @@ export default function Hero() {
               <Link
                 key={card.slug}
                 href={card.href}
-                className="group w-[84%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white text-zinc-900 shadow-2xl shadow-black/20 transition duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:w-[58%] lg:w-[calc(50%-10px)]"
+                className="group w-[84%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white text-zinc-900 transition duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:bg-zinc-900 dark:text-zinc-100 sm:w-[58%] lg:w-[calc(50%-10px)]"
               >
-                <div className="bg-zinc-50 px-5 py-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-zinc-500">
+                <div className="bg-zinc-50 px-5 py-3 dark:bg-zinc-800">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
                     Featured lesson
                   </p>
                 </div>
 
-                <div className={`relative h-36 bg-zinc-50`}>
-                    <Image src="/images/machine-learning.jpg" alt="Machine Learning" width={1200} height={600} />
-                  {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.26),transparent_34%)]" /> */}
+                <div className="relative h-36 overflow-hidden">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
 
-                  <div className="absolute left-4 top-4 rounded-xl bg-white px-3 py-1.5 shadow-sm">
-                    <span className="text-[11px] font-black tracking-tight text-zinc-900">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+
+                  <div className="absolute left-4 top-4 z-10 rounded-xl bg-white px-3 py-1.5 shadow-sm dark:bg-zinc-900">
+                    <span className="text-[11px] font-black tracking-tight text-zinc-900 dark:text-white">
                       WebAIGen
                     </span>
                   </div>
 
-                  <div className="absolute bottom-4 right-4 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+                  <div className="absolute bottom-4 right-4 z-10 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur dark:bg-zinc-800/60 dark:text-zinc-200">
                     ML
                   </div>
                 </div>
@@ -243,11 +248,11 @@ export default function Hero() {
                     {card.title}
                   </h3>
 
-                  <p className="text-sm font-medium text-zinc-600">
+                  <p className="text-sm font-medium text-zinc-600 dark:text-zinc-300">
                     {card.provider}
                   </p>
 
-                  <div className="mt-4 space-y-2.5 text-sm font-medium text-zinc-700">
+                  <div className="mt-4 space-y-2.5 text-sm font-medium text-zinc-700 dark:text-zinc-400">
                     <p className="flex items-center gap-2.5">
                       <ClockIcon />
                       {card.duration}
@@ -264,13 +269,13 @@ export default function Hero() {
           </div>
 
           <div className="mt-7 flex justify-center lg:justify-start">
-            <div className="flex items-center gap-4 rounded-full border border-white/10 bg-white/10 px-4 py-2.5 shadow-lg backdrop-blur">
+            <div className="flex items-center gap-4 rounded-full border border-zinc-200 bg-white px-4 py-2.5 text-zinc-800 shadow-lg dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-100">
               <button
                 type="button"
                 onClick={() => scrollToCard(activeIndex - 1)}
                 disabled={activeIndex === 0}
                 aria-label="Previous lesson"
-                className="text-white transition-opacity disabled:opacity-30"
+                className="text-zinc-800 transition-opacity disabled:opacity-30 dark:text-zinc-100"
               >
                 <Chevron direction="left" />
               </button>
@@ -285,8 +290,8 @@ export default function Hero() {
                     aria-current={index === activeIndex}
                     className={`h-2.5 rounded-full transition-all ${
                       index === activeIndex
-                        ? "w-6 bg-orange-400"
-                        : "w-2.5 bg-white/35 hover:bg-white/60"
+                        ? "w-6 bg-[#FF6F00] dark:bg-[#FFB74D]"
+                        : "w-2.5 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-500"
                     }`}
                   />
                 ))}
@@ -297,7 +302,7 @@ export default function Hero() {
                 onClick={() => scrollToCard(activeIndex + 1)}
                 disabled={activeIndex === heroCards.length - 1}
                 aria-label="Next lesson"
-                className="text-white transition-opacity disabled:opacity-30"
+                className="text-zinc-800 transition-opacity disabled:opacity-30 dark:text-zinc-100"
               >
                 <Chevron direction="right" />
               </button>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { lessons } from "@/data/lessons";
 import Background from "@/app/components/background";
+import Chatbot from "@/app/components/Chatbot";
 import {
   accent,
   accentBadgeClass,
@@ -176,6 +177,8 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      <Chatbot />
     </main>
   );
 }
