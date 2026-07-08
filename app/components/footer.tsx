@@ -79,32 +79,29 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-      {/* Faint grid texture, echoing the page background */}
+    <footer className="relative z-10 border-t border-[#0B4A4B] bg-[#003334] text-white">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(113,113,122,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(113,113,122,0.18)_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.15] dark:opacity-[0.1] [mask-image:linear-gradient(to_bottom,transparent,black_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.12] [mask-image:linear-gradient(to_bottom,transparent,black_60%)]"
       />
-
+  
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
-        {/* Top band: brand + link columns */}
         <div className="grid gap-12 py-16 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-8">
-          {/* Brand */}
           <div className="max-w-sm">
             <Link href="/" className="inline-flex items-baseline gap-1.5">
-              <span className="text-lg font-semibold tracking-tight">
+              <span className="text-lg font-semibold tracking-tight text-white">
                 WebAIGen
               </span>
-              <span className="text-lg font-light tracking-tight text-zinc-500 dark:text-zinc-400">
+              <span className="text-lg font-light tracking-tight text-white/60">
                 Academy
               </span>
             </Link>
-            <p className={`mt-4 ${typography.caption}`}>
+  
+            <p className="mt-4 text-sm leading-relaxed text-white/65">
               Interactive AI and machine learning education. Lessons,
               notebooks, and quizzes — all in the browser.
             </p>
-
-            {/* Social */}
+  
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
@@ -113,26 +110,26 @@ export default function Footer() {
                   aria-label={social.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:text-zinc-100 dark:focus-visible:outline-zinc-100"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white"
                 >
                   {social.icon}
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Link columns */}
+  
           {footerColumns.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400 dark:text-zinc-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
                 {column.heading}
               </p>
+  
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                      className="text-sm text-white/65 transition-colors hover:text-white"
                     >
                       {link.label}
                     </Link>
@@ -142,26 +139,24 @@ export default function Footer() {
             </nav>
           ))}
         </div>
-
-        {/* Bottom bar */}
-        <div className="flex flex-col gap-4 border-t border-zinc-200 py-8 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-zinc-500 dark:text-zinc-500">
+  
+        <div className="flex flex-col gap-4 border-t border-white/10 py-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-white/45">
             © {year} WebAiGen LLC. All rights reserved.
           </p>
-
+  
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            {/* Status indicator */}
-            <span className="inline-flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+            <span className="inline-flex items-center gap-2 text-xs text-white/50">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:animate-none" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
               All systems operational
             </span>
-
-            <span className="hidden h-3 w-px bg-zinc-200 dark:bg-zinc-800 sm:block" />
-
-            <p className="text-xs text-zinc-400 dark:text-zinc-600">
+  
+            <span className="hidden h-3 w-px bg-white/15 sm:block" />
+  
+            <p className="text-xs text-white/35">
               Built in Boston · English · Français · Kreyòl
             </p>
           </div>
