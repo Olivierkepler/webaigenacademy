@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { lessons } from "@/data/lessons";
+import Background from "@/app/components/background";
 import {
   accent,
   accentBadgeClass,
@@ -8,6 +9,7 @@ import {
   cardPadding,
   typography,
 } from "@/app/lib/typography";
+import Hero from "./components/Hero";
 
 const COURSE_SLUG = "machine-learning";
 const COURSE_PATH = `/learn/${COURSE_SLUG}`;
@@ -40,8 +42,7 @@ const features = [
   },
   {
     title: "Browser-Based Learning",
-    description:
-      "Learn from any device. Everything runs in the browser.",
+    description: "Learn from any device. Everything runs in the browser.",
   },
 ] as const;
 
@@ -55,18 +56,29 @@ const comingSoon = [
 const cardClass =
   "rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900";
 
+/** Renders the natural-language separator for the lesson list: "A and B" / "A, B, and C". */
+function lessonSeparator(index: number, total: number): string {
+  if (index === 0) return "";
+  const isLast = index === total - 1;
+  if (!isLast) return ", ";
+  return total > 2 ? ", and " : " and ";
+}
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-      <div className="mx-auto max-w-6xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
+    <main className="relative min-h-screen overflow-hidden bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <Background />
+
+      <Hero />  
+
+      {/* Content — lifted above the background layer */}
+      <div className="relative z-10 mx-auto max-w-6xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
         <section className="text-center">
-          <p className={typography.label}>WebAIGenAcademy</p>
+          <p className={typography.label}>WebAIGen Academy</p>
           <h1 className={`mx-auto mt-4 max-w-4xl ${typography.hero}`}>
             Learn AI and Machine Learning the simple way.
           </h1>
-          <p
-            className={`mx-auto mt-6 max-w-2xl ${typography.subtitle}`}
-          >
+          <p className={`mx-auto mt-6 max-w-2xl ${typography.subtitle}`}>
             Interactive lessons, browser-based notebooks, quizzes, and
             step-by-step explanations.
           </p>
@@ -93,7 +105,8 @@ export default function Home() {
                 </span>
                 <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                   <span className={typography.badge}>
-                    {courseLessons.length} lessons available
+                    {courseLessons.length}{" "}
+                    {courseLessons.length === 1 ? "lesson" : "lessons"} available
                   </span>
                 </span>
               </div>
@@ -101,7 +114,7 @@ export default function Home() {
                 Includes{" "}
                 {courseLessons.map((lesson, index) => (
                   <span key={lesson.slug}>
-                    {index > 0 && (index < courseLessons.length - 1 ? ", " : ", and ")}
+                    {lessonSeparator(index, courseLessons.length)}
                     <Link
                       href={`/learn/${lesson.course}/${lesson.slug}`}
                       className={`font-medium underline-offset-2 hover:underline ${accent.text}`}
@@ -113,7 +126,10 @@ export default function Home() {
                 .
               </p>
             </div>
-            <Link href={COURSE_PATH} className={`shrink-0 ${primaryButtonClass}`}>
+            <Link
+              href={COURSE_PATH}
+              className={`shrink-0 ${primaryButtonClass}`}
+            >
               Continue Course
             </Link>
           </div>
@@ -128,7 +144,10 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
-              <div key={feature.title} className={`${cardClass} p-6`}>
+              <div
+                key={feature.title}
+                className={`${cardClass} p-6 transition-shadow duration-200 hover:shadow-md motion-reduce:transition-none`}
+              >
                 <h3 className={typography.cardTitle}>{feature.title}</h3>
                 <p className={`mt-3 ${typography.caption}`}>
                   {feature.description}
