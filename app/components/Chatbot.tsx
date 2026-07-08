@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { accent } from "@/app/lib/typography";
 import Logo from "./logo";
 
 type Message = {
@@ -61,83 +60,113 @@ export default function Chatbot() {
       </button>
 
       {open && (
-        <div className="fixed bottom-12 right-8 z-50 w-[430px] max-w-[calc(100vw-1rem)] overflow-hidden rounded-3xl border border-zinc-200 bg-white text-zinc-900 shadow-2xl dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100">
-          <div className="flex items-center justify-between border-b border-zinc-200 px-7 py-6 dark:border-zinc-800">
-            <div className="flex items-center gap-4">
-              {/* <Image
-                src="/images/chatbot-head.png"
-                alt="AI Assistant"
-                width={54}
-                height={54}
-              /> */}
-              <Logo size={44} />
-              <div>
-                <h3 className="text-base font-semibold text-zinc-900 dark:text-white">
-                  WebAigen Assistant
-                </h3>
-                <p className={`text-sm ${accent.text}`}>Online now</p>
-              </div>
-            </div>
+        <div className="fixed bottom-12 right-8 z-50 w-[440px] max-w-[calc(100vw-1rem)] overflow-hidden rounded-[2rem] border border-zinc-200/80 bg-white/95 text-zinc-900 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl transition-all duration-300 dark:border-zinc-800/80 dark:bg-zinc-950/95 dark:text-zinc-100">
+          <div className="relative overflow-hidden border-b border-zinc-200/80 bg-gradient-to-br from-white via-zinc-50 to-[#FFF8F1] px-7 py-6 dark:border-zinc-800/80 dark:from-zinc-950 dark:via-zinc-900 dark:to-[#2A1A0E]">
+            <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-[#F8C89B]/20 blur-[80px]" />
 
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="text-xl text-zinc-400 transition hover:text-zinc-700 dark:text-zinc-500 dark:hover:text-zinc-200"
-              aria-label="Close chat"
-            >
-              ✕
-            </button>
+            <div className="relative flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center">
+                  <Logo size={42} />
+                </div>
+
+                <div>
+                  <h3 className="text-base font-bold tracking-tight text-zinc-950 dark:text-white">
+                    WebAigen Assistant
+                  </h3>
+
+                  <div className="mt-1 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.16)]" />
+                    <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                      Online now
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-white"
+                aria-label="Close chat"
+              >
+                ✕
+              </button>
+            </div>
           </div>
 
-          <div className="h-[410px] space-y-4 overflow-y-auto bg-zinc-50 px-7 py-5 dark:bg-zinc-950">
+          <div className="h-[550px] space-y-5 overflow-y-auto bg-[radial-gradient(circle_at_top_left,rgba(255,190,120,0.04),transparent_35%),linear-gradient(to_bottom,#fafafa,#f4f4f5)] px-7 py-6 dark:bg-[radial-gradient(circle_at_top_left,rgba(255,190,120,0.06),transparent_35%),linear-gradient(to_bottom,#09090b,#18181b)]">
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`flex ${
+                className={`flex items-end gap-3 ${
                   msg.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
+                {msg.role !== "user" && (
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center">
+                    <img
+                      src="/images/webaigen_cropped.png"
+                      alt="AI Assistant"
+                      width={26}
+                      height={26}
+                      className="block dark:hidden"
+                    />
+                    <img
+                      src="/images/weiagenlogo1.png"
+                      alt="AI Assistant"
+                      width={26}
+                      height={26}
+                      className="hidden dark:block"
+                    />
+                  </div>
+                )}
+
                 <div
-                  className={`max-w-[85%] rounded-3xl px-5 py-3 text-base leading-relaxed ${
+                  className={`relative max-w-[82%] px-5 py-3.5 text-[15px] leading-relaxed ${
                     msg.role === "user"
-                      ? `${accent.bg} text-white`
-                      : "border border-zinc-200 bg-white text-zinc-800 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                      ? "rounded-[1.4rem] rounded-br-md border border-[#F6D4B3] bg-[#FFF3E8] text-[#A44A00] shadow-sm dark:border-[#7A4B22] dark:bg-[#5A3312] dark:text-[#FFE8D2]"
+                      : "rounded-[1.4rem] rounded-bl-md border border-white/80 bg-white/90 text-zinc-800 shadow-sm backdrop-blur-xl dark:border-zinc-800/80 dark:bg-zinc-900/90 dark:text-zinc-100"
                   }`}
                 >
-                  {msg.text}
+                  <span>{msg.text}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="border-t border-zinc-200 bg-white px-6 py-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <div className="mb-4 flex flex-wrap gap-3">
+          <div className="border-t border-zinc-200/80 bg-white/95 px-6 py-5 backdrop-blur-xl dark:border-zinc-800/80 dark:bg-zinc-950/95">
+            <div className="mb-4 flex flex-nowrap gap-2.5 overflow-x-auto pb-1">
               {quickQuestions.map((question) => (
                 <button
                   key={question}
                   type="button"
                   onClick={() => sendMessage(question)}
-                  className="rounded-full border border-zinc-200 px-4 py-2 text-sm text-zinc-600 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  className="whitespace-nowrap rounded-full border border-[#F3DEC8] bg-[#FFF8F1] px-4 py-2 text-sm font-medium text-[#9A5A20] transition hover:bg-[#FDEDDC] dark:border-[#5C3A1E] dark:bg-[#2A1A0E] dark:text-[#F6C28B] dark:hover:bg-[#3A2514]"
                 >
                   {question}
                 </button>
               ))}
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex items-center gap-3 rounded-[1.6rem] border border-zinc-200 bg-white p-2 shadow-inner transition focus-within:border-orange-300 focus-within:ring-4 focus-within:ring-orange-100 dark:border-zinc-800 dark:bg-zinc-900 dark:focus-within:ring-orange-950/40">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                placeholder="Type your message..."
-                className={`flex-1 rounded-full border border-zinc-300 bg-white px-5 py-3 text-base text-zinc-900 outline-none transition dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500 ${accent.focusBorder}`}
+                placeholder="Ask WebAigen anything..."
+                className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-100 dark:placeholder:text-zinc-500"
               />
+
               <button
                 type="button"
                 onClick={() => sendMessage()}
-                className={`rounded-full px-5 py-3 text-base font-medium text-white transition ${accent.bg} ${accent.hoverBg}`}
+                className="group flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F59E42] text-white shadow-lg shadow-orange-500/20 transition hover:scale-105 hover:bg-[#EA8B27] active:scale-95"
+                aria-label="Send message"
               >
-                Send
+                <span className="transition group-hover:translate-x-0.5">
+                  ➤
+                </span>
               </button>
             </div>
           </div>
