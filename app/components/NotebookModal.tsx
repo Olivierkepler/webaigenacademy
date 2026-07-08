@@ -67,7 +67,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
           />
 
           <div className="relative z-10 flex h-[min(92vh,900px)] w-[min(96vw,1200px)] flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-900">
-            <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
+            <div className="flex items-center justify-between border-b border-zinc-200 px-0 py-3 dark:border-zinc-800">
               <h3 className={typography.modalTitle}>Practice Lab</h3>
               <button
                 type="button"
@@ -78,11 +78,12 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
               </button>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-hidden p-2 [&_iframe]:h-full [&_iframe]:min-h-[70vh]">
+            <div className="min-h-0 flex-1 overflow-hidden  [&_iframe]:h-full [&_iframe]:min-h-[82vh]">
               {sessionKey ? (
                 <Notebook notebook={notebook} sessionKey={sessionKey} />
               ) : null}
             </div>
+       
           </div>
         </div>
       )}
