@@ -1,8 +1,10 @@
+import { accent, primaryButtonClass } from "@/app/lib/typography";
+
 export default function TryPage() {
     return (
       <main className="min-h-screen bg-gray-100">
         <header className="bg-white shadow px-8 py-5">
-          <h1 className="text-3xl font-bold text-emerald-700">
+          <h1 className={`text-3xl font-bold ${accent.text}`}>
             WebAIGenAcademy Lab
           </h1>
   
@@ -24,7 +26,7 @@ export default function TryPage() {
             <a
               href="/lessons/ml-introduction.ipynb"
               download
-              className="inline-block bg-emerald-600 text-white px-5 py-2 rounded hover:bg-emerald-700"
+              className={`inline-block rounded text-white px-5 py-2 ${primaryButtonClass}`}
             >
               Download Starter Notebook
             </a>

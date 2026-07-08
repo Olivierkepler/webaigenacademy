@@ -6,7 +6,7 @@ import {
   markLessonComplete,
   PROGRESS_UPDATED_EVENT,
 } from "@/app/lib/progress";
-import { typography } from "@/app/lib/typography";
+import { accent, primaryButtonClass, typography } from "@/app/lib/typography";
 
 type MarkCompleteButtonProps = {
   course: string;
@@ -44,8 +44,8 @@ export default function MarkCompleteButton({
       disabled={completed}
       className={
         completed
-          ? `inline-flex items-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-6 py-3 text-emerald-700 dark:text-emerald-400 ${typography.button}`
-          : `inline-flex items-center rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-500 ${typography.button}`
+          ? `inline-flex items-center rounded-lg border px-6 py-3 ${accent.borderSubtle} ${accent.bgSubtle} ${accent.text} ${typography.button}`
+          : primaryButtonClass
       }
     >
       {completed ? "Completed" : "Mark Lesson Complete"}

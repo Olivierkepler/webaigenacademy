@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { lessons } from "@/data/lessons";
-import { cardPadding, typography } from "@/app/lib/typography";
+import {
+  accent,
+  accentBadgeClass,
+  primaryButtonClass,
+  secondaryButtonClass,
+  cardPadding,
+  typography,
+} from "@/app/lib/typography";
 
 const COURSE_SLUG = "machine-learning";
 const COURSE_PATH = `/learn/${COURSE_SLUG}`;
@@ -48,10 +55,6 @@ const comingSoon = [
 const cardClass =
   "rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900";
 
-const primaryButtonClass = `inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-500 ${typography.button}`;
-
-const secondaryButtonClass = `inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 py-3 text-zinc-800 transition hover:border-emerald-500 hover:text-emerald-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-200 dark:hover:border-emerald-500 dark:hover:text-emerald-400 ${typography.button}`;
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -85,7 +88,7 @@ export default function Home() {
                 {courseTitle}
               </h2>
               <div className="mt-4 flex flex-wrap gap-3">
-                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-emerald-700 dark:text-emerald-400">
+                <span className={accentBadgeClass}>
                   <span className={typography.badge}>Beginner</span>
                 </span>
                 <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
@@ -101,7 +104,7 @@ export default function Home() {
                     {index > 0 && (index < courseLessons.length - 1 ? ", " : ", and ")}
                     <Link
                       href={`/learn/${lesson.course}/${lesson.slug}`}
-                      className="font-medium text-emerald-700 underline-offset-2 hover:underline dark:text-emerald-400"
+                      className={`font-medium underline-offset-2 hover:underline ${accent.text}`}
                     >
                       {LESSON_LABELS[lesson.slug] ?? lesson.title}
                     </Link>

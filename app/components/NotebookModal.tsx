@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Notebook from "./Notebook";
-import { typography } from "@/app/lib/typography";
+import { accent, primaryButtonClass, typography } from "@/app/lib/typography";
 
 type NotebookModalProps = {
   notebook: string;
@@ -47,7 +47,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
       <button
         type="button"
         onClick={openLab}
-        className={`inline-flex items-center rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-500 ${typography.button}`}
+        className={primaryButtonClass}
       >
         Open Practice Lab
       </button>
@@ -72,7 +72,7 @@ export default function NotebookModal({ notebook }: NotebookModalProps) {
               <button
                 type="button"
                 onClick={closeLab}
-                className={`rounded-lg border border-zinc-300 px-3 py-1.5 transition hover:border-emerald-500 hover:text-emerald-700 dark:border-zinc-700 dark:hover:border-emerald-500 dark:hover:text-emerald-400 ${typography.button}`}
+                className={`rounded-lg border border-zinc-300 px-3 py-1.5 transition dark:border-zinc-700 dark:hover:border-[#FF6F00] dark:hover:text-[#FFB74D] ${accent.hoverBorder} ${accent.hoverText} ${typography.button}`}
               >
                 Close
               </button>

@@ -6,7 +6,7 @@ import {
   searchLessons,
   type SearchableLesson,
 } from "@/app/lib/lessonSearch";
-import { typography } from "@/app/lib/typography";
+import { accent, typography } from "@/app/lib/typography";
 
 type NavbarSearchProps = {
   lessons: SearchableLesson[];
@@ -91,7 +91,7 @@ export default function NavbarSearch({ lessons }: NavbarSearchProps) {
             }
           }}
           placeholder="Search lessons, quizzes, and notebooks..."
-          className="w-full rounded-full border border-zinc-300 bg-white py-2.5 pl-11 pr-4 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500"
+          className={`w-full rounded-full border border-zinc-300 bg-white py-2.5 pl-11 pr-4 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500 ${accent.focusBorder} ${accent.focusRing} ${typography.small}`}
         />
       </div>
 
@@ -111,7 +111,7 @@ export default function NavbarSearch({ lessons }: NavbarSearchProps) {
                     className="flex items-center justify-between gap-4 px-4 py-3 transition hover:bg-zinc-50 dark:hover:bg-zinc-800/60"
                   >
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-zinc-900 dark:text-white">
+                      <p className={`truncate ${typography.sidebarItem} text-zinc-900 dark:text-white`}>
                         {lesson.title}
                       </p>
                       <p className={`mt-0.5 truncate ${typography.caption}`}>

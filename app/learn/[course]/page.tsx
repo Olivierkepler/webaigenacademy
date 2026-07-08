@@ -51,7 +51,7 @@ export default async function CoursePage({ params }: PageProps) {
   const difficulty = courseLessons[0].difficulty;
 
   return (
-    <main className="min-h-screen bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <main className="min-h-screen bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 ">
       <div className="mx-auto max-w-4xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
         <CourseOverviewHeader
           course={course}

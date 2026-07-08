@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { typography } from "@/app/lib/typography";
+import { accent, typography } from "@/app/lib/typography";
 
 type DataRow = {
   feature0: number;
@@ -128,14 +128,14 @@ export default function BestSplitFinder() {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-5">
+      <div className={`rounded-xl border ${accent.borderSubtle} ${accent.bgSubtle} px-5 py-5`}>
         <p className={typography.label}>Best split</p>
         <p className={`mt-2 ${typography.accentSubtitle}`}>
           {bestSplit.feature} &le; {bestSplit.threshold}
         </p>
         <p className={`mt-3 ${typography.body}`}>
           Weighted Gini:{" "}
-          <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+          <span className={`font-semibold ${accent.text}`}>
             {bestSplit.weightedGini.toFixed(3)}
           </span>
         </p>
@@ -163,7 +163,7 @@ export default function BestSplitFinder() {
                   key={`${split.feature}-${split.threshold}`}
                   className={
                     isBest
-                      ? "bg-emerald-500/10 text-emerald-900 dark:text-emerald-100"
+                      ? "bg-[#FF6F00]/10 text-zinc-900 dark:text-zinc-100"
                       : ""
                   }
                 >
@@ -176,7 +176,7 @@ export default function BestSplitFinder() {
                   <td
                     className={`${cellClass} ${
                       isBest
-                        ? "font-semibold text-emerald-700 dark:text-emerald-400"
+                        ? `font-semibold ${accent.text}`
                         : ""
                     }`}
                   >

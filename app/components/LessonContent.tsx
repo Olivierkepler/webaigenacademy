@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 import type { Components } from "react-markdown";
-import { typography } from "@/app/lib/typography";
+import { accent, typography } from "@/app/lib/typography";
 
 type LessonContentProps = {
   content: string;
@@ -85,12 +85,12 @@ const markdownComponents: Components = {
     <h1 className={typography.sectionTitle}>{children}</h1>
   ),
   h2: ({ children }) => (
-    <div className="border-l-4 border-emerald-500 pl-4">
-      <h2 className={typography.cardTitle}>{children}</h2>
+    <div className={`border-l-4 ${accent.border} pl-4`}>
+      <h2 className={typography.sectionTitle}>{children}</h2>
     </div>
   ),
   h3: ({ children }) => (
-    <h3 className={typography.accentSubtitle}>{children}</h3>
+    <h3 className={typography.cardTitle}>{children}</h3>
   ),
   p: ({ children }) => <p className={typography.reading}>{children}</p>,
   strong: ({ children }) => (
@@ -101,7 +101,7 @@ const markdownComponents: Components = {
     <li className={`flex gap-3 ${typography.reading}`}>
       <span
         aria-hidden
-        className="mt-3 h-2 w-2 shrink-0 rounded-full bg-emerald-500"
+        className={`mt-3 h-2 w-2 shrink-0 rounded-full ${accent.bg}`}
       />
       <span>{children}</span>
     </li>
@@ -119,7 +119,7 @@ const markdownComponents: Components = {
     </thead>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-3 font-semibold text-zinc-900 dark:text-white">
+    <th className={`px-4 py-3 font-semibold text-zinc-900 dark:text-white ${typography.small}`}>
       {children}
     </th>
   ),
@@ -133,7 +133,7 @@ const markdownComponents: Components = {
     <details
       {...props}
       open={open}
-      className="group/details rounded-xl border border-emerald-500/30 bg-white p-5 shadow-sm dark:border-emerald-500/20 dark:bg-zinc-950"
+      className={`group/details rounded-xl border ${accent.borderSubtle} bg-white p-5 shadow-sm dark:bg-zinc-950`}
     >
       {children}
     </details>
@@ -141,11 +141,11 @@ const markdownComponents: Components = {
   summary: ({ children, ...props }) => (
     <summary
       {...props}
-      className="flex cursor-pointer list-none items-center gap-3 font-semibold text-emerald-700 select-none marker:content-none dark:text-emerald-400 [&::-webkit-details-marker]:hidden"
+      className={`flex cursor-pointer list-none items-center gap-3 select-none marker:content-none [&::-webkit-details-marker]:hidden ${accent.text}`}
     >
       <span
         aria-hidden
-        className="inline-flex h-5 w-5 shrink-0 items-center justify-center text-sm text-emerald-600 transition-transform duration-200 group-open/details:rotate-90 dark:text-emerald-400"
+        className={`inline-flex h-5 w-5 shrink-0 items-center justify-center transition-transform duration-200 group-open/details:rotate-90 ${accent.text} ${typography.small}`}
       >
         ▸
       </span>
@@ -193,12 +193,12 @@ function CollapsibleSection({ open, summary, body }: CollapsibleSectionProps) {
   return (
     <details
       open={open}
-      className="group/details rounded-xl border border-emerald-500/30 bg-white p-5 shadow-sm dark:border-emerald-500/20 dark:bg-zinc-950"
+      className={`group/details rounded-xl border ${accent.borderSubtle} bg-white p-5 shadow-sm dark:bg-zinc-950`}
     >
-      <summary className="flex cursor-pointer list-none items-center gap-3 font-semibold text-emerald-700 select-none marker:content-none dark:text-emerald-400 [&::-webkit-details-marker]:hidden">
+      <summary className={`flex cursor-pointer list-none items-center gap-3 font-medium select-none marker:content-none [&::-webkit-details-marker]:hidden ${accent.text} ${typography.small}`}>
         <span
           aria-hidden
-          className="inline-flex h-5 w-5 shrink-0 items-center justify-center text-sm text-emerald-600 transition-transform duration-200 group-open/details:rotate-90 dark:text-emerald-400"
+          className={`inline-flex h-5 w-5 shrink-0 items-center justify-center transition-transform duration-200 group-open/details:rotate-90 ${accent.text} ${typography.small}`}
         >
           ▸
         </span>
@@ -206,7 +206,7 @@ function CollapsibleSection({ open, summary, body }: CollapsibleSectionProps) {
           <LessonMarkdown content={summary} components={summaryComponents} />
         </span>
       </summary>
-      <div className="mt-4 space-y-4 border-t border-emerald-500/20 pt-4 dark:border-emerald-500/10">
+      <div className={`mt-4 space-y-4 border-t ${accent.borderSubtle} pt-4`}>
         <LessonMarkdown content={body} />
       </div>
     </details>

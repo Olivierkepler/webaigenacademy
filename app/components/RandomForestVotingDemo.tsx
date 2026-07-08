@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { typography } from "@/app/lib/typography";
+import { accent, secondaryButtonClass, typography } from "@/app/lib/typography";
 
 const TREE_COUNT = 6;
 
@@ -54,7 +54,7 @@ export default function RandomForestVotingDemo() {
             <button
               type="button"
               onClick={() => toggleTree(index)}
-              className={`mt-4 inline-flex w-full items-center justify-center rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-800 transition hover:border-emerald-500 hover:text-emerald-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-emerald-500 dark:hover:text-emerald-400 ${typography.button}`}
+              className={`mt-4 inline-flex w-full items-center justify-center rounded-lg px-4 py-2 ${secondaryButtonClass}`}
             >
               Toggle prediction
             </button>
@@ -71,10 +71,10 @@ export default function RandomForestVotingDemo() {
           <p className={typography.caption}>Votes for Class 1</p>
           <p className={`mt-2 ${typography.cardTitle}`}>{votes1}</p>
         </div>
-        <div className={`${statClass} border-emerald-500/30 bg-emerald-500/10`}>
+        <div className={`${statClass} border ${accent.borderSubtle} ${accent.bgSubtle}`}>
           <p className={typography.caption}>Forest prediction</p>
           <p
-            className={`mt-2 text-emerald-700 dark:text-emerald-400 ${typography.cardTitle}`}
+            className={`mt-2 ${accent.text} ${typography.cardTitle}`}
           >
             {forestPrediction}
           </p>

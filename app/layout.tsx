@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Manrope } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./components/ThemeProvider";
 
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -50,13 +56,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`dark ${manrope.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${inter.className} min-h-full flex flex-col font-sans`}>
+      <body className={`${inter.className} min-h-full flex flex-col font-body`}>
         <ThemeProvider>
           <Navbar />
           {children}

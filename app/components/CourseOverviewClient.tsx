@@ -7,7 +7,13 @@ import {
   getCompletedCount,
   getCourseProgressPercent,
 } from "@/app/lib/progress";
-import { cardPadding, typography } from "@/app/lib/typography";
+import {
+  accent,
+  accentBadgeClass,
+  cardPadding,
+  primaryButtonClass,
+  typography,
+} from "@/app/lib/typography";
 
 export type CourseLesson = {
   slug: string;
@@ -40,8 +46,6 @@ type SectionGroup = {
 const cardClass =
   "rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900";
 
-const primaryButtonClass = `inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-500 ${typography.button}`;
-
 function groupLessonsBySection(lessons: CourseLesson[]): SectionGroup[] {
   const sections: SectionGroup[] = [];
   const indexByName = new Map<string, number>();
@@ -64,11 +68,11 @@ function CheckmarkBadge() {
   return (
     <span
       aria-label="Completed"
-      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-emerald-500/50 bg-emerald-500/10"
+      className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border ${accent.borderMedium} ${accent.bgSubtle}`}
     >
       <svg
         aria-hidden
-        className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
+        className={`h-3.5 w-3.5 ${accent.text}`}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -127,16 +131,16 @@ export function CourseOverviewHeader({
   return (
     <header className={`${cardClass} ${cardPadding}`}>
       <p className={typography.label}>Course</p>
-      <h1 className={`mt-3 ${typography.hero}`}>{courseTitle}</h1>
+      <h1 className={`mt-3 ${typography.pageTitle}`}>{courseTitle}</h1>
 
       <div className="mt-4 flex flex-wrap gap-3">
-        <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-emerald-700 dark:text-emerald-400">
+        <span className={accentBadgeClass}>
           <span className={typography.badge}>{difficulty}</span>
         </span>
         <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
           <span className={typography.badge}>{lessons.length} lessons</span>
         </span>
-        <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-emerald-700 dark:text-emerald-400">
+        <span className={accentBadgeClass}>
           <span className={typography.badge}>
             {completedCount} of {lessons.length} completed
           </span>
@@ -148,13 +152,13 @@ export function CourseOverviewHeader({
           <span className={`font-medium ${typography.body}`}>
             Course progress
           </span>
-          <span className="text-emerald-600 dark:text-emerald-400">
+          <span className={accent.text}>
             {progressPercent}%
           </span>
         </div>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
           <div
-            className="h-full rounded-full bg-emerald-500 transition-all"
+            className={`h-full rounded-full transition-all ${accent.progress}`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -202,11 +206,11 @@ export function CourseCurriculum({ course, lessons }: CourseCurriculumProps) {
                 <div className="mt-3 flex items-center gap-3">
                   <div className="h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
                     <div
-                      className="h-full rounded-full bg-emerald-500 transition-all"
+                      className={`h-full rounded-full transition-all ${accent.progress}`}
                       style={{ width: `${sectionPercent}%` }}
                     />
                   </div>
-                  <span className="shrink-0 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                  <span className={`shrink-0 text-sm font-medium ${accent.text}`}>
                     {sectionPercent}%
                   </span>
                 </div>
@@ -235,10 +239,10 @@ export function CourseCurriculum({ course, lessons }: CourseCurriculumProps) {
                         </span>
 
                         <span
-                          className={`min-w-0 flex-1 transition group-hover:text-emerald-700 dark:group-hover:text-emerald-400 ${
+                          className={`min-w-0 flex-1 transition ${accent.groupHoverText} ${
                             isCompleted
-                              ? "font-semibold text-zinc-900 dark:text-white"
-                              : `font-medium ${typography.body}`
+                              ? `font-semibold text-zinc-900 dark:text-white ${typography.sidebarItem}`
+                              : typography.sidebarItem
                           }`}
                         >
                           {lesson.title}

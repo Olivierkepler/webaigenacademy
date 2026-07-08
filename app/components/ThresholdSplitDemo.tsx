@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { typography } from "@/app/lib/typography";
+import { accent, typography } from "@/app/lib/typography";
 
 type Patient = {
   id: string;
@@ -72,7 +72,7 @@ export default function ThresholdSplitDemo() {
   return (
     <div className="grid gap-8 lg:grid-cols-2">
       <div className="space-y-6">
-        <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4">
+        <div className={`rounded-xl border ${accent.borderSubtle} ${accent.bgSubtle} px-5 py-4`}>
           <p className={typography.label}>Split rule (Age only)</p>
           <p className={`mt-2 ${typography.accentSubtitle}`}>
             Age &le; {threshold}
@@ -231,7 +231,7 @@ export default function ThresholdSplitDemo() {
                   y2={PLOT_HEIGHT - MARGIN.bottom}
                   className={
                     isActive
-                      ? "stroke-emerald-500"
+                      ? "stroke-[#FF6F00]"
                       : "stroke-zinc-300 dark:stroke-zinc-600"
                   }
                   strokeWidth={isActive ? 2 : 1}
@@ -243,7 +243,7 @@ export default function ThresholdSplitDemo() {
                   textAnchor="middle"
                   className={
                     isActive
-                      ? "fill-emerald-600 text-[10px] font-semibold dark:fill-emerald-400"
+                      ? "fill-[#FF6F00] text-[10px] font-semibold dark:fill-[#FFB74D]"
                       : "fill-zinc-400 text-[9px] dark:fill-zinc-500"
                   }
                 >

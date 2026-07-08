@@ -15,15 +15,13 @@ export default function LessonSection({
   children,
 }: LessonSectionProps) {
   return (
-    <section
-      className={`  ${cardPadding}`}
-    >
-      {/* <p className={typography.label}>{label}</p> */}
-      {/* <h2 className={`mt-3 ${typography.sectionTitle}`}>{title}</h2> */}
-      {/* {description && (
+    <section className={cardPadding}>
+      <p className={typography.label}>{label}</p>
+      <h2 className={`mt-3 ${typography.sectionTitle}`}>{title}</h2>
+      {description && (
         <p className={`mt-4 max-w-3xl ${typography.body}`}>{description}</p>
-      )} */}
-      {children && <div className="">{children}</div>}
+      )}
+      {children && <div className="mt-6">{children}</div>}
     </section>
   );
 }

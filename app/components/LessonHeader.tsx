@@ -1,4 +1,4 @@
-import { cardPadding, typography } from "@/app/lib/typography";
+import { accentBadgeClass, cardPadding, primaryButtonClass, typography } from "@/app/lib/typography";
 
 type LessonHeaderProps = {
   courseTitle: string;
@@ -33,7 +33,7 @@ export default function LessonHeader({
           Lesson {lessonNumber} of {totalLessons}
         </span>
         <span
-          className={`rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-emerald-700 dark:text-emerald-400 ${typography.badge}`}
+          className={`${accentBadgeClass} ${typography.badge}`}
         >
           {difficulty}
         </span>
@@ -44,14 +44,14 @@ export default function LessonHeader({
         </span>
       </div> */}
 
-      <h1 className={` ${typography.hero}`}>{title}</h1>
+      <h1 className={typography.lessonTitle}>{title}</h1>
 
-      <p className={` max-w-3xl ${typography.subtitle}`}>{description}</p>
+      <p className={`mt-4 max-w-3xl ${typography.body}`}>{description}</p>
 
       {/* <a
         href={downloadHref}
         download
-        className={`mt-8 inline-flex items-center rounded-lg bg-emerald-600 px-6 py-3 text-white shadow-sm transition hover:bg-emerald-500 ${typography.button}`}
+        className={`mt-8 ${primaryButtonClass}`}
       >
         Download Starter Notebook
       </a> */}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useCourseProgress } from "@/app/hooks/useCourseProgress";
 import { getCourseProgressPercent } from "@/app/lib/progress";
-import { typography } from "@/app/lib/typography";
+import { accent, typography } from "@/app/lib/typography";
 
 const SIDEBAR_SECTIONS_KEY = "webaigenacademy-sidebar-sections";
 
@@ -73,7 +73,7 @@ function CheckmarkIcon() {
   return (
     <svg
       aria-hidden
-      className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
+      className={`h-3.5 w-3.5 ${accent.text}`}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -112,7 +112,7 @@ function LessonStatusIcon({
     return (
       <span
         aria-label="Completed"
-        className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-emerald-500/50 bg-emerald-500/10"
+        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${accent.borderMedium} ${accent.bgSubtle}`}
       >
         <CheckmarkIcon />
       </span>
@@ -124,7 +124,7 @@ function LessonStatusIcon({
       aria-label={isActive ? "Current lesson" : "Not completed"}
       className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
         isActive
-          ? "border-emerald-500 bg-emerald-500/10"
+          ? `border-[#FF6F00] ${accent.bgSubtle}`
           : "border-zinc-300 bg-transparent dark:border-zinc-600"
       }`}
     >
@@ -217,7 +217,7 @@ export default function LessonSidebarClient({
   };
 
   return (
-    <aside className="fixed left-0 top-[var(--navbar-height)] z-20 flex h-[calc(100vh-var(--navbar-height))] w-72 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+    <aside className="fixed left-0 top-[var(--navbar-height)] z-20 flex h-[calc(100vh-var(--navbar-height))] w-82 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
       <div className="shrink-0 border-b border-zinc-200 p-6 dark:border-zinc-800">
         <p className={typography.label}>Course</p>
         <h2 className={`mt-2 ${typography.sidebarTitle}`}>{courseTitle}</h2>
@@ -249,7 +249,7 @@ export default function LessonSidebarClient({
                 >
                   <ChevronIcon expanded={isExpanded} />
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                    <p className={typography.sidebarSection}>
                       {section.name}
                     </p>
                     <p className={`mt-0.5 ${typography.caption}`}>
@@ -258,11 +258,11 @@ export default function LessonSidebarClient({
                     <div className="mt-2 flex items-center gap-2">
                       <div className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
                         <div
-                          className="h-full rounded-full bg-emerald-500 transition-all"
+                          className={`h-full rounded-full transition-all ${accent.progress}`}
                           style={{ width: `${sectionPercent}%` }}
                         />
                       </div>
-                      <span className="shrink-0 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                      <span className={`shrink-0 text-xs font-medium ${accent.text}`}>
                         {sectionPercent}%
                       </span>
                     </div>
@@ -283,7 +283,7 @@ export default function LessonSidebarClient({
                               aria-current={isActive ? "page" : undefined}
                               className={`flex items-center gap-2.5 rounded-lg px-2 py-2.5 transition ${
                                 isActive
-                                  ? "border-l-4 border-emerald-500 bg-zinc-100 pl-3 dark:bg-zinc-800/70"
+                                  ? `border-l-4 ${accent.border} bg-zinc-100 pl-3 dark:bg-zinc-800/70`
                                   : "border-l-4 border-transparent hover:bg-zinc-50 dark:hover:bg-zinc-800/40"
                               }`}
                             >
@@ -292,10 +292,10 @@ export default function LessonSidebarClient({
                                 isActive={isActive}
                               />
                               <span
-                                className={`min-w-0 flex-1 truncate text-sm leading-5 ${
+                                className={`min-w-0 flex-1 truncate ${
                                   isActive
-                                    ? "font-semibold text-zinc-900 dark:text-white"
-                                    : "font-medium text-zinc-600 dark:text-zinc-400"
+                                    ? `font-semibold text-zinc-900 dark:text-white ${typography.sidebarItem}`
+                                    : typography.sidebarItem
                                 }`}
                               >
                                 {lesson.title}
@@ -325,13 +325,13 @@ export default function LessonSidebarClient({
           <span className="font-medium text-zinc-700 dark:text-zinc-300">
             Course Progress
           </span>
-          <span className="text-emerald-600 dark:text-emerald-400">
+          <span className={accent.text}>
             {progressPercent}%
           </span>
         </div>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
           <div
-            className="h-full rounded-full bg-emerald-500 transition-all"
+            className={`h-full rounded-full transition-all ${accent.progress}`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>

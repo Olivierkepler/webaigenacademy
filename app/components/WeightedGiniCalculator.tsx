@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { typography } from "@/app/lib/typography";
+import { accent, typography } from "@/app/lib/typography";
 
 const MAX_COUNT = 100;
 
@@ -130,7 +130,7 @@ export default function WeightedGiniCalculator() {
   const inputClass =
     "w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100";
 
-  const sliderClass = "w-full accent-emerald-600";
+  const sliderClass = "w-full accent-[#FF6F00]";
 
   const statClass =
     "rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-950";
@@ -200,10 +200,10 @@ export default function WeightedGiniCalculator() {
         </p>
       </div>
 
-      <div className={`${statClass} border-emerald-500/30 bg-emerald-500/10`}>
+      <div className={`${statClass} border ${accent.borderSubtle} ${accent.bgSubtle}`}>
         <p className={typography.caption}>Weighted Gini</p>
         <p
-          className={`mt-2 text-emerald-700 dark:text-emerald-400 ${typography.cardTitle}`}
+          className={`mt-2 ${accent.text} ${typography.cardTitle}`}
         >
           {weightedGini.toFixed(3)}
         </p>
