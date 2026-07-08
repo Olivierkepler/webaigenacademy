@@ -127,9 +127,10 @@ export default async function LessonPage({ params }: PageProps) {
 
 
 
-      <div className="fixed top-28 right-4 flex flex-col gap-4 w-53 border-l-4 border-[#FF6F00] bg-white shadow-sm p-6">
-        <h2 className="font-semibold text-lg mb-2">Related Lessons</h2>
+      <div className="fixed top-28 right-4 flex flex-col gap-4 w-53 border-l-4 border-[#FF6F00] bg-white dark:bg-zinc-950  shadow-sm p-6">
+        <h2 className="font-semibold text-lg mb-2 text-zinc-900 dark:text-zinc-100">Related Lessons</h2>
       </div>
+ 
  
  
       </section>
