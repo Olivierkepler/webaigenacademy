@@ -239,7 +239,7 @@ export default function LessonSidebarClient({
             return (
               <div
                 key={section.name}
-                className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+                className="overflow-hidden rounded-xl  "
               >
                 <button
                   type="button"
@@ -258,7 +258,7 @@ export default function LessonSidebarClient({
                     <div className="mt-2 flex items-center gap-2">
                       <div className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
                         <div
-                          className={`h-full rounded-full transition-all ${accent.progress}`}
+                          className={`h-full rounded-full transition-[width] duration-300 ease-out ${accent.progress}`}
                           style={{ width: `${sectionPercent}%` }}
                         />
                       </div>
@@ -331,7 +331,7 @@ export default function LessonSidebarClient({
         </div>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
           <div
-            className={`h-full rounded-full transition-all ${accent.progress}`}
+            className={`h-full rounded-full transition-[width] duration-300 ease-out ${accent.progress}`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>

@@ -23,15 +23,16 @@ export default function Navbar() {
       <div className="flex w-full items-center gap-4 lg:gap-8">
         <Link href="/" className="group shrink-0">
         <div className="flex items-center gap-2">
-        <Image src="/images/favicon_32_black.png" alt="WebAIGen Academy" width={32} height={32} className="w-8 h-8"    />
+        <Image src="/images/image.png" alt="WebAIGen Academy" width={32} height={32} className="w-8 h-8"    />
          
-         <div>    <h3
+         <div>  
+          <p className={typography.navbarSmall}>WebAiGen</p>
+         
+          <h3
             className={`mt-1 text-20px] transition font-medium leading-tight `}
           >
-            WebAIGenAcademy
+            Academy
           </h3>
-          
-          <p className={typography.navbarSmall}>WebAiGen</p>
           </div>
         </div>
         </Link>

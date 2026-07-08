@@ -10,6 +10,8 @@ export const accent = {
   text: "text-[#FF6F00] dark:text-[#FFB74D]",
   bg: "bg-[#FF6F00]",
   bgSubtle: "bg-[#FF6F00]/10",
+  bgQuiz: "bg-green-100 dark:bg-green-900",
+  borderQuiz: "border-green-300 dark:border-green-700",
   border: "border-[#FF6F00]",
   borderSubtle: "border-[#FF6F00]/30",
   borderMedium: "border-[#FF6F00]/50",
@@ -19,7 +21,7 @@ export const accent = {
   groupHoverText: "group-hover:text-[#FF6F00] dark:group-hover:text-[#FFB74D]",
   focusBorder: "focus:border-[#FF6F00]",
   focusRing: "focus:ring-[#FF6F00]/20",
-  progress: "bg-[#FF6F00]",
+  progress: "bg-[#FFE0B2]",
 } as const;
 
 export const typography = {
@@ -48,6 +50,7 @@ export const typography = {
   badge: `${bodyFont} text-xs font-medium leading-5 ${textMuted}`,
   quizQuestion: `${bodyFont} text-base font-medium leading-[1.6] ${textPrimary}`,
   feedbackCorrect: `${bodyFont} text-sm font-medium leading-6 ${accent.text} lg:text-base`,
+ feedbackCorrectQuiz: `${bodyFont} text-sm font-medium leading-6 text-green-700 dark:text-green-400 lg:text-base`,
   feedbackWrong: `${bodyFont} text-sm font-medium leading-6 text-red-700 dark:text-red-400 lg:text-base`,
   modalTitle: `${headingFont} text-xl font-medium leading-[1.3] ${textPrimary} lg:text-[22px]`,
   codeBlock: `font-mono text-sm leading-7 ${textPrimary}`,
