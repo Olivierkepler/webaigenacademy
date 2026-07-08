@@ -5,6 +5,8 @@ import NavbarSearch from "./NavbarSearch";
 import ThemeToggle from "./ThemeToggle";
 import Image from "next/image";
 
+import NodeALogo from "./logo";
+
 const searchableLessons = lessons.map((lesson) => ({
   course: lesson.course,
   slug: lesson.slug,
@@ -23,8 +25,11 @@ export default function Navbar() {
       <div className="flex w-full items-center gap-4 lg:gap-8">
         <Link href="/" className="group shrink-0">
         <div className="flex items-center gap-2">
-        <Image src="/images/image.png" alt="WebAIGen Academy" width={32} height={32} className="w-8 h-8"    />
-         
+        {/* <Image src="/images/favicon_32_black.png" alt="WebAIGen Academy" width={32} height={32} className="w-8 h-8"    />
+          */}
+          <NodeALogo size={34} />
+            
+          
          <div>  
           <p className={typography.navbarSmall}>WebAiGen</p>
          

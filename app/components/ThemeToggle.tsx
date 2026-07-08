@@ -2,18 +2,75 @@
 
 import { useTheme } from "./ThemeProvider";
 import { accent, typography } from "@/app/lib/typography";
+import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <button
-      type="button"
       onClick={toggleTheme}
-      className={`rounded-lg border border-zinc-300 bg-white px-4 py-2 text-zinc-800 transition dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-[#FF6F00] dark:hover:text-[#FFB74D] ${accent.hoverBorder} ${accent.hoverText} ${typography.button}`}
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={theme === "dark" ? "Light mode" : "Dark mode"}
+      title="Toggle theme"
+      className="
+        relative
+        h-11
+        w-11
+        shrink-0
+        rounded-full
+        border
+        border-orange-100/30
+        cursor-pointer
+        bg-surface/80
+        backdrop-blur-xl
+        shadow-lg
+        shadow-black/5
+        flex
+        items-center
+        justify-center
+        text-txt
+        transition-all
+        duration-300
+        hover:scale-105
+        hover:border-accent
+        hover:bg-accent/10
+        active:scale-95
+        focus-visible:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-accent
+        focus-visible:ring-offset-2
+        focus-visible:ring-offset-bg
+      "
     >
-      {theme === "dark" ? "Light Mode" : "Dark Mode"}
+      {/* Sun */}
+      <span
+        className={`absolute transition-all duration-300 ease-out ${
+          theme === "dark"
+            ? "rotate-0 scale-100 opacity-100"
+            : "rotate-90 scale-0 opacity-0"
+        }`}
+      >
+        <Sun
+          size={19}
+          strokeWidth={2.2}
+          className="text-yellow-400"
+        />
+      </span>
+
+      {/* Moon */}
+      <span
+        className={`absolute transition-all duration-300 ease-out ${
+          theme === "dark"
+            ? "-rotate-90 scale-0 opacity-0"
+            : "rotate-0 scale-100 opacity-100"
+        }`}
+      >
+        <Moon
+          size={18}
+          strokeWidth={2.2}
+          className="text-slate-500 dark:text-slate-300"
+        />
+      </span>
     </button>
   );
 }
