@@ -21,7 +21,7 @@ const searchableLessons = lessons.map((lesson) => ({
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-30 flex h-[var(--navbar-height)] shrink-0 items-center border-b border-zinc-200 bg-white px-6 dark:border-zinc-800 dark:bg-zinc-950 lg:px-10">
+    <nav className="sticky top-0 z-30 flex h-[var(--navbar-height)] shrink-0 items-center  bg-white px-6 dark:border-zinc-800 dark:bg-zinc-950 lg:px-10">
       <div className="flex w-full items-center gap-4 lg:gap-8">
         <Link href="/" className="group shrink-0">
         <div className="flex items-center gap-2">

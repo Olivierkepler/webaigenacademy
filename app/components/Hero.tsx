@@ -96,6 +96,7 @@ function Chevron({ direction }: { direction: "left" | "right" }) {
 export default function Hero() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isReady, setIsReady] = useState(false);
 
   const cardStep = useCallback(() => {
     const track = trackRef.current;
@@ -128,6 +129,12 @@ export default function Hero() {
   );
 
   useEffect(() => {
+    setIsReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isReady) return;
+
     const track = trackRef.current;
     if (!track) return;
 
@@ -141,7 +148,10 @@ export default function Hero() {
     track.addEventListener("scroll", onScroll, { passive: true });
 
     return () => track.removeEventListener("scroll", onScroll);
-  }, [cardStep]);
+  }, [cardStep, isReady]);
+
+  const isPreviousDisabled = isReady && activeIndex === 0;
+  const isNextDisabled = isReady && activeIndex === heroCards.length - 1;
 
   return (
     <section className="relative overflow-hidden bg-white text-zinc-900  transition-colors duration-200 dark:bg-zinc-950 dark:text-zinc-100">
@@ -209,7 +219,7 @@ export default function Hero() {
             role="region"
             aria-label="Featured lessons"
           >
-            {heroCards.map((card) => (
+            {heroCards.map((card, index) => (
               <Link
                 key={card.slug}
                 href={card.href}
@@ -228,15 +238,16 @@ export default function Hero() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={index === 0}
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
-                  <div className="absolute left-4 top-4 z-10 rounded-xl bg-white px-3 py-1.5 shadow-sm dark:bg-zinc-900">
+                  {/* <div className="absolute left-4 top-4 z-10 rounded-xl bg-white px-3 py-1.5 shadow-sm dark:bg-zinc-900">
                     <span className="text-[11px] font-black tracking-tight text-zinc-900 dark:text-white">
                       WebAIGen
                     </span>
-                  </div>
+                  </div> */}
 
                   <div className="absolute bottom-4 right-4 z-10 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur dark:bg-zinc-800/60 dark:text-zinc-200">
                     ML
@@ -273,25 +284,25 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => scrollToCard(activeIndex - 1)}
-                disabled={activeIndex === 0}
+                disabled={isPreviousDisabled}
                 aria-label="Previous lesson"
-                className="text-zinc-800 transition-opacity disabled:opacity-30 dark:text-zinc-100"
+                className="text-zinc-800 cursor-pointer transition-opacity disabled:opacity-30 dark:text-zinc-100"
               >
                 <Chevron direction="left" />
               </button>
 
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 cursor-pointer">
                 {heroCards.map((card, index) => (
                   <button
                     key={card.slug}
                     type="button"
                     onClick={() => scrollToCard(index)}
                     aria-label={`Go to lesson ${index + 1} of ${heroCards.length}`}
-                    aria-current={index === activeIndex}
+                    aria-current={isReady && index === activeIndex ? true : undefined}
                     className={`h-2.5 rounded-full transition-all ${
                       index === activeIndex
                         ? "w-6 bg-[#FF6F00] dark:bg-[#FFB74D]"
-                        : "w-2.5 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-500"
+                        : "w-2.5 bg-zinc-300 cursor-pointer hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-500"
                     }`}
                   />
                 ))}
@@ -300,9 +311,9 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => scrollToCard(activeIndex + 1)}
-                disabled={activeIndex === heroCards.length - 1}
+                disabled={isNextDisabled}
                 aria-label="Next lesson"
-                className="text-zinc-800 transition-opacity disabled:opacity-30 dark:text-zinc-100"
+                className="text-zinc-800 cursor-pointer transition-opacity disabled:opacity-30 dark:text-zinc-100"
               >
                 <Chevron direction="right" />
               </button>
