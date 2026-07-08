@@ -5,6 +5,7 @@ import { useMemo } from "react";
 type NotebookProps = {
   notebook: string;
   sessionKey: string;
+  onLoad?: () => void;
 };
 
 function workspaceIdForNotebook(notebook: string): string {
@@ -26,7 +27,11 @@ function buildNotebookUrl(notebook: string, sessionKey: string): string {
   return `/jupyterlite/lab/index.html?${params.toString()}`;
 }
 
-export default function Notebook({ notebook, sessionKey }: NotebookProps) {
+export default function Notebook({
+  notebook,
+  sessionKey,
+  onLoad,
+}: NotebookProps) {
   const src = useMemo(
     () => buildNotebookUrl(notebook, sessionKey),
     [notebook, sessionKey]
@@ -37,7 +42,8 @@ export default function Notebook({ notebook, sessionKey }: NotebookProps) {
       key={src}
       src={src}
       title="WebAIGenAcademy Notebook"
-      className="h-[85vh] w-full rounded-xl"
+      className="h-full w-full border-0"
+      onLoad={onLoad}
     />
   );
 }

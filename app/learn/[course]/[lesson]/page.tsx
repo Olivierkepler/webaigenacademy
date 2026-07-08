@@ -79,7 +79,7 @@ export default async function LessonPage({ params }: PageProps) {
           description="Open the practice lab to complete the starter code in the notebook."
         >
           <div className="scale-105">
-            <NotebookModal notebook={lesson.notebook} />
+            <NotebookModal notebook={lesson.notebook} lessonTitle={lesson.title} />
           </div>
         </LessonSection>
 
