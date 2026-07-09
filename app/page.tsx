@@ -19,6 +19,8 @@ import Hero from "./components/Hero";
 import BlinkingRobot from "./components/BlinkingRobot";
 import RobotEyes from "./components/RobotEyes";
 import Testimonials from "./components/Testimonials";
+import PartnerLogos from "./components/PartnerLogos";
+import EligibleEducation from "./components/EligibleEducation";
 
 const COURSE_SLUG = "machine-learning";
 const COURSE_PATH = `/learn/${COURSE_SLUG}`;
@@ -80,7 +82,9 @@ export default function Home() {
 
       <Hero />  
       <CareerGoalBanner />
-      <RoadmapComingSoon />
+      {/* <RoadmapComingSoon />
+      <PartnerLogos />     */}
+      <EligibleEducation />
       <CommunitySection />
 
       {/* Content — lifted above the background layer */}
