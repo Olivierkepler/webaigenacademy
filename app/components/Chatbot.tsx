@@ -64,43 +64,37 @@ export default function Chatbot() {
 
       {open && (
         <section className="fixed bottom-6 right-6 z-50 w-[440px] max-w-[calc(100vw-1.25rem)] overflow-hidden rounded-[0.75rem] border border-zinc-200/80 bg-white text-zinc-950 shadow-[0_30px_100px_rgba(0,0,0,0.18)] backdrop-blur-2xl dark:border-zinc-800 dark:bg-zinc-950 dark:text-white">
-          <header className="relative overflow-hidden border-b border-zinc-200/80 bg-white px-6 py-5 dark:border-zinc-800 dark:bg-zinc-950">
-            <div className="absolute -right-16 -top-20 h-40 w-40 rounded-full bg-[#0F766E]/10 blur-3xl" />
-            <div className="absolute right-16 top-0 h-24 w-24 rounded-full bg-orange-400/10 blur-3xl" />
+         <header className="relative overflow-hidden  bg-[#003334] px-6 py-5 text-white">
+  <div className="relative flex items-center justify-between gap-4">
+    <div className="flex items-center gap-4">
+       <Logo size={42} color="white" />
+    
 
-            <div className="relative flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-                  <Logo size={34} />
-                </div>
+      <div className="leading-none tracking-tight" >
+        <h2 className="text-xl font-bold tracking-[-0.03em] text-white">
+          WebAiGen 
+          <br />
+        <span className="text-sm font-medium tracking-tight text-zinc-200">  Academy</span>
+        </h2>
 
-                <div>
-                  <h2 className="text-sm font-semibold tracking-[-0.02em] text-zinc-950 dark:text-white">
-                    WebAiGen Assistant
-                  </h2>
+     
+      </div>
+    </div>
 
-                  <div className="mt-1 flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                    </span>
-                    <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                      Online now
-                    </p>
-                  </div>
-                </div>
-              </div>
+    <div className="flex items-center gap-3">
+    
 
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-950 dark:hover:bg-zinc-900 dark:hover:text-white"
-                aria-label="Close chat"
-              >
-                ✕
-              </button>
-            </div>
-          </header>
+      <button
+        type="button"
+        onClick={() => setOpen(false)}
+        className="flex h-10 w-10 items-center justify-center rounded-full text-white/80 transition hover:bg-white/10 hover:text-white"
+        aria-label="Close chat"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
+</header>
 
           <div className="h-[500px] overflow-y-auto bg-[linear-gradient(to_bottom,#fafafa,#f4f4f5)] px-6 py-6 dark:bg-[linear-gradient(to_bottom,#09090b,#18181b)]">
             <div className="space-y-5">
