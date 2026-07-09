@@ -11,6 +11,8 @@ import {
   typography,
 } from "@/app/lib/typography";
 import Hero from "./components/Hero";
+import BlinkingRobot from "./components/BlinkingRobot";
+import RobotEyes from "./components/RobotEyes";
 
 const COURSE_SLUG = "machine-learning";
 const COURSE_PATH = `/learn/${COURSE_SLUG}`;
@@ -179,6 +181,9 @@ export default function Home() {
       </div>
 
       <Chatbot />
+
+      {/* <BlinkingRobot /> */}
+    
     </main>
   );
 }

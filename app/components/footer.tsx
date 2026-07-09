@@ -1,9 +1,17 @@
 import Link from "next/link";
-import { typography } from "@/app/lib/typography";
 
 const COURSE_PATH = "/learn/machine-learning";
 
-const footerColumns = [
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+const footerColumns: ReadonlyArray<{
+  heading: string;
+  links: readonly FooterLink[];
+}> = [
   {
     heading: "Learn",
     links: [
@@ -26,7 +34,7 @@ const footerColumns = [
     heading: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "WebAiGen Agency", href: "https://webaigen.com" },
+      { label: "WebAiGen Agency", href: "https://webaigen.com", external: true },
       { label: "Contact", href: "/connect" },
       { label: "Careers", href: "/careers" },
     ],
@@ -75,76 +83,108 @@ const socialLinks = [
   },
 ] as const;
 
+const focusRing =
+  "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#003334]";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="relative z-10 border-t border-[#0B4A4B] bg-[#003334] text-white">
+      {/* Subtle grid texture, fading in toward the bottom */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.12] [mask-image:linear-gradient(to_bottom,transparent,black_60%)]"
       />
-  
+
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
-        <div className="grid gap-12 py-16 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-8">
-          <div className="max-w-sm">
-            <Link href="/" className="inline-flex items-baseline gap-1.5">
+        <div className="grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+          {/* Brand column */}
+          <div className="max-w-sm sm:col-span-2 lg:col-span-1">
+            <Link href="/" className={`inline-flex items-baseline gap-1.5 ${focusRing}`}>
               <span className="text-lg font-semibold tracking-tight text-white">
-                WebAIGen
+                WebAiGen
               </span>
               <span className="text-lg font-light tracking-tight text-white/60">
                 Academy
               </span>
             </Link>
-  
+
             <p className="mt-4 text-sm leading-relaxed text-white/65">
               Interactive AI and machine learning education. Lessons,
               notebooks, and quizzes — all in the browser.
             </p>
-  
+
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  aria-label={social.label}
+                  aria-label={`${social.label} (opens in a new tab)`}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white"
+                  rel="noopener noreferrer"
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors duration-200 hover:border-white/30 hover:bg-white/10 hover:text-white ${focusRing} focus-visible:rounded-full`}
                 >
                   {social.icon}
                 </a>
               ))}
             </div>
           </div>
-  
+
+          {/* Link columns */}
           {footerColumns.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
                 {column.heading}
               </p>
-  
+
               <ul className="mt-4 space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/65 transition-colors hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {column.links.map((link) => {
+                  const linkClasses = `text-sm text-white/65 transition-colors duration-200 hover:text-white hover:underline hover:underline-offset-4 hover:decoration-white/30 ${focusRing}`;
+
+                  return (
+                    <li key={link.label}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`${linkClasses} inline-flex items-center gap-1`}
+                        >
+                          {link.label}
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="h-3 w-3 opacity-50"
+                            aria-hidden="true"
+                          >
+                            <path d="M7 17L17 7M17 7H8M17 7v9" />
+                          </svg>
+                          <span className="sr-only">(opens in a new tab)</span>
+                        </a>
+                      ) : (
+                        <Link href={link.href} className={linkClasses}>
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           ))}
         </div>
-  
+
+        {/* Bottom bar */}
         <div className="flex flex-col gap-4 border-t border-white/10 py-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/45">
             © {year} WebAiGen LLC. All rights reserved.
           </p>
-  
+
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span className="inline-flex items-center gap-2 text-xs text-white/50">
               <span className="relative flex h-2 w-2">
@@ -153,9 +193,9 @@ export default function Footer() {
               </span>
               All systems operational
             </span>
-  
-            <span className="hidden h-3 w-px bg-white/15 sm:block" />
-  
+
+            <span aria-hidden="true" className="hidden h-3 w-px bg-white/15 sm:block" />
+
             <p className="text-xs text-white/35">
               Built in Boston · English · Français · Kreyòl
             </p>

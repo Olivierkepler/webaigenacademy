@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Logo from "./logo";
+import BlinkingRobot from "./BlinkingRobot";
 
 type Message = {
   role: "bot" | "user";
@@ -50,13 +51,14 @@ export default function Chatbot() {
         className="fixed bottom-6 right-6 z-50 flex cursor-pointer items-center justify-center transition hover:scale-105"
         aria-label="Open chat"
       >
-        <Image
+        {/* <Image
           src="/images/chatbot.png"
           alt="AI Assistant"
           width={150}
           height={150}
           className="cursor-pointer object-contain"
-        />
+        /> */}
+        <BlinkingRobot size={150} />
       </button>
 
       {open && (
@@ -70,7 +72,7 @@ export default function Chatbot() {
                   <Logo size={42} />
                 </div>
 
-                <div>
+                {/* <div>
                   <h3 className="text-base font-bold tracking-tight text-zinc-950 dark:text-white">
                     WebAigen Assistant
                   </h3>
@@ -81,7 +83,7 @@ export default function Chatbot() {
                       Online now
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <button

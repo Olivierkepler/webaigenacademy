@@ -204,7 +204,7 @@ export default function Hero() {
 
             <Link
               href={COURSE_PATH}
-              className="rounded-full border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-white dark:hover:bg-zinc-700/70"
+              className="rounded-full border border-green-900 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-white dark:hover:bg-zinc-700/70"
             >
               View syllabus
             </Link>
