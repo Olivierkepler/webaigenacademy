@@ -36,3 +36,58 @@ body {
 .dark .lesson-content .katex {
   color: rgb(250 250 250);
 }
+
+@keyframes chatbot-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-7px) scale(1.015);
+  }
+}
+
+@keyframes chatbot-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+.chatbot-float {
+  animation: chatbot-float 3.2s ease-in-out infinite;
+}
+
+.chatbot-float__glow {
+  animation: chatbot-glow 3.2s ease-in-out infinite;
+}
+
+.chatbot-float:hover .chatbot-float__glow,
+.chatbot-float:focus-visible .chatbot-float__glow,
+.group:hover .chatbot-float__glow,
+.group:focus-visible .chatbot-float__glow {
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chatbot-float:hover,
+.chatbot-float:focus-visible,
+.group:hover .chatbot-float,
+.group:focus-visible .chatbot-float {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chatbot-float,
+  .chatbot-float__glow {
+    animation: none;
+  }
+}

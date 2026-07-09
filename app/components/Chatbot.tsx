@@ -54,11 +54,13 @@ export default function Chatbot() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-50 flex cursor-pointer items-center justify-center rounded-full transition duration-300 hover:scale-[1.03] active:scale-95"
+          className="group fixed bottom-6 right-6 z-50 flex cursor-pointer items-center justify-center rounded-full transition duration-300 hover:scale-[1.03] active:scale-95"
           aria-label="Open WebAiGen assistant"
         >
-          <span className="absolute h-24 w-24 rounded-full bg-[#0F766E]/10 blur-2xl" />
-          <BlinkingRobot size={145} />
+          <span className="chatbot-float__glow pointer-events-none absolute h-24 w-24 rounded-full bg-[#FF6F00]/15 blur-2xl dark:bg-[#FFB74D]/20" />
+          <span className="chatbot-float relative block">
+            <BlinkingRobot size={145} />
+          </span>
         </button>
       )}
 
