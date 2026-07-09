@@ -4,6 +4,9 @@ import Background from "@/app/components/background";
 import Footer from "./components/footer";
 import CareerGoalBanner from "@/app/components/CareerGoalBanner";
 import Chatbot from "@/app/components/Chatbot";
+import FAQ from "@/app/components/FAQ";
+import RoadmapComingSoon from "@/app/components/RoadmapComingSoon";
+import CommunitySection from "@/app/components/CommunitySection";
 import {
   accent,
   accentBadgeClass,
@@ -76,9 +79,11 @@ export default function Home() {
 
       <Hero />  
       <CareerGoalBanner />
+      <RoadmapComingSoon />
+      <CommunitySection />
 
       {/* Content — lifted above the background layer */}
-      <div className="relative z-10 mx-auto max-w-6xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
+      {/* <div className="relative z-10 mx-auto max-w-6xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
         <section className="text-center">
           <p className={typography.label}>WebAIGen Academy</p>
           <h1 className={`mx-auto mt-4 max-w-4xl ${typography.hero}`}>
@@ -181,7 +186,8 @@ export default function Home() {
             ))}
           </div>
         </section>
-      </div>
+      </div> */}
+      <FAQ /> 
 
       <Chatbot />
 

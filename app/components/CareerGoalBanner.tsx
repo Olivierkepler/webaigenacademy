@@ -21,7 +21,7 @@ export default function CareerGoalBanner({
               career goal
             </h2>
 
-            <p className="mt-8 max-w-[660px] text-[18px] leading-[1.35] text-white/95">
+            <p className="mt-8 max-w-[660px] text-[22px] leading-[1.35] text-white/95">
               Big wins don&apos;t come from standing still. Build career-ready
               skills and{" "}
               <span className="font-extrabold text-white">save up to 15%</span>{" "}
@@ -32,7 +32,7 @@ export default function CareerGoalBanner({
 
             <Link
               href={href}
-              className="mt-7 inline-flex rounded-full bg-[#E94700] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#ff5a12]"
+              className="mt-7 inline-flex rounded-full bg-[#E94700] px-7 py-3.5 text-lg font-semibold text-white transition hover:bg-[#ff5a12]"
             >
               Learn more
             </Link>
