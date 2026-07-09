@@ -224,7 +224,7 @@ export default function Hero() {
               <Link
                 key={card.slug}
                 href={card.href}
-                className="group w-[86%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-zinc-200/60 bg-white text-zinc-950 transition duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-zinc-800/80 dark:bg-zinc-900 dark:text-zinc-100 sm:w-[58%] lg:w-[calc(50%-10px)]"
+                className="group w-[86%] shrink-0 snap-start overflow-hidden rounded-[0.75rem] border border-zinc-200/60 bg-white text-zinc-950 transition duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-zinc-800/80 dark:bg-zinc-900 dark:text-zinc-100 sm:w-[58%] lg:w-[calc(50%-10px)]"
               >
                 <div className="relative h-44 overflow-hidden">
                   <Image

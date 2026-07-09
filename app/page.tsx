@@ -18,6 +18,7 @@ import {
 import Hero from "./components/Hero";
 import BlinkingRobot from "./components/BlinkingRobot";
 import RobotEyes from "./components/RobotEyes";
+import Testimonials from "./components/Testimonials";
 
 const COURSE_SLUG = "machine-learning";
 const COURSE_PATH = `/learn/${COURSE_SLUG}`;
@@ -188,7 +189,7 @@ export default function Home() {
         </section>
       </div> */}
       <FAQ /> 
-
+      <Testimonials />
       <Chatbot />
 
       {/* <BlinkingRobot /> */}

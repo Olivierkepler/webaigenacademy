@@ -37,9 +37,9 @@ export default function FAQ() {
     <section className="bg-white px-6 py-24 font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-950">
       <div className="mx-auto max-w-4xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#0F766E]">
+          {/* <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#0F766E]">
             FAQ
-          </p>
+          </p> */}
 
           <h2 className="mt-4 text-4xl font-black italic tracking-[-0.04em] sm:text-5xl">
             Frequently asked questions
