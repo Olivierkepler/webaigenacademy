@@ -223,7 +223,7 @@ export default function Hero() {
               href={`${COURSE_PATH}/introduction`}
               className="rounded-full bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/15 transition hover:bg-orange-600 hover:shadow-orange-500/30"
             >
-              Explore courses
+              Take the course
             </Link>
 
             <Link
