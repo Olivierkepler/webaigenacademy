@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { lessons } from "@/data/lessons";
 import Background from "@/app/components/background";
+import CareerGoalBanner from "@/app/components/CareerGoalBanner";
 import Chatbot from "@/app/components/Chatbot";
 import {
   accent,
@@ -70,9 +71,10 @@ function lessonSeparator(index: number, total: number): string {
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-      <Background />
+    
 
       <Hero />  
+      <CareerGoalBanner />
 
       {/* Content — lifted above the background layer */}
       <div className="relative z-10 mx-auto max-w-6xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
