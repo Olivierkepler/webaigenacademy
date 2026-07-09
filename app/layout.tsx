@@ -2,9 +2,22 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Manrope } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Nabar";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Footer from "./components/footer";
+import { lessons } from "@/data/lessons";
+
+const searchableLessons = lessons.map((lesson) => ({
+  course: lesson.course,
+  slug: lesson.slug,
+  title: lesson.title,
+  order: lesson.order,
+  section: lesson.section,
+  description: lesson.description,
+  duration: lesson.duration,
+  content: lesson.content,
+  quiz: lesson.quiz,
+}));
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -65,9 +78,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-full flex flex-col font-body`}>
         <ThemeProvider>
-          <Navbar />
+          <Navbar searchableLessons={searchableLessons} />
           {children}
-          <Footer />
+        
         </ThemeProvider>
       </body>
     </html>

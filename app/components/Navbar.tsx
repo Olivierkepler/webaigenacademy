@@ -1,45 +1,53 @@
+
+
+
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { lessons } from "@/data/lessons";
-import { accent, typography } from "@/app/lib/typography";
+import type { SearchableLesson } from "@/app/lib/lessonSearch";
+import { typography } from "@/app/lib/typography";
 import NavbarSearch from "./NavbarSearch";
 import ThemeToggle from "./ThemeToggle";
-import Image from "next/image";
-
 import NodeALogo from "./logo";
 
-const searchableLessons = lessons.map((lesson) => ({
-  course: lesson.course,
-  slug: lesson.slug,
-  title: lesson.title,
-  order: lesson.order,
-  section: lesson.section,
-  description: lesson.description,
-  duration: lesson.duration,
-  content: lesson.content,
-  quiz: lesson.quiz,
-}));
+type NavbarProps = {
+  searchableLessons: SearchableLesson[];
+};
 
-export default function Navbar() {
+export default function Navbar({ searchableLessons }: NavbarProps) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-30 flex h-[var(--navbar-height)] shrink-0 items-center  bg-white px-6 dark:border-zinc-800 dark:bg-zinc-950 lg:px-10">
-      <div className="flex w-full items-center gap-4 lg:gap-8">
+    <nav
+      className={`fixed left-0 top-0 z-50 flex h-[var(--navbar-height)] w-full shrink-0 items-center border-b px-6 transition-all duration-300 lg:px-10 ${
+        scrolled
+          ? "border-zinc-200/70 bg-white shadow-sm  dark:border-zinc-800/80 dark:bg-zinc-950/90"
+          : "border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex w-full max-w-7xl items-center gap-4 lg:gap-8">
         <Link href="/" className="group shrink-0">
-        <div className="flex items-center gap-2">
-        {/* <Image src="/images/favicon_32_black.png" alt="WebAIGen Academy" width={32} height={32} className="w-8 h-8"    />
-          */}
-          <NodeALogo size={34} />
-            
-          
-         <div>  
-          <p className={typography.navbarSmall}>WebAiGen</p>
-         
-          <h3
-            className={`mt-1 text-20px] transition font-medium leading-tight `}
-          >
-            Academy
-          </h3>
+          <div className="flex items-center gap-2.5">
+            <NodeALogo size={34} />
+
+
+            <div className="leading-none">
+              <p className="font-black  italic">WebAiGen</p>
+              <h3 className="mt-1 text-sm font-black italic tracking-tight text-zinc-950 transition dark:text-white">
+                Academy
+              </h3>
+            </div>
           </div>
-        </div>
         </Link>
 
         <div className="flex min-w-0 flex-1 justify-center px-2">

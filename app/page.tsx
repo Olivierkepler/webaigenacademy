@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { lessons } from "@/data/lessons";
 import Background from "@/app/components/background";
+import Footer from "./components/footer";
 import CareerGoalBanner from "@/app/components/CareerGoalBanner";
 import Chatbot from "@/app/components/Chatbot";
 import {
@@ -185,6 +186,7 @@ export default function Home() {
       <Chatbot />
 
       {/* <BlinkingRobot /> */}
+      <Footer />
     
     </main>
   );

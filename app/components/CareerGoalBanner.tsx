@@ -15,13 +15,13 @@ export default function CareerGoalBanner({
       <div className="relative mx-auto grid min-h-[460px] max-w-[1600px] grid-cols-1 lg:grid-cols-[52%_48%]">
         <div className="relative z-20 flex items-center px-8 py-16 sm:px-16 lg:px-[140px]">
           <div>
-            <h2 className="max-w-[560px] text-[52px] font-black italic leading-[0.9] tracking-tight sm:text-[70px]">
+            <h2 className="max-w-[560px] text-[52px] font-black italic leading-[0.9] tracking-tight sm:text-[60px]">
               Score your next
               <br />
               career goal
             </h2>
 
-            <p className="mt-8 max-w-[660px] text-[22px] leading-[1.35] text-white/95">
+            <p className="mt-8 max-w-[660px] text-[18px] leading-[1.35] text-white/95">
               Big wins don&apos;t come from standing still. Build career-ready
               skills and{" "}
               <span className="font-extrabold text-white">save up to 15%</span>{" "}
@@ -32,7 +32,7 @@ export default function CareerGoalBanner({
 
             <Link
               href={href}
-              className="mt-7 inline-flex rounded-full bg-[#E94700] px-7 py-3.5 text-lg font-semibold text-white transition hover:bg-[#ff5a12]"
+              className="mt-7 inline-flex rounded-full bg-[#E94700] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#ff5a12]"
             >
               Learn more
             </Link>
