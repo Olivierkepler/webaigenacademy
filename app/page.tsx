@@ -21,6 +21,7 @@ import RobotEyes from "./components/RobotEyes";
 import Testimonials from "./components/Testimonials";
 import PartnerLogos from "./components/PartnerLogos";
 import EligibleEducation from "./components/EligibleEducation";
+import RevealOnScroll from "./components/RevealOnScroll";
 
 const COURSE_SLUG = "machine-learning";
 const COURSE_PATH = `/learn/${COURSE_SLUG}`;
@@ -80,12 +81,18 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
     
 
-      <Hero />  
-      <CareerGoalBanner />
+      <Hero />
+      <RevealOnScroll>
+        <CareerGoalBanner />
+      </RevealOnScroll>
       {/* <RoadmapComingSoon />
       <PartnerLogos />     */}
-      <EligibleEducation />
-      <CommunitySection />
+      <RevealOnScroll delay={0.05}>
+        <EligibleEducation />
+      </RevealOnScroll>
+      <RevealOnScroll delay={0.08}>
+        <CommunitySection />
+      </RevealOnScroll>
 
       {/* Content — lifted above the background layer */}
       {/* <div className="relative z-10 mx-auto max-w-6xl space-y-16 px-6 py-12 lg:px-10 lg:py-16">
@@ -192,12 +199,18 @@ export default function Home() {
           </div>
         </section>
       </div> */}
-      <FAQ /> 
-      <Testimonials />
+      <RevealOnScroll delay={0.1}>
+        <FAQ />
+      </RevealOnScroll>
+      <RevealOnScroll delay={0.12}>
+        <Testimonials />
+      </RevealOnScroll>
       <Chatbot />
 
       {/* <BlinkingRobot /> */}
-      <Footer />
+      <RevealOnScroll delay={0.14}>
+        <Footer />
+      </RevealOnScroll>
     
     </main>
   );

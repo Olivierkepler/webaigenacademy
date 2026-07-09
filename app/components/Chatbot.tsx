@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import Logo from "./logo";
 import BlinkingRobot from "./BlinkingRobot";
 
@@ -10,22 +9,28 @@ type Message = {
   text: string;
 };
 
+const quickQuestions = [
+  "What services do you offer?",
+  "How much does a website cost?",
+  "Can I book a consultation?",
+  "How can AI help my business?",
+];
+
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
-      text: "Hi, I’m your WebAigen assistant. How can I help you today?",
+      text: "Hi, I’m your WebAiGen assistant. I can help with services, pricing, consultations, and AI solutions for your business.",
     },
   ]);
 
-  const quickQuestions = [
-    "What services do you offer?",
-    "How much does a website cost?",
-    "Can I book a consultation?",
-    "How can AI help my business?",
-  ];
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   function sendMessage(text?: string) {
     const messageText = text || input.trim();
@@ -36,7 +41,7 @@ export default function Chatbot() {
       { role: "user", text: messageText },
       {
         role: "bot",
-        text: "Thanks for reaching out. A WebAigen team member can help you with this. You can book a consultation or tell me more about what your business needs.",
+        text: "Thanks for sharing that. A WebAiGen specialist can help you choose the right solution. Tell me a little more about your business goal, or book a consultation to get personalized guidance.",
       },
     ]);
 
@@ -45,134 +50,123 @@ export default function Chatbot() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex cursor-pointer items-center justify-center transition hover:scale-105"
-        aria-label="Open chat"
-      >
-        {/* <Image
-          src="/images/chatbot.png"
-          alt="AI Assistant"
-          width={150}
-          height={150}
-          className="cursor-pointer object-contain"
-        /> */}
-        <BlinkingRobot size={150} />
-      </button>
+      {!open && (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="fixed bottom-6 right-6 z-50 flex cursor-pointer items-center justify-center rounded-full transition duration-300 hover:scale-[1.03] active:scale-95"
+          aria-label="Open WebAiGen assistant"
+        >
+          <span className="absolute h-24 w-24 rounded-full bg-[#0F766E]/10 blur-2xl" />
+          <BlinkingRobot size={145} />
+        </button>
+      )}
 
       {open && (
-        <div className="fixed bottom-12 right-8 z-50 w-[440px] max-w-[calc(100vw-1rem)] overflow-hidden rounded-[2rem] border border-zinc-200/80 bg-white/95 text-zinc-900 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-xl transition-all duration-300 dark:border-zinc-800/80 dark:bg-zinc-950/95 dark:text-zinc-100">
-          <div className="relative overflow-hidden border-b border-zinc-200/80 bg-gradient-to-br from-white via-zinc-50 to-[#FFF8F1] px-7 py-6 dark:border-zinc-800/80 dark:from-zinc-950 dark:via-zinc-900 dark:to-[#2A1A0E]">
-            <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-[#F8C89B]/20 blur-[80px]" />
+        <section className="fixed bottom-6 right-6 z-50 w-[440px] max-w-[calc(100vw-1.25rem)] overflow-hidden rounded-[0.75rem] border border-zinc-200/80 bg-white text-zinc-950 shadow-[0_30px_100px_rgba(0,0,0,0.18)] backdrop-blur-2xl dark:border-zinc-800 dark:bg-zinc-950 dark:text-white">
+          <header className="relative overflow-hidden border-b border-zinc-200/80 bg-white px-6 py-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="absolute -right-16 -top-20 h-40 w-40 rounded-full bg-[#0F766E]/10 blur-3xl" />
+            <div className="absolute right-16 top-0 h-24 w-24 rounded-full bg-orange-400/10 blur-3xl" />
 
-            <div className="relative flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center">
-                  <Logo size={42} />
+            <div className="relative flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                  <Logo size={34} />
                 </div>
 
-                {/* <div>
-                  <h3 className="text-base font-bold tracking-tight text-zinc-950 dark:text-white">
-                    WebAigen Assistant
-                  </h3>
+                <div>
+                  <h2 className="text-sm font-semibold tracking-[-0.02em] text-zinc-950 dark:text-white">
+                    WebAiGen Assistant
+                  </h2>
 
                   <div className="mt-1 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.16)]" />
-                    <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    </span>
+                    <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
                       Online now
                     </p>
                   </div>
-                </div> */}
+                </div>
               </div>
 
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-white"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-950 dark:hover:bg-zinc-900 dark:hover:text-white"
                 aria-label="Close chat"
               >
                 ✕
               </button>
             </div>
-          </div>
+          </header>
 
-          <div className="h-[550px] space-y-5 overflow-y-auto bg-[radial-gradient(circle_at_top_left,rgba(255,190,120,0.04),transparent_35%),linear-gradient(to_bottom,#fafafa,#f4f4f5)] px-7 py-6 dark:bg-[radial-gradient(circle_at_top_left,rgba(255,190,120,0.06),transparent_35%),linear-gradient(to_bottom,#09090b,#18181b)]">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`flex items-end gap-3 ${
-                  msg.role === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
-                {msg.role !== "user" && (
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                    <img
-                      src="/images/webaigen_cropped.png"
-                      alt="AI Assistant"
-                      width={26}
-                      height={26}
-                      className="block dark:hidden"
-                    />
-                    <img
-                      src="/images/weiagenlogo1.png"
-                      alt="AI Assistant"
-                      width={26}
-                      height={26}
-                      className="hidden dark:block"
-                    />
-                  </div>
-                )}
-
+          <div className="h-[500px] overflow-y-auto bg-[linear-gradient(to_bottom,#fafafa,#f4f4f5)] px-6 py-6 dark:bg-[linear-gradient(to_bottom,#09090b,#18181b)]">
+            <div className="space-y-5">
+              {messages.map((msg, index) => (
                 <div
-                  className={`relative max-w-[82%] px-5 py-3.5 text-[15px] leading-relaxed ${
-                    msg.role === "user"
-                      ? "rounded-[1.4rem] rounded-br-md border border-[#F6D4B3] bg-[#FFF3E8] text-[#A44A00] shadow-sm dark:border-[#7A4B22] dark:bg-[#5A3312] dark:text-[#FFE8D2]"
-                      : "rounded-[1.4rem] rounded-bl-md border border-white/80 bg-white/90 text-zinc-800 shadow-sm backdrop-blur-xl dark:border-zinc-800/80 dark:bg-zinc-900/90 dark:text-zinc-100"
+                  key={index}
+                  className={`flex items-end gap-3 ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
-                  <span>{msg.text}</span>
+                  {msg.role === "bot" && (
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center dark:border-zinc-800 dark:bg-zinc-900">
+                      <Logo size={24} />
+                    </div>
+                  )}
+
+                  <div
+                    className={`max-w-[82%] rounded-3xl px-5 py-3.5 text-[15px] leading-7 shadow-sm ${
+                      msg.role === "user"
+                        ? "rounded-br-md bg-[#0F766E] text-white"
+                        : "rounded-bl-md border border-zinc-200 bg-white text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+
+              <div ref={messagesEndRef} />
+            </div>
           </div>
 
-          <div className="border-t border-zinc-200/80 bg-white/95 px-6 py-5 backdrop-blur-xl dark:border-zinc-800/80 dark:bg-zinc-950/95">
-            <div className="mb-4 flex flex-nowrap gap-2.5 overflow-x-auto pb-1">
+          <footer className="border-t border-zinc-200/80 bg-white px-5 py-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="mb-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {quickQuestions.map((question) => (
                 <button
                   key={question}
                   type="button"
                   onClick={() => sendMessage(question)}
-                  className="whitespace-nowrap rounded-full border border-[#F3DEC8] bg-[#FFF8F1] px-4 py-2 text-sm font-medium text-[#9A5A20] transition hover:bg-[#FDEDDC] dark:border-[#5C3A1E] dark:bg-[#2A1A0E] dark:text-[#F6C28B] dark:hover:bg-[#3A2514]"
+                  className="shrink-0 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-xs font-semibold text-zinc-600 transition hover:border-[#0F766E]/30 hover:bg-[#0F766E]/5 hover:text-[#0F766E] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:text-[#5EEAD4]"
                 >
                   {question}
                 </button>
               ))}
             </div>
 
-            <div className="flex items-center gap-3 rounded-[1.6rem] border border-zinc-200 bg-white p-2 shadow-inner transition focus-within:border-orange-300 focus-within:ring-4 focus-within:ring-orange-100 dark:border-zinc-800 dark:bg-zinc-900 dark:focus-within:ring-orange-950/40">
+            <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white p-1.5 shadow-inner transition focus-within:border-[#0F766E]/40 focus-within:ring-4 focus-within:ring-[#0F766E]/10 dark:border-zinc-800 dark:bg-zinc-900">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                placeholder="Ask WebAigen anything..."
-                className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-zinc-100 dark:placeholder:text-zinc-500"
+                placeholder="Ask WebAiGen anything..."
+                className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm font-medium text-zinc-950 outline-none placeholder:text-zinc-400 dark:text-white dark:placeholder:text-zinc-500"
               />
 
               <button
                 type="button"
                 onClick={() => sendMessage()}
-                className="group flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F59E42] text-white shadow-lg shadow-orange-500/20 transition hover:scale-105 hover:bg-[#EA8B27] active:scale-95"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600 active:scale-95"
                 aria-label="Send message"
               >
-                <span className="transition group-hover:translate-x-0.5">
-                  ➤
-                </span>
+                →
               </button>
             </div>
-          </div>
-        </div>
+          </footer>
+        </section>
       )}
     </>
   );

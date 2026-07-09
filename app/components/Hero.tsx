@@ -3,9 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import Navbar from "./Navbar";
 
 const COURSE_PATH = "/learn/machine-learning";
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
+const MotionLink = motion(Link);
 
 type HeroCard = {
   slug: string;
@@ -95,9 +99,12 @@ function Chevron({ direction }: { direction: "left" | "right" }) {
 }
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isReady, setIsReady] = useState(false);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.25 });
+  const prefersReducedMotion = useReducedMotion();
 
   const visibleCards = 2;
   const totalSlides = Math.max(1, heroCards.length - visibleCards + 1);
@@ -155,7 +162,10 @@ export default function Hero() {
   const isNextDisabled = isReady && activeIndex >= totalSlides - 1;
 
   return (
-    <section className="relative overflow-hidden bg-white pt-20 font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-white pt-20 font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100"
+    >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="grid h-full w-full grid-cols-[45%_55%] bg-gradient-to-br from-white via-[#FCFCFC] to-[#F7F7F8] dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-900">
           <div className="flex items-center justify-center overflow-hidden">
@@ -183,7 +193,19 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-full gap-16 px-8 pb-24 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-20 lg:px-24 lg:pb-28">
-        <div>
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 36 }}
+          animate={
+            isInView || prefersReducedMotion
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 36 }
+          }
+          transition={
+            prefersReducedMotion
+              ? { duration: 0 }
+              : { duration: 0.75, ease: easeOut }
+          }
+        >
           <h2 className="max-w-[560px] text-[52px] font-black italic leading-[0.9] tracking-tight sm:text-[60px]">
             Level up your
             <br />
@@ -211,9 +233,22 @@ export default function Hero() {
               View syllabus
             </Link>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="min-w-0">
+        <motion.div
+          className="min-w-0"
+          initial={prefersReducedMotion ? false : { opacity: 0, x: 42 }}
+          animate={
+            isInView || prefersReducedMotion
+              ? { opacity: 1, x: 0 }
+              : { opacity: 0, x: 42 }
+          }
+          transition={
+            prefersReducedMotion
+              ? { duration: 0 }
+              : { duration: 0.85, delay: 0.15, ease: easeOut }
+          }
+        >
           <div
             ref={trackRef}
             className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -221,9 +256,28 @@ export default function Hero() {
             aria-label="Featured lessons"
           >
             {heroCards.map((card, index) => (
-              <Link
+              <MotionLink
                 key={card.slug}
                 href={card.href}
+                initial={
+                  prefersReducedMotion
+                    ? false
+                    : { opacity: 0, y: 28, scale: 0.98 }
+                }
+                animate={
+                  isInView || prefersReducedMotion
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 28, scale: 0.98 }
+                }
+                transition={
+                  prefersReducedMotion
+                    ? { duration: 0 }
+                    : {
+                        duration: 0.65,
+                        delay: 0.25 + index * 0.08,
+                        ease: easeOut,
+                      }
+                }
                 className="group w-[86%] shrink-0 snap-start overflow-hidden rounded-[0.75rem] border border-zinc-200/60 bg-white text-zinc-950 transition duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-zinc-800/80 dark:bg-zinc-900 dark:text-zinc-100 sm:w-[58%] lg:w-[calc(50%-10px)]"
               >
                 <div className="relative h-44 overflow-hidden">
@@ -272,7 +326,7 @@ export default function Hero() {
                     </p>
                   </div>
                 </div>
-              </Link>
+              </MotionLink>
             ))}
           </div>
 
@@ -318,7 +372,7 @@ export default function Hero() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

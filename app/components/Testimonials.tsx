@@ -4,21 +4,21 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     role: "Software Engineering Student",
-    image: "/images/testimonials/sarah.jpg",
+    image: "/images/testimonials/seidenperle-ai-generated-8890805.png",
     quote:
       "WebAiGen Academy made machine learning finally click for me. The interactive lessons and projects helped me build confidence far beyond reading documentation.",
   },
   {
-    name: "Michael Chen",
+    name: "Michaela M",
     role: "Frontend Developer",
-    image: "/images/testimonials/michael.jpg",
+    image: "/images/testimonials/alisadyson-woman-7175038.jpg",
     quote:
       "I love how everything is practical. Instead of memorizing theory, I built real AI projects that I could actually add to my portfolio.",
   },
   {
     name: "Emily Rodriguez",
     role: "Data Analyst",
-    image: "/images/testimonials/emily.jpg",
+    image: "/images/testimonials/ernestflowerss-boy-8847075.jpg",
     quote:
       "The visual explanations and quizzes are outstanding. It feels like having a mentor guiding you through every lesson.",
   },
