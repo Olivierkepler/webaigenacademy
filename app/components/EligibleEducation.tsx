@@ -3,35 +3,35 @@ import Link from "next/link";
 import { accent } from "@/app/lib/typography";
 
 const offerings = [
-  {
-    category: "Executive Education",
-    title: "Artificial Intelligence Programme",
-    provider: "WebAiGen Academy",
-    duration: "6 weeks to complete",
-    image: "/images/technician2.jpeg",
-  },
-  {
-    category: "Executive Education",
-    title: "AI Business Essentials",
-    provider: "WebAiGen Academy",
-    duration: "3 months to complete",
-    image: "/images/technicians.jpg",
-  },
-  {
-    category: "Executive Education",
-    title: "Cybersecurity: Managing Risk in the AI Age",
-    provider: "WebAiGen Academy",
-    duration: "8 weeks to complete",
-    image: "/images/programer2.jpg",
-  },
-  {
-    category: "Executive Education",
-    title: "AI Strategy & Automation",
-    provider: "WebAiGen Academy",
-    duration: "3 months to complete",
-    image: "/images/technician2.jpeg",
-  },
-];
+    {
+      category: "Machine Learning",
+      title: "Machine Learning Foundations",
+      provider: "WebAiGen Academy",
+      duration: "6 weeks • Beginner",
+      image: "/images/programmers.jpg",
+    },
+    {
+      category: "Machine Learning",
+      title: "Medical Machine Learning",
+      provider: "WebAiGen Academy",
+      duration: "8 weeks • Intermediate",
+      image: "/images/programming2.webp",
+    },
+    {
+      category: "Machine Learning",
+      title: "Computer Vision with Deep Learning",
+      provider: "WebAiGen Academy",
+      duration: "10 weeks • Intermediate",
+      image: "/images/programmers5.jpg",
+    },
+    {
+      category: "Machine Learning",
+      title: "Natural Language Processing",
+      provider: "WebAiGen Academy",
+      duration: "9 weeks • Advanced",
+      image: "/images/programers4.webp",
+    },
+  ];
 
 function ClockIcon() {
   return (
@@ -53,8 +53,9 @@ export default function EligibleEducation() {
   return (
     <section className="bg-white px-20 py-20 font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <div className="mx-auto max-w-[1500px]">
-        <h2 className="text-[44px] font-bold tracking-[-0.03em] text-zinc-950 dark:text-white sm:text-[52px]">
-          Eligible Executive Education
+        
+      <h2 className="max-w-[560px] text-[52px] font-black italic leading-[0.9] tracking-tight sm:text-[60px]">
+      Eligible Executive Education
         </h2>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -106,12 +107,12 @@ export default function EligibleEducation() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Link
-            href="/learn/machine-learning"
-            className={`rounded-full px-7 py-3 text-[23px] font-medium text-white shadow-md transition ${accent.bg} ${accent.hoverBg}`}
-          >
-            View all eligible offerings
-          </Link>
+        <Link
+  href="/learn/machine-learning"
+  className={`rounded-full px-7 py-3 text-[23px] font-medium text-white shadow-md transition ${accent.bg} ${accent.hoverBg}`}
+>
+  Explore All Machine Learning Courses
+</Link>
         </div>
       </div>
     </section>

@@ -36,6 +36,8 @@ export default function CommunitySection() {
 
   return (
     <section className="relative overflow-hidden bg-white font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      
+      
       <div className="mx-auto grid min-h-[760px] max-w-[1800px] grid-cols-1 items-center lg:grid-cols-[52%_48%]">
         <div className="px-8 py-20 sm:px-16 lg:pl-[160px] lg:pr-20">
           <h2 className="max-w-[720px] text-[48px] font-black italic leading-[0.92] tracking-[-0.04em] text-zinc-950 dark:text-white">

@@ -7,6 +7,7 @@ import { getCourseProgressPercent } from "@/app/lib/progress";
 import { accent, typography } from "@/app/lib/typography";
 
 const SIDEBAR_SECTIONS_KEY = "webaigenacademy-sidebar-sections";
+const SIDEBAR_COLLAPSED_KEY = "webaigenacademy-sidebar-collapsed";
 
 type SidebarLesson = {
   slug: string;
@@ -180,10 +181,22 @@ export default function LessonSidebarClient({
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>(
     () => buildExpandedState({})
   );
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     setExpandedSections(buildExpandedState(readSidebarSectionState()));
   }, [buildExpandedState]);
+
+  useEffect(() => {
+    setIsCollapsed(localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === "true");
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--sidebar-width",
+      isCollapsed ? "0rem" : "20.5rem"
+    );
+  }, [isCollapsed]);
 
   useEffect(() => {
     if (!currentSection) {
@@ -198,6 +211,14 @@ export default function LessonSidebarClient({
       return { ...prev, [currentSection]: true };
     });
   }, [currentSection]);
+
+  const toggleCollapsed = () => {
+    setIsCollapsed((prev) => {
+      const next = !prev;
+      localStorage.setItem(SIDEBAR_COLLAPSED_KEY, String(next));
+      return next;
+    });
+  };
 
   const toggleSection = (sectionName: string) => {
     setExpandedSections((prev) => {
@@ -217,10 +238,54 @@ export default function LessonSidebarClient({
   };
 
   return (
-    <aside className="fixed left-0 top-[var(--navbar-height)] z-20 flex h-[calc(100vh-var(--navbar-height))] w-82 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+    <>
+      {isCollapsed && (
+        <button
+          type="button"
+          onClick={toggleCollapsed}
+          aria-label="Open sidebar"
+          className="fixed left-2 top-[calc(var(--navbar-height)+4rem)] z-20 rounded-lg border border-zinc-200 bg-white p-2 text-zinc-500 shadow-sm transition hover:bg-zinc-50 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+        >
+          <svg
+            aria-hidden
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
+
+      <aside className="fixed left-0 top-[var(--navbar-height)] z-20 flex h-[calc(100vh-var(--navbar-height))] w-[var(--sidebar-width)] flex-col overflow-hidden border-r border-zinc-200 bg-white transition-[width] duration-300 ease-out motion-reduce:transition-none dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="flex h-full w-82 min-w-82 flex-col">
       <div className="shrink-0 border-b border-zinc-200 p-6 dark:border-zinc-800">
-        <p className={typography.label}>Course</p>
-        <h2 className={`mt-2 ${typography.sidebarTitle}`}>{courseTitle}</h2>
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1">
+            <p className={typography.label}>Course</p>
+            <h2 className={`mt-2 ${typography.sidebarTitle}`}>{courseTitle}</h2>
+          </div>
+          <button
+            type="button"
+            onClick={toggleCollapsed}
+            aria-label="Collapse sidebar"
+            aria-expanded={!isCollapsed}
+            className="shrink-0 rounded-lg p-1.5 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:hover:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300"
+          >
+            <svg
+              aria-hidden
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <nav className="min-h-0 flex-1 overflow-y-auto p-4">
@@ -339,6 +404,8 @@ export default function LessonSidebarClient({
           {completedSlugs.length} of {lessons.length} lessons completed
         </p>
       </div>
+        </div>
     </aside>
+    </>
   );
 }

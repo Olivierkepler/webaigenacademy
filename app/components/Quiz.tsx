@@ -15,7 +15,7 @@ export default function Quiz({ quiz }: QuizProps) {
 
   return (
     <div
-      className={`rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${cardPadding}`}
+      className={` border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${cardPadding}`}
     >
       <p className={typography.label}>Knowledge Check</p>
       <h2 className={`mt-3 ${typography.sectionTitle}`}>{quiz.title}</h2>

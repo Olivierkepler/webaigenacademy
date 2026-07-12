@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Notebook from "./Notebook";
-import { accent, primaryButtonClass, typography } from "@/app/lib/typography";
+import { accent, cardPadding, primaryButtonClass, typography } from "@/app/lib/typography";
 
 type NotebookModalProps = {
   notebook: string;
@@ -130,7 +130,7 @@ export default function NotebookModal({
   ) : null;
 
   return (
-    <>
+    <div className={cardPadding}>
       <button
         type="button"
         onClick={openLab}
@@ -142,6 +142,6 @@ export default function NotebookModal({
       {typeof document !== "undefined" && modal
         ? createPortal(modal, document.body)
         : null}
-    </>
+    </div>
   );
 }

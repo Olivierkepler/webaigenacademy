@@ -15,7 +15,7 @@ export default function LessonSection({
   children,
 }: LessonSectionProps) {
   return (
-    <section className={cardPadding}>
+    <section className="">
       <p className={typography.label}>{label}</p>
       <h2 className={`mt-3 ${typography.sectionTitle}`}>{title}</h2>
       {description && (

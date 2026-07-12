@@ -62,7 +62,7 @@ export const secondaryButtonClass = `inline-flex items-center justify-center rou
 
 export const accentBadgeClass = `rounded-full border ${accent.borderSubtle} ${accent.bgSubtle} px-3 py-1 ${accent.text}`;
 
-export const cardPadding = "p-8 lg:p-10";
+export const cardPadding = "p-8 lg:p-10 ";
 
 export const sectionStack = "space-y-8";
 
