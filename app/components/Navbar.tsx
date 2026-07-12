@@ -10,6 +10,7 @@ import { typography } from "@/app/lib/typography";
 import NavbarSearch from "./NavbarSearch";
 import ThemeToggle from "./ThemeToggle";
 import NodeALogo from "./logo";
+import Image from "next/image";
 
 type NavbarProps = {
   searchableLessons: SearchableLesson[];
@@ -45,9 +46,10 @@ export default function Navbar({ searchableLessons }: NavbarProps) {
   />
 
  <div className="flex flex-col leading-none">
-      <span className="text-[17px] font-semibold tracking-[-0.03em] text-zinc-950 transition-colors dark:text-white">
+      {/* <span className="text-[17px] font-semibold tracking-[-0.03em] text-zinc-950 transition-colors dark:text-white">
         WebAiGen
-      </span>
+      </span> */}
+      <Image src="/images/logowebaigen.png" alt="NodeA Academy" width={36} height={36} />
 
       <span className="mt-0.5 text-[12px] font-medium uppercase tracking-[0.22em] text-zinc-500 transition-colors dark:text-zinc-400">
         Academy

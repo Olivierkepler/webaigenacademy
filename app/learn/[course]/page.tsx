@@ -158,7 +158,7 @@ export default async function CoursePage({ params }: PageProps) {
       </header>
 
       
-      <div className="mx-auto max-w-7xl py-16 ">
+      <div id="syllabus" className="mx-auto max-w-7xl py-16 ">
       <div className=" my-8">
         <SubNav course={course} />
       </div>
@@ -197,7 +197,7 @@ export default async function CoursePage({ params }: PageProps) {
       </section> */}
 
       {/* Curriculum */}
-      <section id="syllabus" className="scroll-mt-28">
+      <section  className="scroll-mt-28">
         {/* <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#0E5C58] dark:text-[#85D7CE]">
           Course curriculum
         </p>

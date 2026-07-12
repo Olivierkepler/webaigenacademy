@@ -36,11 +36,16 @@ export default function Navbar({ searchableLessons }: NavbarProps) {
     >
       <div className="flex w-full items-center gap-4 lg:gap-8">
         <Link href="/" className="group shrink-0">
-          <div className="flex items-center gap-2">
-            <NodeALogo size={34} />
+          <div className="flex items-center gap-2 ">
+            <NodeALogo size={54} />
 
             <div>
-              <p className={typography.navbarSmall}>WebAiGen</p>
+              <div
+                className="relative inline-block "
+              >
+                <p className={typography.navbarSmall}>WebAiGen</p>
+              </div>
+         
 
               <h3
                 className={`mt-1 text-20px] transition font-medium leading-tight `}
