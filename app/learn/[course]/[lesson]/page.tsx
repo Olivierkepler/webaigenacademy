@@ -16,6 +16,8 @@ import {
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SubNav from "@/app/components/SubNav";
+import Rightbar from "@/app/components/rightbar";
+import LessonPager from "@/app/components/LessonPager";
 
 type PageProps = {
   params: Promise<{
@@ -62,9 +64,13 @@ export default async function LessonPage({ params }: PageProps) {
       <LessonSidebar currentCourse={course} currentLesson={lessonSlug} />
 
       {/* Height now also subtracts the h-11 (2.75rem) subnav bar */}
-      <section className="ml-[var(--sidebar-width)]   flex h-[calc(100vh-var(--navbar-height)-2.75rem)] flex-row gap-4 space-y-6 overflow-y-auto px-6 py-6 lg:px-8 lg:py-8">
-        <div className="flex w-5/6 flex-col gap-6 xl:w-4/5 pl-8">
+      <section className="scrollbar-fancy ml-[var(--sidebar-width)] mr-[var(--rightbar-width)] flex h-[calc(100vh-var(--navbar-height)-2.75rem)] flex-row gap-4 overflow-y-auto px-6 py-6 transition-[margin] duration-300 ease-out motion-reduce:transition-none lg:px-8 lg:py-8">   <div className="flex w-full min-w-0 flex-col gap-6 px-8">
+      <LessonPager
+    previousLesson={previousLesson}
+    nextLesson={nextLesson}
+  />
           <div className={cardClass}>
+      
             <LessonHeader
               courseTitle={lesson.courseTitle}
               lessonNumber={lesson.order}
@@ -110,43 +116,66 @@ export default async function LessonPage({ params }: PageProps) {
             <KeyTakeaways takeaways={lesson.takeaways} />
           </div>
 
-          {(previousLesson || nextLesson) && (
-            <nav
-              aria-label="Lesson navigation"
-              className="flex items-center justify-between gap-6 border-t border-zinc-200 pt-8 text-lg dark:border-zinc-800"
-            >
-              {previousLesson ? (
-                <Link
-                  href={`/learn/${previousLesson.course}/${previousLesson.slug}`}
-                  className={`${secondaryButtonClass} px-8 py-4 text-base lg:text-lg`}
-                >
-                  Previous Lesson
-                </Link>
-              ) : (
-                <span />
-              )}
+         {/* Pill-style lesson navigation — replaces the old prev/next block */} 
+         {(previousLesson || nextLesson) && (
+  <nav
+    aria-label="Lesson navigation"
+    className="flex items-center justify-center gap-6 border-t border-zinc-200 pt-8 dark:border-zinc-800"
+  >
+    {previousLesson ? (
+      <Link
+        href={`/learn/${previousLesson.course}/${previousLesson.slug}`}
+        className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors duration-200 hover:border-zinc-400 hover:bg-[#003334]/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-950 lg:px-6 lg:text-base"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+          aria-hidden="true"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+        Previous
+      </Link>
+    ) : (
+      <span />
+    )}
 
-              {nextLesson ? (
-                <Link
-                  href={`/learn/${nextLesson.course}/${nextLesson.slug}`}
-                  className={`${primaryButtonClass} px-8 py-4 text-base lg:text-lg`}
-                >
-                  Next Lesson
-                </Link>
-              ) : (
-                <span />
-              )}
-            </nav>
-          )}
+    {nextLesson ? (
+      <Link
+        href={`/learn/${nextLesson.course}/${nextLesson.slug}`}
+        className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors duration-200 hover:border-zinc-400 hover:bg-[#003334]/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-950 lg:px-6 lg:text-base"
+      >
+        Next lesson
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+          aria-hidden="true"
+        >
+          <path d="M9 6l6 6-6 6" />
+        </svg>
+      </Link>
+    ) : (
+      <span />
+    )}
+  </nav>
+)}
+
+<p className="h-10"> <br /> </p>
         </div>
 
-        {/* Pushed down by the subnav height (top-28 → +2.75rem) */}
-        <div className="fixed right-4 top-[9.75rem] flex w-53 flex-col gap-4 border-l-4 border-[#FF6F00] bg-white p-6 shadow-sm dark:bg-zinc-950">
-          <h2 className="mb-2 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-            Related Lessons
-          </h2>
-        </div>
+      
       </section>
+      <Rightbar />
     </main>
   );
 }

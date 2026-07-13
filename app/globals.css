@@ -7,6 +7,7 @@
   --foreground: #18181b;
   --navbar-height: 5.75rem;
   --sidebar-width: 20.5rem;
+  --rightbar-width: 13.25rem;
 }
 
 .dark {
@@ -92,3 +93,118 @@ body {
     animation: none;
   }
 }
+
+
+/* ============================================================
+   Fancy scrollbar — add to globals.css
+   Usage: add `scrollbar-fancy` to any overflow container.
+   Slim, rounded, teal-tinted; nearly invisible until you
+   interact with it, which is what "professional" reads as.
+   ============================================================ */
+
+   .scrollbar-fancy {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 51, 52, 0.35) transparent;
+  
+    /* Prevents layout shift when content height changes */
+    scrollbar-gutter: stable;
+  }
+  
+  .dark .scrollbar-fancy {
+    scrollbar-color: rgba(74, 219, 180, 0.28) transparent;
+  }
+  
+  /* WebKit (Chrome, Edge, Safari) */
+  .scrollbar-fancy::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .scrollbar-fancy::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* The 3px transparent border + background-clip trick creates an
+     inset "pill" thumb that floats off the edge — the detail that
+     makes it look designed rather than default. */
+  .scrollbar-fancy::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 51, 52, 0.45),
+      rgba(0, 51, 52, 0.3)
+    );
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-radius: 9999px;
+    min-height: 48px; /* keeps the thumb grabbable on long pages */
+  }
+  
+  .scrollbar-fancy::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 51, 52, 0.7),
+      rgba(0, 51, 52, 0.55)
+    );
+    background-clip: padding-box;
+  }
+  
+  .scrollbar-fancy::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 51, 52, 0.85);
+    background-clip: padding-box;
+  }
+  
+  .dark .scrollbar-fancy::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      rgba(74, 219, 180, 0.35),
+      rgba(74, 219, 180, 0.22)
+    );
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  
+  .dark .scrollbar-fancy::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(74, 219, 180, 0.55),
+      rgba(74, 219, 180, 0.4)
+    );
+    background-clip: padding-box;
+  }
+  
+  .dark .scrollbar-fancy::-webkit-scrollbar-thumb:active {
+    background: rgba(74, 219, 180, 0.7);
+    background-clip: padding-box;
+  }
+  
+  .scrollbar-fancy::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  
+  /* Optional: fade the scrollbar out entirely when idle, show on
+     hover/scroll. Remove this block if you want it always visible. */
+  @supports selector(::-webkit-scrollbar) {
+    .scrollbar-fancy.scrollbar-autohide::-webkit-scrollbar-thumb {
+      background: transparent;
+      border: 3px solid transparent;
+    }
+    .scrollbar-fancy.scrollbar-autohide:hover::-webkit-scrollbar-thumb,
+    .scrollbar-fancy.scrollbar-autohide:focus-within::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 51, 52, 0.45),
+        rgba(0, 51, 52, 0.3)
+      );
+      background-clip: padding-box;
+    }
+    .dark .scrollbar-fancy.scrollbar-autohide:hover::-webkit-scrollbar-thumb,
+    .dark .scrollbar-fancy.scrollbar-autohide:focus-within::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        rgba(74, 219, 180, 0.35),
+        rgba(74, 219, 180, 0.22)
+      );
+      background-clip: padding-box;
+    }
+  }

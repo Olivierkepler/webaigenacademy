@@ -23,7 +23,7 @@ export default function LessonHeader({
 }: LessonHeaderProps) {
   return (
     <header
-      className={` ${cardPadding}`}
+      className={` ${cardPadding} border-l-8 border-[#003334]/50`}
     >
       {/* <div className="flex flex-wrap items-center gap-3">
         <p className={typography.label}>{courseTitle}</p>

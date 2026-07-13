@@ -60,7 +60,7 @@ export default function SubNavClient({
   return (
     <nav
       aria-label={ariaLabel}
-      className="relative border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+      className="relative px-6 lg:px-10 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
     >
       <ul
         ref={trackRef}

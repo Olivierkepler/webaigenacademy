@@ -125,7 +125,7 @@ function LessonStatusIcon({
       aria-label={isActive ? "Current lesson" : "Not completed"}
       className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
         isActive
-          ? `border-[#FF6F00] ${accent.bgSubtle}`
+          ? `${accent.border} ${accent.bgSubtle}`
           : "border-zinc-300 bg-transparent dark:border-zinc-600"
       }`}
     >
@@ -244,7 +244,7 @@ export default function LessonSidebarClient({
           type="button"
           onClick={toggleCollapsed}
           aria-label="Open sidebar"
-          className="fixed left-2 top-[calc(var(--navbar-height)+4rem)] z-20 rounded-lg border border-zinc-200 bg-white p-2 text-zinc-500 shadow-sm transition hover:bg-zinc-50 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+          className="fixed left-2 cursor-pointer top-[calc(var(--navbar-height))] mt-1.5 z-20 rounded-lg border border-zinc-200 bg-white p-2 text-zinc-500 shadow-sm transition hover:bg-zinc-50 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
         >
           <svg
             aria-hidden
@@ -272,7 +272,7 @@ export default function LessonSidebarClient({
             onClick={toggleCollapsed}
             aria-label="Collapse sidebar"
             aria-expanded={!isCollapsed}
-            className="shrink-0 rounded-lg p-1.5 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:hover:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300"
+            className="shrink-0 rounded-lg cursor-pointer p-1.5 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:hover:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300"
           >
             <svg
               aria-hidden
@@ -310,7 +310,7 @@ export default function LessonSidebarClient({
                   type="button"
                   onClick={() => toggleSection(section.name)}
                   aria-expanded={isExpanded}
-                  className="flex w-full items-start gap-2 px-3 py-3 text-left transition hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+                  className="flex w-full items-start cursor-pointer gap-2 px-3 py-3 text-left transition hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
                 >
                   <ChevronIcon expanded={isExpanded} />
                   <div className="min-w-0 flex-1">
@@ -320,8 +320,8 @@ export default function LessonSidebarClient({
                     <p className={`mt-0.5 ${typography.caption}`}>
                       {sectionCompleted} / {sectionTotal} completed
                     </p>
-                    <div className="mt-2 flex items-center gap-2">
-                      <div className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
+                    {/* <div className="mt-2 flex items-center gap-2">
+                      <div className="h-1 min-w-0 flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
                         <div
                           className={`h-full rounded-full transition-[width] duration-300 ease-out ${accent.progress}`}
                           style={{ width: `${sectionPercent}%` }}
@@ -330,7 +330,7 @@ export default function LessonSidebarClient({
                       <span className={`shrink-0 text-xs font-medium ${accent.text}`}>
                         {sectionPercent}%
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </button>
 
@@ -346,7 +346,7 @@ export default function LessonSidebarClient({
                             <Link
                               href={`/learn/${lesson.course}/${lesson.slug}`}
                               aria-current={isActive ? "page" : undefined}
-                              className={`flex items-center gap-2.5 rounded-lg px-2 py-2.5 transition ${
+                              className={`flex items-center gap-2.5  px-2 py-2.5 transition ${
                                 isActive
                                   ? `border-l-4 ${accent.border} bg-zinc-100 pl-3 dark:bg-zinc-800/70`
                                   : "border-l-4 border-transparent hover:bg-zinc-50 dark:hover:bg-zinc-800/40"
@@ -394,7 +394,7 @@ export default function LessonSidebarClient({
             {progressPercent}%
           </span>
         </div>
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
+        <div className="mt-3 h-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
           <div
             className={`h-full rounded-full transition-[width] duration-300 ease-out ${accent.progress}`}
             style={{ width: `${progressPercent}%` }}
