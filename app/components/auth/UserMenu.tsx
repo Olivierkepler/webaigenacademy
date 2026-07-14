@@ -1,8 +1,9 @@
 import { auth, signIn, signOut } from "@/auth";
+import Link from "next/link";
 
 async function googleSignIn() {
   "use server";
-  await signIn("google");
+  await signIn("google", { redirectTo: "/dashboard" });
 }
 
 async function googleSignOut() {
@@ -69,6 +70,13 @@ export default async function UserMenu() {
             </p>
           ) : null}
         </div>
+
+        <Link
+          href="/dashboard"
+          className="block w-full px-4 py-2.5 text-left text-sm text-zinc-700 transition hover:bg-zinc-50 hover:text-[#0E5C58] dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-[#85D7CE]"
+        >
+          Dashboard
+        </Link>
 
         <form action={googleSignOut}>
           <button
