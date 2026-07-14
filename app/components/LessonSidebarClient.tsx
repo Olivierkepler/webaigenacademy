@@ -288,7 +288,7 @@ export default function LessonSidebarClient({
         </div>
       </div>
 
-      <nav className="min-h-0 flex-1 overflow-y-auto p-4">
+      <nav className="scrollbar-fancy min-h-0 flex-1 overflow-y-auto p-4">
         <div className="space-y-3">
           {sections.map((section) => {
             const isExpanded = expandedSections[section.name] ?? false;

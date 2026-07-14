@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
 import courseMetadata from "@/courses/machine-learning/metadata.json";
+import type { LessonVideo } from "@/app/lib/lessonVideo";
+
+export type { LessonVideo };
 
 type LessonMetadata = {
   id: string;
@@ -15,6 +18,7 @@ type LessonMetadata = {
   quiz: string;
   visualizations: string[];
   takeaways: string[];
+  video?: LessonVideo;
 };
 
 export type QuizQuestion = {
@@ -44,6 +48,7 @@ export type Lesson = {
   quiz: QuizData;
   takeaways: string[];
   visualizations: string[];
+  video?: LessonVideo;
 };
 
 const LEGACY_NOTEBOOK_FILENAMES: Record<string, string> = {
@@ -105,5 +110,6 @@ export const lessons: Lesson[] = courseMetadata.lessonOrder.map((lessonId) => {
     quiz: readLessonQuiz(lessonId),
     takeaways: metadata.takeaways,
     visualizations: metadata.visualizations ?? [],
+    video: metadata.video,
   };
 });

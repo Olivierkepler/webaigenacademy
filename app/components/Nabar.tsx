@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import type { SearchableLesson } from "@/app/lib/lessonSearch";
 import { typography } from "@/app/lib/typography";
@@ -10,9 +10,10 @@ import NodeALogo from "./logo";
 
 type NavbarProps = {
   searchableLessons: SearchableLesson[];
+  userMenu?: ReactNode;
 };
 
-export default function Navbar({ searchableLessons }: NavbarProps) {
+export default function Navbar({ searchableLessons, userMenu }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -60,7 +61,8 @@ export default function Navbar({ searchableLessons }: NavbarProps) {
           <NavbarSearch lessons={searchableLessons} />
         </div>
 
-        <div className="shrink-0">
+        <div className="flex shrink-0 items-center gap-3">
+          {userMenu}
           <ThemeToggle />
         </div>
       </div>

@@ -175,7 +175,7 @@ export default async function LessonPage({ params }: PageProps) {
 
       
       </section>
-      <Rightbar />
+      <Rightbar video={lesson.video} />
     </main>
   );
 }

@@ -1,12 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import VideoTutorial from "@/app/components/lesson/VideoTutorial";
+import type { LessonVideo } from "@/app/lib/lessonVideo";
 
 const RIGHTBAR_COLLAPSED_KEY = "webaigenacademy-rightbar-collapsed";
-const RIGHTBAR_OPEN_WIDTH = "13.25rem";
+const RIGHTBAR_OPEN_WIDTH = "22rem";
 
-export default function Rightbar() {
+type RightbarProps = {
+  video?: LessonVideo;
+};
+
+export default function Rightbar({ video }: RightbarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const activeVideo = video;
 
   useEffect(() => {
     setIsCollapsed(localStorage.getItem(RIGHTBAR_COLLAPSED_KEY) === "true");
@@ -52,7 +59,7 @@ export default function Rightbar() {
       <aside
         className="fixed right-0 top-[calc(var(--navbar-height))] z-20 flex h-[calc(100vh-var(--navbar-height)-2.75rem)] w-[var(--rightbar-width)] flex-col overflow-hidden border-l border-zinc-200 bg-white transition-[width] duration-300 ease-out motion-reduce:transition-none dark:border-zinc-800 dark:bg-zinc-950"
       >
-        <div className="flex h-full w-53 min-w-53 flex-col">
+        <div className="flex h-full w-[22rem] min-w-[22rem] flex-col">
           <div className="shrink-0  px-6 py-4 dark:border-zinc-800">
             <div className="flex items-start justify-between gap-2">
             <button
@@ -85,8 +92,14 @@ export default function Rightbar() {
             </div>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto  p-6">
-            {/* Related lessons content goes here */}
+          <div className="scrollbar-fancy min-h-0 flex-1 overflow-y-auto p-4">
+            {activeVideo?.id ? (
+              <VideoTutorial video={activeVideo} />
+            ) : (
+              <div className="mt-5 flex aspect-video w-full items-center justify-center rounded-xl bg-zinc-100 text-sm text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                Video tutorial coming soon
+              </div>
+            )}
           </div>
         </div>
       </aside>

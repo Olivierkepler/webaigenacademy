@@ -5,8 +5,8 @@ import { typography } from "@/app/lib/typography";
 import { CourseCurriculum } from "@/app/components/CourseOverviewClient";
 import Image from "next/image";
 import Footer from "@/app/components/footer";
-import SubNavClient from "@/app/components/SubNavClient";
 import SubNav from "@/app/components/SubNav";
+import VideoTutorial from "@/app/components/lesson/VideoTutorial";
 
 const COURSE_DESCRIPTION =
   "Learn machine learning step by step with interactive lessons, browser-based notebooks, and quizzes.";
@@ -81,6 +81,8 @@ export default async function CoursePage({ params }: PageProps) {
   const learningOutcomes = courseLessons.map(
     (lesson) => lesson.description ?? lesson.title
   );
+
+  const courseVideo = courseLessons.find((lesson) => lesson.video)?.video;
 
   return (
     <main className="min-h-screen font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -235,6 +237,9 @@ export default async function CoursePage({ params }: PageProps) {
     {/* ===================================================== */}
 
     <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+
+      {/* Video Tutorial */}
+      {courseVideo ? <VideoTutorial video={courseVideo} /> : null}
 
       {/* At a glance */}
       <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
