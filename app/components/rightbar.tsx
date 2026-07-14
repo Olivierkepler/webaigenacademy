@@ -41,7 +41,7 @@ export default function Rightbar({ video }: RightbarProps) {
           type="button"
           onClick={toggleCollapsed}
           aria-label="Open related lessons"
-          className="fixed right-2 mt-1.5 cursor-pointer top-[calc(var(--navbar-height))] z-20 rounded-lg border border-zinc-200 bg-white p-2 text-zinc-500 shadow-sm transition hover:bg-zinc-50 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+          className="fixed right-2 top-[calc(var(--navbar-height))] z-20 mt-1.5 cursor-pointer rounded-lg border border-zinc-200 bg-white p-2 text-zinc-500 shadow-sm transition hover:bg-zinc-50 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E5C58] dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-300 dark:focus-visible:outline-[#85D7CE]"
         >
           <svg
             aria-hidden
@@ -60,14 +60,17 @@ export default function Rightbar({ video }: RightbarProps) {
         className="fixed right-0 top-[calc(var(--navbar-height))] z-20 flex h-[calc(100vh-var(--navbar-height)-2.75rem)] w-[var(--rightbar-width)] flex-col overflow-hidden border-l border-zinc-200 bg-white transition-[width] duration-300 ease-out motion-reduce:transition-none dark:border-zinc-800 dark:bg-zinc-950"
       >
         <div className="flex h-full w-[22rem] min-w-[22rem] flex-col">
-          <div className="shrink-0  px-6 py-4 dark:border-zinc-800">
-            <div className="flex items-start justify-between gap-2">
-            <button
+          <div className="shrink-0 border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="min-w-0 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                Related
+              </h2>
+              <button
                 type="button"
                 onClick={toggleCollapsed}
                 aria-label="Collapse related lessons"
                 aria-expanded={!isCollapsed}
-                className="shrink-0 cursor-pointer rounded-lg p-1.5 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6F00] dark:hover:bg-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300"
+                className="shrink-0 cursor-pointer rounded-lg p-1.5 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E5C58] dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-300 dark:focus-visible:outline-[#85D7CE]"
               >
                 <svg
                   aria-hidden
@@ -84,11 +87,6 @@ export default function Rightbar({ video }: RightbarProps) {
                   />
                 </svg>
               </button>
-             
-              <h2 className="min-w-0 flex-1 text-lg h-12.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                Related
-              </h2>
-             
             </div>
           </div>
 

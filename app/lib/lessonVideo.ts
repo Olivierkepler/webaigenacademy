@@ -3,6 +3,8 @@ export type LessonVideo = {
   id: string;
   title: string;
   description?: string;
+  aspect?: "16/9" | "16/10";
+  thumbnail?: string;
 };
 
 /** Default video shown in the lesson rightbar when a lesson has no video of its own. */
