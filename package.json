@@ -11,6 +11,7 @@
     "build:jupyterlite": "npm run sync:course-notebooks && sh -c 'JUPYTER=\"${JUPYTER:-jupyter}\"; [ -x .venv-jupyterlite/bin/jupyter ] && JUPYTER=.venv-jupyterlite/bin/jupyter; \"$JUPYTER\" lite build --contents jupyterlite-content --output-dir public/jupyterlite' && node scripts/generate-contents-api.js"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",
     "fs": "^0.0.1-security",

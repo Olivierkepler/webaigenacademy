@@ -6,6 +6,7 @@ import Navbar from "./components/Nabar";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Footer from "./components/footer";
 import UserMenu from "./components/auth/UserMenu";
+import AuthSessionProvider from "./components/auth/AuthSessionProvider";
 import { lessons } from "@/data/lessons";
 
 const searchableLessons = lessons.map((lesson) => ({
@@ -79,12 +80,13 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-full flex flex-col font-body`}>
         <ThemeProvider>
-          <Navbar
-            searchableLessons={searchableLessons}
-            userMenu={<UserMenu />}
-          />
-          {children}
-        
+          <AuthSessionProvider>
+            <Navbar
+              searchableLessons={searchableLessons}
+              userMenu={<UserMenu />}
+            />
+            {children}
+          </AuthSessionProvider>
         </ThemeProvider>
       </body>
     </html>
