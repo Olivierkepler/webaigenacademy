@@ -1,5 +1,4 @@
 import type { BlogTocItem } from "@/app/lib/blogHeadings";
-import { typography } from "@/app/lib/typography";
 
 type BlogTableOfContentsProps = {
   items: BlogTocItem[];
@@ -15,33 +14,49 @@ export default function BlogTableOfContents({
   return (
     <details
       open
-      className="rounded-2xl border border-zinc-200 bg-white shadow-sm open:pb-4 dark:border-zinc-800 dark:bg-zinc-900 lg:sticky lg:top-24"
+      className="group w-full rounded-xl border border-zinc-200/80 bg-white/90 shadow-[0_1px_2px_rgba(15,23,42,0.04)] open:pb-2 dark:border-zinc-800 dark:bg-zinc-900/90 dark:shadow-none lg:w-[280px] lg:max-w-[280px] lg:shrink-0"
     >
-      <summary
-        className={`cursor-pointer list-none rounded-2xl px-5 py-4 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F766E] [&::-webkit-details-marker]:hidden ${typography.cardTitle}`}
-      >
-        <span className="flex items-center justify-between gap-3">
-          <span>On this page</span>
+      <summary className="cursor-pointer list-none rounded-xl px-3.5 py-3 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F766E] dark:focus-visible:outline-[#5EEAD4] [&::-webkit-details-marker]:hidden">
+        <span className="flex items-start justify-between gap-2">
+          <span className="min-w-0">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
+              Contents
+            </span>
+            <span className="mt-0.5 block text-sm font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+              On this page
+            </span>
+          </span>
           <span
-            className="text-sm font-medium text-zinc-400 dark:text-zinc-500"
+            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-zinc-200 text-zinc-400 transition group-open:rotate-180 dark:border-zinc-700 dark:text-zinc-500"
             aria-hidden="true"
           >
-            ⌄
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="h-3 w-3"
+            >
+              <path
+                d="M5 8l5 5 5-5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </span>
         </span>
       </summary>
 
-      <nav aria-label="Table of contents" className="px-5 pb-1">
-        <ol className="max-h-[min(70vh,28rem)] space-y-2 overflow-y-auto border-t border-zinc-100 pt-3 dark:border-zinc-800">
+      <nav aria-label="Table of contents" className="px-1.5 pb-1">
+        <ol className="max-h-[min(70vh,28rem)] space-y-0.5 overflow-y-auto border-t border-zinc-100 px-1.5 pt-2 dark:border-zinc-800">
           {items.map((item) => (
-            <li
-              key={item.id}
-              className={item.level === 3 ? "ml-4" : undefined}
-            >
+            <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className={`block rounded-sm text-sm leading-snug text-zinc-600 transition-colors hover:text-[#0F766E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F766E] dark:text-zinc-300 dark:hover:text-[#5EEAD4] ${
-                  item.level === 2 ? "font-medium" : ""
+                className={`block rounded-md py-1 transition-colors hover:bg-[#0F766E]/6 hover:text-[#0F766E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F766E] dark:hover:bg-[#5EEAD4]/10 dark:hover:text-[#5EEAD4] dark:focus-visible:outline-[#5EEAD4] ${
+                  item.level === 2
+                    ? "px-2 text-[13px] font-medium leading-snug text-zinc-700 dark:text-zinc-200"
+                    : "ml-2 border-l border-zinc-200 px-2.5 text-[12px] leading-snug text-zinc-500 dark:border-zinc-700 dark:text-zinc-400"
                 }`}
               >
                 {item.text}

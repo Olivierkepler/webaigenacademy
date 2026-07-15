@@ -238,7 +238,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       <JsonLd data={blogPostingJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <main className="flex-1 bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-        <div className="mx-auto w-full max-w-3xl px-6 py-10 lg:max-w-6xl lg:px-10 lg:py-14">
+        <div className="mx-auto w-full max-w-[1600px] px-5 py-10 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
           <nav aria-label="Breadcrumb" className="mb-8">
             <Link
               href="/blog"
@@ -249,99 +249,108 @@ export default async function BlogArticlePage({ params }: PageProps) {
           </nav>
 
           <article>
-            <header className="mx-auto max-w-3xl lg:max-w-none">
-              <div className="flex flex-wrap items-center gap-2">
-                {post.category ? (
-                  <span className={accentBadgeClass}>
-                    <span className={typography.badge}>{post.category}</span>
-                  </span>
-                ) : null}
-                <span className="rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
-                  {post.readingTimeMinutes} min read
-                </span>
-              </div>
-
-              <h1 className={`mt-5 ${typography.sectionTitle}`}>{post.title}</h1>
-              <p className={`mt-4 max-w-3xl ${typography.body}`}>
-                {post.description}
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500 dark:text-zinc-400">
-                <span>{post.author}</span>
-                <span aria-hidden="true">·</span>
-                <time dateTime={post.publishedAt}>
-                  {formatDate(post.publishedAt)}
-                </time>
-                {showUpdated && post.updatedAt ? (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>
-                      Updated{" "}
-                      <time dateTime={post.updatedAt}>
-                        {formatDate(post.updatedAt)}
-                      </time>
-                    </span>
-                  </>
-                ) : null}
-              </div>
-
-              {post.tags.length > 0 ? (
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <li key={tag}>
-                      <span className="rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
-                        {tag}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-              <div className="mt-8 max-w-3xl">
-                <Cover post={post} />
-              </div>
-            </header>
-
             <div
               className={
                 toc.length > 0
-                  ? "mt-10 grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:items-start lg:gap-10"
-                  : "mt-10"
+                  ? "flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-center lg:gap-16"
+                  : "mx-auto max-w-[980px]"
               }
             >
-              <BlogTableOfContents items={toc} />
-              <div className={`min-w-0 ${cardClass} ${cardPadding}`}>
-                <BlogMarkdown content={markdown} headingIds={headingIds} />
+              {toc.length > 0 ? (
+                <aside className="min-w-0 w-full lg:sticky lg:top-24 lg:w-[280px] lg:max-w-[280px] lg:shrink-0 lg:self-start">
+                  <BlogTableOfContents items={toc} />
+                </aside>
+              ) : null}
+
+              <div className="min-w-0 w-full max-w-[980px]">
+                <header>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {post.category ? (
+                      <span className={accentBadgeClass}>
+                        <span className={typography.badge}>{post.category}</span>
+                      </span>
+                    ) : null}
+                    <span className="rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
+                      {post.readingTimeMinutes} min read
+                    </span>
+                  </div>
+
+                  <h1 className={`mt-5 ${typography.sectionTitle}`}>
+                    {post.title}
+                  </h1>
+                  <p className={`mt-4 max-w-3xl ${typography.body}`}>
+                    {post.description}
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500 dark:text-zinc-400">
+                    <span>{post.author}</span>
+                    <span aria-hidden="true">·</span>
+                    <time dateTime={post.publishedAt}>
+                      {formatDate(post.publishedAt)}
+                    </time>
+                    {showUpdated && post.updatedAt ? (
+                      <>
+                        <span aria-hidden="true">·</span>
+                        <span>
+                          Updated{" "}
+                          <time dateTime={post.updatedAt}>
+                            {formatDate(post.updatedAt)}
+                          </time>
+                        </span>
+                      </>
+                    ) : null}
+                  </div>
+
+                  {post.tags.length > 0 ? (
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <li key={tag}>
+                          <span className="rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+                            {tag}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+
+                  <div className="mt-8">
+                    <Cover post={post} />
+                  </div>
+                </header>
+
+                <div className={`mt-10 min-w-0 ${cardClass} ${cardPadding}`}>
+                  <BlogMarkdown content={markdown} headingIds={headingIds} />
+                </div>
+
+                <aside
+                  className={`mt-10 max-w-[980px] ${cardClass} ${cardPadding}`}
+                  aria-label="Continue learning"
+                >
+                  <p className={typography.label}>WebAIGen Academy</p>
+                  <h2 className={`mt-3 ${typography.cardTitle}`}>
+                    Practice what you just read
+                  </h2>
+                  <p className={`mt-3 ${typography.body}`}>
+                    Turn these ideas into muscle memory with interactive lessons
+                    and browser-based practice labs—no local setup required.
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href="/learn/machine-learning"
+                      className={primaryButtonClass}
+                    >
+                      Start the ML course
+                    </Link>
+                    <Link href="/blog" className={secondaryButtonClass}>
+                      More articles
+                    </Link>
+                  </div>
+                </aside>
               </div>
             </div>
-
-            <aside
-              className={`mx-auto mt-10 max-w-3xl ${cardClass} ${cardPadding} lg:max-w-none`}
-              aria-label="Continue learning"
-            >
-              <p className={typography.label}>WebAIGen Academy</p>
-              <h2 className={`mt-3 ${typography.cardTitle}`}>
-                Practice what you just read
-              </h2>
-              <p className={`mt-3 ${typography.body}`}>
-                Turn these ideas into muscle memory with interactive lessons and
-                browser-based practice labs—no local setup required.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/learn/machine-learning"
-                  className={primaryButtonClass}
-                >
-                  Start the ML course
-                </Link>
-                <Link href="/blog" className={secondaryButtonClass}>
-                  More articles
-                </Link>
-              </div>
-            </aside>
           </article>
 
-          <div className="mx-auto max-w-3xl lg:max-w-none">
+          <div className="mt-4 w-full max-w-[1600px] pb-4 sm:pb-8">
             <RelatedBlogPosts posts={relatedPosts} />
           </div>
         </div>
