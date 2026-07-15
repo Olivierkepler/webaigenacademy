@@ -9,10 +9,32 @@
   "description": "See how feature thresholds divide data into left and right groups.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
-  "visualizations": ["threshold-split-demo"],
+  "visualizations": [
+    "threshold-split-demo"
+  ],
   "takeaways": [
     "A threshold split divides samples using feature <= threshold.",
     "Different thresholds create different left and right groups.",
     "Each split changes the weighted Gini score."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Build candidate Age thresholds from a small patient table and split the patients with one midpoint threshold.",
+    "instructions": [
+      "Run the first code cell to create the patients DataFrame as df and print it.",
+      "Identify which feature the lab uses for thresholds (Age).",
+      "Complete Exercise 1 by setting ages = df[\"Age\"] and printing ages.",
+      "Complete Exercise 2 by setting unique_ages = sorted(df[\"Age\"].unique()) and printing the result.",
+      "Complete Exercise 3 by filling the midpoint formula (unique_ages[i] + unique_ages[i + 1]) / 2 inside the loop.",
+      "Confirm that thresholds prints the midpoints between consecutive unique ages.",
+      "Complete Exercise 4 by creating left_group with Age <= 51.5 and right_group with Age > 51.5.",
+      "Run the cell that prints len(left_group) and len(right_group) and note each group size.",
+      "Optional: run the visualization cell to scatter Age vs Resting BP with the threshold line."
+    ],
+    "hints": [
+      "Access a DataFrame column with df[\"Age\"].",
+      "Use sorted(df[\"Age\"].unique()) so each distinct age appears once in ascending order.",
+      "Boolean masks like df[df[\"Age\"] <= threshold] select the left child rows."
+    ],
+    "expectedOutput": "unique_ages equal to [42, 45, 48, 50, 53, 55, 58, 60, 63, 67]; thresholds equal to [43.5, 46.5, 49.0, 51.5, 54.0, 56.5, 59.0, 61.5, 65.0]; left/right groups created with threshold 51.5 and their printed lengths."
+  }
 }

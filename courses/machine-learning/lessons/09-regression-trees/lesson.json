@@ -14,5 +14,24 @@
     "Regression trees predict numeric targets instead of classes.",
     "Leaf values are often the mean target in that region.",
     "Impurity for regression uses measures like MSE."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Use leaf means and squared error to score numeric splits, then check a DecisionTreeRegressor prediction.",
+    "instructions": [
+      "Run the dataset cell (hours studied vs score).",
+      "Run the helper cell and note parent mean and parent MSE.",
+      "Run the guided split at hours <= 4.5 and record weighted MSE.",
+      "Complete Exercise 1 comparing thresholds 2.5, 4.5, and 6.5.",
+      "Print the best threshold with the lowest weighted MSE.",
+      "Complete Exercise 2 by fitting DecisionTreeRegressor(max_depth=2) on hours \u2192 score.",
+      "Predict the score for 4.5 hours and print it.",
+      "Answer the reflection questions about means vs class votes."
+    ],
+    "hints": [
+      "Leaf prediction is the mean of y in that group.",
+      "Weighted MSE mirrors weighted Gini but uses squared error.",
+      "model.predict expects a 2D array such as [[4.5]]."
+    ],
+    "expectedOutput": "Parent MSE, weighted MSE for 4.5, a three-threshold comparison with a winning threshold, and a numeric sklearn prediction for 4.5 hours."
+  }
 }

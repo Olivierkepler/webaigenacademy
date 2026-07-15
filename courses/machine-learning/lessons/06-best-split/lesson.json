@@ -9,10 +9,31 @@
   "description": "Compare all candidate splits and choose the root of the tree.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
-  "visualizations": ["best-split-finder"],
+  "visualizations": [
+    "best-split-finder"
+  ],
   "takeaways": [
     "The root split compares every feature and threshold candidate.",
     "The winning root split has the lowest weighted Gini impurity.",
     "A pure child branch can become a leaf immediately."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Evaluate Age and resting_bp midpoint thresholds, track impurity reduction, and choose the root split.",
+    "instructions": [
+      "Run the dataset cell and inspect the six-row patient table.",
+      "Run the helpers cell and note the parent Gini plus candidate thresholds.",
+      "Run the guided loop that scores every (feature, threshold) pair.",
+      "Inspect the candidates DataFrame sorted by weighted_gini.",
+      "Complete Exercise 1 by selecting root_split as the top (lowest weighted Gini) row.",
+      "Complete Exercise 2 by partitioning the data with root_split and printing each child's labels and Gini.",
+      "Confirm impurity reduction is parent Gini minus weighted Gini for the winner.",
+      "Answer the reflection questions about minimize-vs-maximize and impure children."
+    ],
+    "hints": [
+      "Candidate thresholds are midpoints between sorted unique feature values.",
+      "Sort candidates by weighted_gini ascending; the first row is the root.",
+      "Impurity reduction = parent_gini - weighted_gini."
+    ],
+    "expectedOutput": "A ranked candidates table, a printed root_split row, and left/right label lists with their Gini scores."
+  }
 }

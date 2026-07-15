@@ -8,11 +8,7 @@ import MarkCompleteButton from "../../../components/MarkCompleteButton";
 import LessonVisualizations from "../../../components/LessonVisualizations";
 import Quiz from "../../../components/Quiz";
 import { lessons } from "@/data/lessons";
-import {
-  cardPadding,
-  primaryButtonClass,
-  secondaryButtonClass,
-} from "@/app/lib/typography";
+import { cardPadding } from "@/app/lib/typography";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SubNav from "@/app/components/SubNav";
@@ -100,6 +96,11 @@ export default async function LessonPage({ params }: PageProps) {
               <NotebookModal
                 notebook={lesson.notebook}
                 lessonTitle={lesson.title}
+                description={lesson.description}
+                difficulty={lesson.difficulty}
+                duration={lesson.duration}
+                takeaways={lesson.takeaways}
+                practiceLab={lesson.practiceLab}
               />
             </div>
           </LessonSection>

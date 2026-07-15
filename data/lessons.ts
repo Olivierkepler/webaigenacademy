@@ -2,8 +2,10 @@ import fs from "fs";
 import path from "path";
 import courseMetadata from "@/courses/machine-learning/metadata.json";
 import type { LessonVideo } from "@/app/lib/lessonVideo";
+import type { PracticeLabData } from "@/app/lib/practiceLab";
 
 export type { LessonVideo };
+export type { PracticeLabData };
 
 type LessonMetadata = {
   id: string;
@@ -19,6 +21,7 @@ type LessonMetadata = {
   visualizations: string[];
   takeaways: string[];
   video?: LessonVideo;
+  practiceLab?: PracticeLabData;
 };
 
 export type QuizQuestion = {
@@ -49,6 +52,7 @@ export type Lesson = {
   takeaways: string[];
   visualizations: string[];
   video?: LessonVideo;
+  practiceLab?: PracticeLabData;
 };
 
 const LEGACY_NOTEBOOK_FILENAMES: Record<string, string> = {
@@ -81,7 +85,10 @@ function readLessonQuiz(lessonId: string): QuizData {
   );
 }
 
-function getNotebookPaths(slug: string): { notebook: string; download: string } {
+function getNotebookPaths(slug: string): {
+  notebook: string;
+  download: string;
+} {
   const filename = LEGACY_NOTEBOOK_FILENAMES[slug] ?? slug;
 
   return {
@@ -111,5 +118,6 @@ export const lessons: Lesson[] = courseMetadata.lessonOrder.map((lessonId) => {
     takeaways: metadata.takeaways,
     visualizations: metadata.visualizations ?? [],
     video: metadata.video,
+    practiceLab: metadata.practiceLab,
   };
 });

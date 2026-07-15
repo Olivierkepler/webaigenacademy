@@ -3,16 +3,36 @@
   "slug": "decision-trees",
   "title": "Decision Trees",
   "order": 2,
-  "section": "Decision Trees",
-  "difficulty": "Beginner",
-  "duration": "20 min",
-  "description": "Learn how decision trees classify data using simple rules.",
+  "section": "Decision Tree Fundamentals",
+  "difficulty": "Intermediate",
+  "duration": "30 minutes",
+  "description": "Learn how decision trees classify observations by recursively splitting data.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
   "visualizations": [],
   "takeaways": [
-    "Decision trees split data using simple if-then rules.",
-    "The Iris dataset is a classic dataset for classification practice.",
-    "max_depth controls how complex a decision tree can become."
-  ]
+    "Decision trees split data using feature-based rules.",
+    "Tree depth controls model complexity.",
+    "Deep trees can overfit training data."
+  ],
+  "practiceLab": {
+    "objective": "Train a DecisionTreeClassifier on the Iris dataset and observe how max_depth changes training accuracy and tree depth.",
+    "instructions": [
+      "Run the import cell and confirm DecisionTreeClassifier imported! appears.",
+      "Run the Iris loading cell and confirm it reports 150 samples and 4 features.",
+      "Run the training cell to fit a DecisionTreeClassifier with random_state=42 on X and y.",
+      "Confirm the printed Classes: array lists the Iris class labels.",
+      "In the final cell, keep max_depth=3, run the cell, and record the printed Accuracy and Tree depth.",
+      "Change max_depth to 1, re-run the cell, and compare accuracy and tree depth with the previous result.",
+      "Change max_depth to None, re-run the cell, and note how accuracy and tree depth change again.",
+      "Decide which depth setting produced the deepest tree and which produced the lowest accuracy."
+    ],
+    "hints": [
+      "Create the model with DecisionTreeClassifier(max_depth=..., random_state=42).",
+      "Train with model.fit(X, y) and score with model.score(X, y).",
+      "Use model.get_depth() to read the grown tree depth after fitting.",
+      "This notebook scores on the same data used for training (X, y), not a held-out test set."
+    ],
+    "expectedOutput": "Printed accuracy values and tree depths for max_depth settings such as 1, 3, and None on the Iris dataset."
+  }
 }

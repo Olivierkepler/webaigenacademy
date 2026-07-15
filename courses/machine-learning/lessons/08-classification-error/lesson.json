@@ -14,5 +14,24 @@
     "Classification error is the fraction of misclassified samples in a node.",
     "It is simpler than Gini but less sensitive to impurity changes.",
     "Trees usually prefer Gini or entropy for split quality."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Calculate classification error and compare its sensitivity with Gini and entropy on nearly-pure and balanced nodes.",
+    "instructions": [
+      "Run the helpers cell defining classification_error, gini_impurity, and entropy.",
+      "Run the guided [6,4] example and confirm classification error is 0.400.",
+      "Run the 9/1 vs 8/2 sensitivity comparison cell.",
+      "Note that error changes less than Gini/entropy between those nodes.",
+      "Complete Exercise 1 for labels with seven 0s and three 1s (error 0.300).",
+      "Complete Exercise 2 printing error/gini/entropy for pure, 7/3, and 5/5.",
+      "Confirm pure error is 0.000 and 5/5 error is 0.500.",
+      "Answer the reflection questions about sensitivity and split criteria."
+    ],
+    "hints": [
+      "Error = 1 - max(class proportion).",
+      "Near-pure nodes can have similar error but different Gini/entropy.",
+      "A balanced two-class node has error 0.5."
+    ],
+    "expectedOutput": "Error 0.400 for 6/4, a 9/1 vs 8/2 comparison printout, error 0.300 for 7/3, and a three-node comparison table."
+  }
 }

@@ -21,5 +21,22 @@
     "title": "How to create a new project",
     "description": "This video shows you how to create a new project in the project management tool.",
     "aspect": "16/10"
+  },
+  "practiceLab": {
+    "objective": "Run your first notebook cells and confirm that Python lists and NumPy arrays print correctly in the Practice Lab.",
+    "instructions": [
+      "Read the markdown cell titled Machine Learning Introduction.",
+      "Run the first code cell and confirm that Hello WebAIGenAcademy! prints.",
+      "Optional: edit the comment that says add your name her and replace it with your name as a print statement, then re-run the cell.",
+      "Run the second code cell to create the numbers list [1, 2, 3, 4, 5] and print it.",
+      "Run the third code cell to import NumPy, create the array [10, 20, 30], and print the result.",
+      "If any cell fails, restart the kernel and re-run the cells from top to bottom."
+    ],
+    "hints": [
+      "Use Shift+Enter (or the Run button) to execute a highlighted cell.",
+      "NumPy must import successfully before data = np.array(...) can run.",
+      "Keep cell order: list practice, then NumPy practice."
+    ],
+    "expectedOutput": "Console output showing Hello WebAIGenAcademy!, the list [1, 2, 3, 4, 5], and the NumPy array [10 20 30]."
   }
 }

@@ -9,10 +9,31 @@
   "description": "Learn how weighted Gini combines impurity across left and right child nodes.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
-  "visualizations": ["weighted-gini-calculator"],
+  "visualizations": [
+    "weighted-gini-calculator"
+  ],
   "takeaways": [
     "A split creates left and right child groups.",
     "Weighted Gini averages child impurities by group size.",
     "The best split minimizes weighted Gini impurity."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Compute child-node Gini values, form weighted Gini for Age thresholds, compare candidates, and select the best split.",
+    "instructions": [
+      "Run the dataset cell and inspect the eight-patient Age / heart_disease table.",
+      "Run the helpers cell to define gini_impurity and weighted_gini.",
+      "Run the guided split at Age <= 51.5 and record parent, child, and weighted Gini.",
+      "Complete Exercise 1 for threshold 46.5 and store wg_46.",
+      "Complete Exercise 2 for thresholds 46.5, 51.5, and 56.5.",
+      "Print the comparison table of weighted Gini scores.",
+      "Identify and print the best split (lowest weighted Gini).",
+      "Answer the reflection questions about weighting by sample counts."
+    ],
+    "hints": [
+      "Weighted Gini = (n_left/n)*G_left + (n_right/n)*G_right.",
+      "Left group uses age <= threshold; right uses age > threshold.",
+      "The best split minimizes weighted Gini."
+    ],
+    "expectedOutput": "Printed parent/child Gini for 51.5, a weighted Gini for 46.5, a three-row candidate table, and a best-split dictionary with the lowest weighted_gini."
+  }
 }

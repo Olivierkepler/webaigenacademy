@@ -9,10 +9,29 @@
   "description": "Combine many decision trees to build a stronger random forest model.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
-  "visualizations": ["random-forest-voting-demo"],
+  "visualizations": [
+    "random-forest-voting-demo"
+  ],
   "takeaways": [
     "A random forest combines many decision trees into one ensemble model.",
     "Voting across trees often produces more stable predictions.",
     "Random forests are a strong baseline for tabular classification problems."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Create a tiny RandomForestClassifier, fit it on four points, and predict the label for [1, 1].",
+    "instructions": [
+      "Run the import cell to create RandomForestClassifier(n_estimators=10, random_state=42) and confirm Random forest ready! prints.",
+      "Run the training-data cell to define X and y, fit the model, and confirm Model trained! prints.",
+      "Run the prediction cell for input [[1, 1]].",
+      "Record the printed Prediction: value.",
+      "Optional: predict [[0, 0]] in a new line, re-run, and compare the two predictions.",
+      "Optional: raise n_estimators to 50, re-fit, and check whether the [[1, 1]] prediction stays the same."
+    ],
+    "hints": [
+      "Keep random_state=42 for reproducible fits on this tiny dataset.",
+      "model.predict expects a 2D array-like such as [[1, 1]].",
+      "n_estimators controls how many trees vote in the forest."
+    ],
+    "expectedOutput": "Printed readiness and training confirmations, then Prediction: followed by the predicted class for [1, 1] (0 or 1)."
+  }
 }

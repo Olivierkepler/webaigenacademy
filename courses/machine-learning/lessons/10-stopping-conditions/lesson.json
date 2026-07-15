@@ -14,5 +14,24 @@
     "Trees stop when nodes are pure or reach a depth limit.",
     "max_depth, min_samples_split, and min_samples_leaf control growth.",
     "Stopping early helps prevent overfitting."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Demonstrate max_depth, min_samples_split, min_samples_leaf, pure-node stopping, and constrained growth on Iris.",
+    "instructions": [
+      "Run the Iris loading cell and confirm 150 samples and 3 classes.",
+      "Run the max_depth comparison for values 1, 3, and None.",
+      "Run the min_samples_split comparison for 2, 20, and 50.",
+      "Run the min_samples_leaf comparison for 1, 10, and 30.",
+      "Complete Exercise 1 on a pure toy dataset and confirm tree depth is 0.",
+      "Complete Exercise 2 comparing an unconstrained tree with a constrained tree (max_depth=2, min_samples_leaf=10).",
+      "Record how leaf counts change under constraints.",
+      "Answer the reflection questions about which rule reduced complexity most."
+    ],
+    "hints": [
+      "model.get_depth() and model.get_n_leaves() summarize tree size.",
+      "A pure label vector should produce depth 0.",
+      "Tighter min_samples_* values generally create fewer leaves."
+    ],
+    "expectedOutput": "Printed depth/leaf summaries for max_depth, min_samples_split, and min_samples_leaf sweeps; pure-node depth 0; unconstrained vs constrained depth/leaf comparison."
+  }
 }

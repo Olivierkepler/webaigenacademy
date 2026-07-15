@@ -9,10 +9,31 @@
   "description": "Learn how Gini impurity measures class mixing in a node.",
   "notebook": "notebook.ipynb",
   "quiz": "quiz.json",
-  "visualizations": ["gini-calculator"],
+  "visualizations": [
+    "gini-calculator"
+  ],
   "takeaways": [
     "Gini impurity measures how mixed the classes are in a node.",
     "A pure node has Gini impurity of 0.",
     "Maximum impurity for two classes occurs when classes are evenly split."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Compute class proportions and Gini impurity, then compare pure, mixed, and evenly mixed nodes.",
+    "instructions": [
+      "Run the imports cell and inspect the starter labels array (six 0s and four 1s).",
+      "Run the guided proportions cell and confirm p0 and p1 print as 0.60 and 0.40.",
+      "Run the guided Gini cell and confirm Gini impurity prints as 0.480.",
+      "Run Exercise 1 to compute Gini for a pure node of ten 0s.",
+      "Confirm Exercise 1 prints Gini impurity: 0.000.",
+      "Run Exercise 2 so gini_impurity compares nodes A (6/4), B (pure), and C (5/5).",
+      "Verify the printed Gini values are about 0.480, 0.000, and 0.500.",
+      "Answer the reflection questions about purity and which lesson introduces weighted Gini."
+    ],
+    "hints": [
+      "Gini = 1 - sum of squared class proportions.",
+      "Use np.bincount(labels) / len(labels) for proportions.",
+      "A pure node must contain only one unique label."
+    ],
+    "expectedOutput": "Printed proportions for the 6/4 node, Gini 0.480, pure-node Gini 0.000, and a three-node comparison including Gini 0.500 for the even split."
+  }
 }

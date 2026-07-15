@@ -14,5 +14,24 @@
     "After the root split, impure child nodes are split again using the same process.",
     "Pure child nodes become leaves with a class prediction.",
     "Recursion continues until all leaves are pure or stopping rules apply."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Build a tiny decision tree recursively with pure-node, min_samples_split, and max_depth base cases, then inspect left and right children.",
+    "instructions": [
+      "Run the dataset cell for the eight-row age/bp table.",
+      "Run the helper cell that defines gini, weighted_gini, and best_split.",
+      "Run the guided build_tree cell with max_depth=2 and print the nested tree dictionary.",
+      "Complete Exercise 1 by implementing describe(tree) to print nodes and leaves.",
+      "Confirm indented output shows a root split plus left/right subtrees or leaves.",
+      "Complete Exercise 2 by rebuilding with max_depth=1 and printing the shallower tree.",
+      "Compare which base-case reasons appear on the leaves.",
+      "Answer the reflection questions about depth limits and child creation."
+    ],
+    "hints": [
+      "Base cases: pure labels, len(frame) < min_samples_split, or depth >= max_depth.",
+      "After a split, call build_tree on both left and right subsets with depth+1.",
+      "describe should recurse into node[\"left\"] and node[\"right\"]."
+    ],
+    "expectedOutput": "A nested tree dict for max_depth=2, an indented describe printout, and a shallower max_depth=1 tree printout."
+  }
 }

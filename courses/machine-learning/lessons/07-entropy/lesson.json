@@ -14,5 +14,24 @@
     "Entropy measures uncertainty in a node.",
     "Like Gini, lower entropy means a purer node.",
     "Decision trees can use entropy instead of Gini to guide splits."
-  ]
+  ],
+  "practiceLab": {
+    "objective": "Compute Shannon entropy safely for zero probabilities, then compare entropy with Gini on pure, mixed, and even nodes.",
+    "instructions": [
+      "Run the imports/proportions cell for the 6/4 label array.",
+      "Run the guided entropy function and confirm Entropy (6/4) is about 0.971.",
+      "Run the Gini comparison cell for the same labels.",
+      "Complete Exercise 1 for pure and even nodes.",
+      "Confirm entropy prints 0.000 for pure and 1.000 for 5/5.",
+      "Complete Exercise 2 to print a table of entropy and Gini for 6/4, pure, and 5/5.",
+      "Check that both measures are 0 on the pure node.",
+      "Answer the reflection questions about log(0) and information gain."
+    ],
+    "hints": [
+      "Skip probabilities where p == 0 before calling math.log2.",
+      "Entropy for two classes peaks at 1.0 when proportions are 0.5/0.5.",
+      "Reuse the same label arrays when comparing entropy and Gini."
+    ],
+    "expectedOutput": "Entropy \u2248 0.971 for 6/4, entropy 0.000 / 1.000 for pure / even, and a three-row entropy-vs-gini table."
+  }
 }

@@ -63,7 +63,7 @@ export default function Rightbar({ video }: RightbarProps) {
           <div className="shrink-0 border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
             <div className="flex items-center justify-between gap-2">
               <h2 className="min-w-0 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                Related
+              Lessons
               </h2>
               <button
                 type="button"
