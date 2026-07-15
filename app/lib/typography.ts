@@ -1,6 +1,6 @@
-const textPrimary = "text-black dark:text-black";
-const textSecondary = "text-black dark:text-black/70";
-const textMuted = "text-black dark:text-black/50";
+const textPrimary = "text-black dark:text-white";
+const textSecondary = "text-black dark:text-white";
+const textMuted = "text-black dark:text-white";
 
 const headingFont = "font-heading";
 const bodyFont = "font-body";
@@ -10,7 +10,7 @@ const bodyFont = "font-body";
  * Professional + understated.
  */
 export const accent = {
-  text: "text-black dark:text-black",
+  text: "text-black dark:text-white",
 
   bg: "bg-[#0F766E]",
   bgDark: "bg-[#0B5F59]",
@@ -155,6 +155,7 @@ export const typography = {
   badge: `
     ${bodyFont}
     text-xs
+
     font-semibold
     uppercase
     tracking-[0.08em]

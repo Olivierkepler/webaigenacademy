@@ -256,13 +256,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   : "mx-auto max-w-[980px]"
               }
             >
-              {toc.length > 0 ? (
-                <aside className="min-w-0 w-full lg:sticky lg:top-24 lg:w-[280px] lg:max-w-[280px] lg:shrink-0 lg:self-start">
-                  <BlogTableOfContents items={toc} />
-                </aside>
-              ) : null}
+               {toc.length > 0 ? (
+    <aside className="w-full min-w-0 lg:sticky lg:top-24 lg:w-[200px] lg:max-w-[200px] lg:self-start lg:mr-auto">
+      <BlogTableOfContents items={toc} />
+    </aside>
+  ) : null}
 
-              <div className="min-w-0 w-full max-w-[980px]">
+  <div className="w-full min-w-0 max-w-[1200px]">
                 <header>
                   <div className="flex flex-wrap items-center gap-2">
                     {post.category ? (
