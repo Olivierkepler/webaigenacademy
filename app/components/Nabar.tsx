@@ -62,6 +62,12 @@ export default function Navbar({ searchableLessons, userMenu }: NavbarProps) {
         </div>
 
         <div className="flex shrink-0 items-center gap-3">
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-zinc-700 transition hover:text-[#0E5C58] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E5C58] dark:text-zinc-300 dark:hover:text-[#85D7CE]"
+          >
+            Blog
+          </Link>
           {userMenu}
           <ThemeToggle />
         </div>

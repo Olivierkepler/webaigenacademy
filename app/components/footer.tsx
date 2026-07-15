@@ -24,6 +24,7 @@ const footerColumns: ReadonlyArray<{
   {
     heading: "Platform",
     links: [
+      { label: "Blog", href: "/blog" },
       { label: "Practice Labs", href: "/labs" },
       { label: "Quizzes", href: "/quizzes" },
       { label: "Roadmap", href: "/#roadmap" },

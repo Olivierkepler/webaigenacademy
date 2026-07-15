@@ -4,9 +4,9 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import Navbar from "./components/Nabar";
 import { ThemeProvider } from "./components/ThemeProvider";
-import Footer from "./components/footer";
 import UserMenu from "./components/auth/UserMenu";
 import AuthSessionProvider from "./components/auth/AuthSessionProvider";
+import { getSiteUrl } from "@/app/lib/siteUrl";
 import { lessons } from "@/data/lessons";
 
 const searchableLessons = lessons.map((lesson) => ({
@@ -40,6 +40,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: "WebAIGen Academy",
   description: "Interactive machine learning lessons with browser-based practice labs.",
   icons: {
