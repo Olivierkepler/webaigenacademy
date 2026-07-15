@@ -301,7 +301,7 @@ export default function VideoTutorial({ video }: VideoTutorialProps) {
 
   return (
     <section>
-      <h3 className="mb-3 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+      <h3 className="mb-3 text-lg font-bold text-black dark:text-white">
         Video Tutorial
       </h3>
 
@@ -346,12 +346,12 @@ export default function VideoTutorial({ video }: VideoTutorialProps) {
       </div>
 
       {/* Text below the frame, no card wrapper */}
-      <h4 className="mt-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      <h4 className="mt-3 text-sm font-semibold text-black dark:text-white">
         {video.title}
       </h4>
 
       {video.description ? (
-        <p className="mt-1 line-clamp-2 text-xs text-zinc-500 dark:text-zinc-400">
+        <p className="mt-1 line-clamp-2 text-xs text-black/70 dark:text-white/70">
           {video.description}
         </p>
       ) : null}

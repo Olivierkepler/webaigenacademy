@@ -60,7 +60,7 @@ export default function SubNavClient({
   return (
     <nav
       aria-label={ariaLabel}
-      className="relative px-6 lg:px-10 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+      className="relative border-b border-zinc-200 bg-white px-6 dark:border-zinc-800 dark:bg-zinc-950 lg:px-10"
     >
       <ul
         ref={trackRef}
@@ -77,8 +77,8 @@ export default function SubNavClient({
                 aria-current={active ? "page" : undefined}
                 className={`relative flex h-12 items-center whitespace-nowrap text-[15px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E5C58] dark:focus-visible:outline-[#85D7CE] ${
                   active
-                    ? "font-semibold text-zinc-950 dark:text-white"
-                    : "font-medium text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                    ? "font-semibold text-black dark:text-white"
+                    : "font-medium text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
                 }`}
               >
                 {item.label}

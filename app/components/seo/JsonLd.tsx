@@ -1,10 +1,10 @@
 import { serializeJsonLd } from "@/app/lib/seo";
 
 type JsonLdProps = {
-  data: Record<string, unknown> | ReadonlyArray<Record<string, unknown>>;
+  data: Record<string, unknown>;
 };
 
-/** Server-only JSON-LD script. Data must be site-owned (not arbitrary UGC). */
+/** Server-only JSON-LD script. One schema object per script tag. */
 export default function JsonLd({ data }: JsonLdProps) {
   return (
     <script

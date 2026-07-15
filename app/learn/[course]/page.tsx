@@ -29,6 +29,9 @@ const included = [
   },
 ] as const;
 
+const pageText = "text-black dark:text-white";
+const mutedText = "text-black/70 dark:text-white/70";
+
 type PageProps = {
   params: Promise<{
     course: string;
@@ -85,11 +88,13 @@ export default async function CoursePage({ params }: PageProps) {
   const courseVideo = courseLessons.find((lesson) => lesson.video)?.video;
 
   return (
-    <main className="min-h-screen font-[Inter,Helvetica_Neue,Arial,sans-serif] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-    
-    
+    <main
+      className={`min-h-screen bg-white font-[Inter,Helvetica_Neue,Arial,sans-serif] dark:bg-zinc-950 ${pageText}`}
+    >
       {/* ── Hero band (full-bleed, edX-style) ─────────────────────── */}
-      <header className="relative overflow-hidden  text-zinc-100 dark:border-b dark:border-zinc-800">
+      <header
+        className={`relative overflow-hidden dark:border-b dark:border-zinc-800 ${pageText}`}
+      >
         <Image
           src="/images/Designer(24).png"
           alt=""
@@ -99,58 +104,63 @@ export default async function CoursePage({ params }: PageProps) {
           sizes="100vw"
         />
 
-  
-
         <div className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-10 lg:px-10">
           {/* Breadcrumbs */}
           <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2 text-sm text-zinc-400">
+            <ol className={`flex flex-wrap items-center gap-2 text-sm ${mutedText}`}>
               <li>
-                <Link href="/" className="transition-colors hover:text-zinc-100">
+                <Link
+                  href="/"
+                  className={`transition-colors hover:opacity-100 ${pageText}`}
+                >
                   Home
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-zinc-600">
+              <li aria-hidden="true" className="opacity-40">
                 /
               </li>
               <li>
                 <Link
                   href="/learn"
-                  className="transition-colors hover:text-zinc-100"
+                  className={`transition-colors hover:opacity-100 ${pageText}`}
                 >
                   Courses
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-zinc-600">
+              <li aria-hidden="true" className="opacity-40">
                 /
               </li>
-              <li aria-current="page" className="text-zinc-200">
+              <li aria-current="page" className={pageText}>
                 {courseTitle}
               </li>
             </ol>
           </nav>
 
           <div className="mt-10 max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">
+            <p
+              className={`text-xs uppercase tracking-[0.22em] ${mutedText}`}
+            >
               Course · WebAIGen Academy
             </p>
-            <h1 className="mt-4 text-4xl font-black italic leading-[0.95] tracking-tight sm:text-5xl">
+            <h1
+              className={`mt-4 text-4xl font-black italic leading-[0.95] tracking-tight sm:text-5xl ${pageText}`}
+            >
               {courseTitle}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-zinc-300">
+            <p className={`mt-5 text-lg leading-relaxed ${mutedText}`}>
               {COURSE_DESCRIPTION}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href={firstLessonPath}
-                className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="rounded-lg bg-[#003334] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0B5F59] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#003334] dark:bg-white dark:text-black dark:hover:bg-zinc-200"
               >
                 Start learning — it&apos;s free
               </Link>
               <Link
                 href="#syllabus"
-                className="rounded-lg border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-zinc-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className={`rounded-lg border border-black/25 px-6 py-3 text-sm font-semibold transition-colors hover:border-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black dark:border-white/25 dark:hover:border-white/50 dark:focus-visible:outline-white ${pageText}`}
               >
                 View syllabus
               </Link>
@@ -159,21 +169,18 @@ export default async function CoursePage({ params }: PageProps) {
         </div>
       </header>
 
-      
-      <div id="syllabus" className="mx-auto max-w-7xl py-16 ">
-      <div className=" my-8">
-        <SubNav course={course} />
-      </div>
-  <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_380px]">
+      <div id="syllabus" className="mx-auto max-w-7xl py-16">
+        <div className="my-8">
+          <SubNav course={course} />
+        </div>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_380px]">
+          {/* ===================================================== */}
+          {/* LEFT COLUMN */}
+          {/* ===================================================== */}
 
-    {/* ===================================================== */}
-    {/* LEFT COLUMN */}
-    {/* ===================================================== */}
-
-    <div className="space-y-16">
-
-      {/* What you'll learn */}
-      {/* <section className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-br from-white to-[#F5FAF9] p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:from-zinc-900 dark:to-zinc-900 lg:p-10">
+          <div className="space-y-16">
+            {/* What you'll learn */}
+            {/* <section className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-br from-white to-[#F5FAF9] p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:from-zinc-900 dark:to-zinc-900 lg:p-10">
         
         <span
           aria-hidden="true"
@@ -198,121 +205,92 @@ export default async function CoursePage({ params }: PageProps) {
         </ul>
       </section> */}
 
-      {/* Curriculum */}
-      <section  className="scroll-mt-28">
-        {/* <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#0E5C58] dark:text-[#85D7CE]">
-          Course curriculum
-        </p>
+            {/* Curriculum */}
+            <section className="scroll-mt-28">
+              <div>
+                <CourseCurriculum
+                  course={course}
+                  lessons={courseLessons.map((lesson) => ({
+                    slug: lesson.slug,
+                    title: lesson.title,
+                    order: lesson.order,
+                    section: lesson.section,
+                    description: lesson.description,
+                    duration: lesson.duration,
+                    difficulty: lesson.difficulty,
+                  }))}
+                />
+              </div>
+            </section>
+          </div>
 
-        <h2 className={`mt-3 ${typography.sectionTitle}`}>
-          Start building your machine learning skills
-        </h2> */}
+          {/* ===================================================== */}
+          {/* RIGHT COLUMN */}
+          {/* ===================================================== */}
 
-        {/* Short green rule anchoring the heading */}
-        {/* <span
-          aria-hidden="true"
-          className="mt-4 block h-1 w-12 rounded-full bg-[#0E5C58] dark:bg-[#85D7CE]"
-        /> */}
+          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            {/* Video Tutorial */}
+            {courseVideo ? <VideoTutorial video={courseVideo} /> : null}
 
-        <div className="">
-          <CourseCurriculum
-            course={course}
-            lessons={courseLessons.map((lesson) => ({
-              slug: lesson.slug,
-              title: lesson.title,
-              order: lesson.order,
-              section: lesson.section,
-              description: lesson.description,
-              duration: lesson.duration,
-              difficulty: lesson.difficulty,
-            }))}
-          />
-        </div>
-      </section>
+            {/* At a glance */}
+            <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <h3 className={`text-lg font-bold ${pageText}`}>At a glance</h3>
 
-    </div>
+              <dl className="mt-6 space-y-5">
+                {atAGlance.map((fact) => (
+                  <div
+                    key={fact.label}
+                    className="flex items-center justify-between border-b border-zinc-100 pb-4 last:border-0 last:pb-0 dark:border-zinc-800"
+                  >
+                    <dt className={`text-sm ${mutedText}`}>{fact.label}</dt>
 
-    {/* ===================================================== */}
-    {/* RIGHT COLUMN */}
-    {/* ===================================================== */}
+                    <dd className={`font-semibold ${pageText}`}>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
 
-    <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            {/* Included */}
+            <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <h3 className={`text-lg font-bold ${pageText}`}>
+                This course includes
+              </h3>
 
-      {/* Video Tutorial */}
-      {courseVideo ? <VideoTutorial video={courseVideo} /> : null}
+              <div className="mt-6 space-y-5">
+                {included.map((feature) => (
+                  <div key={feature.title}>
+                    <h4 className={`font-semibold ${pageText}`}>
+                      {feature.title}
+                    </h4>
 
-      {/* At a glance */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                    <p className={`mt-1 text-sm ${mutedText}`}>
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-        <h3 className="text-lg font-bold">
-          At a glance
-        </h3>
+            {/* CTA — solid dark panel keeps high-contrast white text */}
+            <section className="overflow-hidden rounded-2xl bg-[#003334] p-8 text-white">
+              <h3 className="text-2xl font-bold text-white">Ready to start?</h3>
 
-        <dl className="mt-6 space-y-5">
-          {atAGlance.map((fact) => (
-            <div
-              key={fact.label}
-              className="flex items-center justify-between border-b border-zinc-100 pb-4 last:border-0 last:pb-0 dark:border-zinc-800"
-            >
-              <dt className="text-sm text-zinc-500">
-                {fact.label}
-              </dt>
-
-              <dd className="font-semibold">
-                {fact.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {/* Included */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-
-        <h3 className="text-lg font-bold">
-          This course includes
-        </h3>
-
-        <div className="mt-6 space-y-5">
-          {included.map((feature) => (
-            <div key={feature.title}>
-              <h4 className="font-semibold">
-                {feature.title}
-              </h4>
-
-              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                {feature.description}
+              <p className="mt-3 text-white/70">
+                Learn at your own pace with interactive lessons, quizzes, and
+                hands-on practice.
               </p>
-            </div>
-          ))}
+
+              <Link
+                href={firstLessonPath}
+                className="mt-8 flex justify-center rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-zinc-200"
+              >
+                Start Learning Free
+              </Link>
+            </section>
+          </aside>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="overflow-hidden rounded-2xl bg-[#003334] p-8 text-white">
-
-        <h3 className="text-2xl font-bold">
-          Ready to start?
-        </h3>
-
-        <p className="mt-3 text-zinc-400">
-          Learn at your own pace with interactive lessons,
-          quizzes, and hands-on practice.
-        </p>
-
-        <Link
-          href={firstLessonPath}
-          className="mt-8 flex justify-center rounded-xl bg-white px-6 py-3 font-semibold text-zinc-950 transition hover:bg-zinc-200"
-        >
-          Start Learning Free
-        </Link>
-      </section>
-
-    </aside>
-
-  </div>
-</div>
-<Footer />
+      </div>
+      <Footer />
     </main>
   );
 }

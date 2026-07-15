@@ -51,7 +51,7 @@ export default async function LessonPage({ params }: PageProps) {
       : undefined;
 
   return (
-    <main className="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <main className="bg-white text-black dark:bg-zinc-950 dark:text-white">
       {/* W3Schools-style topic bar — offset past the fixed sidebar on desktop */}
       <div className="lg:ml-[var(--sidebar-width)]">
         <SubNav course={course} />
@@ -149,7 +149,7 @@ export default async function LessonPage({ params }: PageProps) {
     {nextLesson ? (
       <Link
         href={`/learn/${nextLesson.course}/${nextLesson.slug}`}
-        className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors duration-200 hover:border-zinc-400 hover:bg-[#003334]/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-950 lg:px-6 lg:text-base"
+        className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-black dark:text-white transition-colors duration-200 hover:border-zinc-400 hover:bg-[#003334]/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-950 lg:px-6 lg:text-base"
       >
         Next lesson
         <svg

@@ -46,6 +46,9 @@ type SectionGroup = {
 const cardClass =
   "rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900";
 
+const pageText = "!text-black dark:!text-white";
+const mutedText = "!text-black/70 dark:!text-white/70";
+
 function groupLessonsBySection(lessons: CourseLesson[]): SectionGroup[] {
   const sections: SectionGroup[] = [];
   const indexByName = new Map<string, number>();
@@ -181,9 +184,9 @@ export function CourseCurriculum({ course, lessons }: CourseCurriculumProps) {
   const sections = useMemo(() => groupLessonsBySection(lessons), [lessons]);
 
   return (
-    <section>
-      <p className={typography.label}>Curriculum</p>
-      <h2 className={`mt-3 ${typography.sectionTitle}`}>Lessons</h2>
+    <section className={pageText}>
+      <p className={`${typography.label} ${mutedText}`}>Curriculum</p>
+      <h2 className={`mt-3 ${typography.sectionTitle} ${pageText}`}>Lessons</h2>
 
       <div className="mt-8 space-y-8">
         {sections.map((section) => {
@@ -199,8 +202,10 @@ export function CourseCurriculum({ course, lessons }: CourseCurriculumProps) {
           return (
             <div key={section.name} className={`${cardClass} overflow-hidden`}>
               <div className="border-b border-zinc-200 px-6 py-5 dark:border-zinc-800">
-                <h3 className={typography.cardTitle}>{section.name}</h3>
-                <p className={`mt-1 ${typography.caption}`}>
+                <h3 className={`${typography.cardTitle} ${pageText}`}>
+                  {section.name}
+                </h3>
+                <p className={`mt-1 ${typography.caption} ${mutedText}`}>
                   {sectionCompleted} / {sectionTotal} completed
                 </p>
                 <div className="mt-3 flex items-center gap-3">
@@ -233,22 +238,22 @@ export function CourseCurriculum({ course, lessons }: CourseCurriculumProps) {
                         )}
 
                         <span
-                          className={`shrink-0 rounded-full border border-zinc-200 px-2.5 py-0.5 text-zinc-500 dark:border-zinc-700 dark:text-zinc-400 ${typography.badge}`}
+                          className={`shrink-0 rounded-full border border-zinc-200 px-2.5 py-0.5 dark:border-zinc-700 ${typography.badge} ${mutedText}`}
                         >
                           {lesson.order}
                         </span>
 
                         <span
                           className={`min-w-0 flex-1 transition ${accent.groupHoverText} ${
-                            isCompleted
-                              ? `font-semibold text-zinc-900 dark:text-white ${typography.sidebarItem}`
-                              : typography.sidebarItem
-                          }`}
+                            isCompleted ? "font-semibold" : ""
+                          } ${typography.sidebarItem} ${pageText}`}
                         >
                           {lesson.title}
                         </span>
 
-                        <span className={`shrink-0 ${typography.caption}`}>
+                        <span
+                          className={`shrink-0 ${typography.caption} ${mutedText}`}
+                        >
                           {lesson.duration}
                         </span>
                       </Link>

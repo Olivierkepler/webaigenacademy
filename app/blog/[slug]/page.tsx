@@ -141,7 +141,7 @@ export async function generateMetadata({
   };
 }
 
-function buildArticleJsonLd(post: BlogPost) {
+function buildBlogPostingJsonLd(post: BlogPost): Record<string, unknown> {
   const pageUrl = absoluteUrl(`/blog/${post.slug}`);
   const published = toIsoDate(post.publishedAt);
   const modified = toIsoDate(post.updatedAt ?? post.publishedAt);
@@ -151,7 +151,7 @@ function buildArticleJsonLd(post: BlogPost) {
     : undefined;
   const publisherLogoPath = resolveSocialImagePath(undefined);
 
-  const blogPosting: Record<string, unknown> = {
+  return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
@@ -182,8 +182,12 @@ function buildArticleJsonLd(post: BlogPost) {
     ...(post.tags.length > 0 ? { keywords: post.tags.join(", ") } : {}),
     ...(articleImage ? { image: [articleImage] } : {}),
   };
+}
 
-  const breadcrumb: Record<string, unknown> = {
+function buildBreadcrumbJsonLd(post: BlogPost): Record<string, unknown> {
+  const pageUrl = absoluteUrl(`/blog/${post.slug}`);
+
+  return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -207,8 +211,6 @@ function buildArticleJsonLd(post: BlogPost) {
       },
     ],
   };
-
-  return [blogPosting, breadcrumb];
 }
 
 export default async function BlogArticlePage({ params }: PageProps) {
@@ -228,11 +230,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const toc = extractBlogToc(markdown);
   const headingIds = toc.map((item) => item.id);
   const relatedPosts = getRelatedBlogPosts(post, 3);
-  const jsonLd = buildArticleJsonLd(post);
+  const blogPostingJsonLd = buildBlogPostingJsonLd(post);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(post);
 
   return (
     <>
-      <JsonLd data={jsonLd} />
+      <JsonLd data={blogPostingJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <main className="flex-1 bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         <div className="mx-auto w-full max-w-3xl px-6 py-10 lg:max-w-6xl lg:px-10 lg:py-14">
           <nav aria-label="Breadcrumb" className="mb-8">

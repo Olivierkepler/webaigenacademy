@@ -1,6 +1,6 @@
-const textPrimary = "text-zinc-950 dark:text-zinc-50";
-const textSecondary = "text-zinc-600 dark:text-zinc-400";
-const textMuted = "text-zinc-500 dark:text-zinc-500";
+const textPrimary = "text-black dark:text-black";
+const textSecondary = "text-black dark:text-black/70";
+const textMuted = "text-black dark:text-black/50";
 
 const headingFont = "font-heading";
 const bodyFont = "font-body";
@@ -10,7 +10,7 @@ const bodyFont = "font-body";
  * Professional + understated.
  */
 export const accent = {
-  text: "text-[#0F766E] dark:text-[#5EEAD4]",
+  text: "text-black dark:text-black",
 
   bg: "bg-[#0F766E]",
   bgDark: "bg-[#0B5F59]",
