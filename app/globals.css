@@ -207,4 +207,25 @@ body {
       );
       background-clip: padding-box;
     }
+
+    /* Auth page: center the form on taller mobile/tablet screens */
+      @media (max-width: 1023px) and (min-height: 700px) {
+        .auth-panel-position {
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          width: calc(100% - 1.5rem);
+          transform: translate(-50%, -50%);
+        }
+      }
+      /* Tablet auth positioning */
+      @media (max-width: 1023px) and (min-height: 700px) {
+        .auth-panel-position {
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          width: calc(100% - 1.5rem);
+          transform: translate(-50%, -50%);
+        }
+      }
   }

@@ -9,11 +9,11 @@ export type SearchableLesson = {
   description: string;
   duration: string;
   content: string;
-  quiz: QuizData;
+  quiz?: QuizData;
 };
 
 export function buildSearchText(lesson: SearchableLesson): string {
-  const quizText = lesson.quiz.questions.flatMap((question) => [
+  const quizText = (lesson.quiz?.questions ?? []).flatMap((question) => [
     question.question,
     ...question.options,
     question.answer,
@@ -40,7 +40,71 @@ export function searchLessons(
     return [];
   }
 
+  function getScore(lesson: SearchableLesson): number {
+    const title = lesson.title.toLowerCase();
+    const section = lesson.section.toLowerCase();
+    const description = lesson.description.toLowerCase();
+    const content = lesson.content.toLowerCase();
+
+    const quizText = (lesson.quiz?.questions ?? [])
+      .flatMap((question) => [
+        question.question,
+        ...question.options,
+        question.answer,
+      ])
+      .join(" ")
+      .toLowerCase();
+
+    // Exact lesson title
+    if (title === trimmedQuery) {
+      return 100;
+    }
+
+    // Lesson title begins with the search
+    if (title.startsWith(trimmedQuery)) {
+      return 90;
+    }
+
+    // Search appears anywhere in lesson title
+    if (title.includes(trimmedQuery)) {
+      return 80;
+    }
+
+    // Section match
+    if (section.includes(trimmedQuery)) {
+      return 60;
+    }
+
+    // Description match
+    if (description.includes(trimmedQuery)) {
+      return 40;
+    }
+
+    // Lesson body/content match
+    if (content.includes(trimmedQuery)) {
+      return 20;
+    }
+
+    // Quiz match
+    if (quizText.includes(trimmedQuery)) {
+      return 10;
+    }
+
+    return 0;
+  }
+
   return lessons
-    .filter((lesson) => buildSearchText(lesson).includes(trimmedQuery))
-    .sort((a, b) => a.order - b.order);
+    .map((lesson) => ({
+      lesson,
+      score: getScore(lesson),
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return a.lesson.order - b.lesson.order;
+    })
+    .map(({ lesson }) => lesson);
 }

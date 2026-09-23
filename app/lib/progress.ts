@@ -59,9 +59,20 @@ export function markLessonComplete(
   if (!completed.includes(lessonSlug)) {
     progress[course] = [...completed, lessonSlug];
     writeProgress(progress);
-    window.dispatchEvent(new CustomEvent(PROGRESS_UPDATED_EVENT));
-    postProgress(course, lessonSlug, true);
+
+    window.dispatchEvent(
+      new CustomEvent(PROGRESS_UPDATED_EVENT)
+    );
   }
+
+  /*
+   * Always sync the completion to the server when progress syncing
+   * is enabled.
+   *
+   * The API uses ON CONFLICT DO NOTHING, so sending an already
+   * completed lesson is safe and also repairs local/server mismatches.
+   */
+  postProgress(course, lessonSlug, true);
 
   return progress;
 }
@@ -165,31 +176,35 @@ export async function syncProgress(): Promise<void> {
   if (syncStartedThisSession) {
     return;
   }
+
   syncStartedThisSession = true;
 
   try {
-    const response = await fetch("/api/progress");
+    const response = await fetch("/api/progress", {
+      cache: "no-store",
+    });
+
     if (!response.ok) {
       syncStartedThisSession = false;
       return;
     }
 
     const rows: unknown = await response.json();
+
+    /*
+     * For signed-in users, the database is the source of truth.
+     *
+     * Do not merge existing localStorage progress into the signed-in
+     * account because localStorage can contain progress belonging to a
+     * different user who previously used this browser.
+     */
     const serverProgress = serverRowsToProgress(rows);
-    const localProgress = readProgress();
-    const merged = mergeProgress(localProgress, serverProgress);
 
-    for (const [course, lessons] of Object.entries(localProgress)) {
-      const serverLessons = new Set(serverProgress[course] ?? []);
-      for (const lessonSlug of lessons) {
-        if (!serverLessons.has(lessonSlug)) {
-          postProgress(course, lessonSlug, true);
-        }
-      }
-    }
+    writeProgress(serverProgress);
 
-    writeProgress(merged);
-    window.dispatchEvent(new CustomEvent(PROGRESS_UPDATED_EVENT));
+    window.dispatchEvent(
+      new CustomEvent(PROGRESS_UPDATED_EVENT)
+    );
   } catch (error) {
     console.error("[progress] syncProgress failed:", error);
     syncStartedThisSession = false;
