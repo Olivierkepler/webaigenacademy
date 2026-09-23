@@ -8,6 +8,12 @@ import MarkCompleteButton from "../../../components/MarkCompleteButton";
 import LessonVisualizations from "../../../components/LessonVisualizations";
 import Quiz from "../../../components/Quiz";
 import { lessons } from "@/data/lessons";
+import {
+  getPublishedLearningLesson,
+  getPublishedLearningLessons,
+} from "@/lib/learning";
+
+import DatabaseLessonPage from "../../../components/DatabaseLessonPage";
 import { cardPadding } from "@/app/lib/typography";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -25,22 +31,48 @@ type PageProps = {
 const cardClass =
   " border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900";
 
-export default async function LessonPage({ params }: PageProps) {
-  const { course, lesson: lessonSlug } = await params;
-
-  const lesson = lessons.find(
-    (item) => item.course === course && item.slug === lessonSlug
-  );
-
-  if (!lesson) {
-    notFound();
-  }
-
-  // Sorted by order so the SubNav and prev/next navigation
-  // follow lesson order, not data-file order.
-  const courseLessons = lessons
-    .filter((item) => item.course === course)
-    .sort((a, b) => a.order - b.order);
+  export default async function LessonPage({ params }: PageProps) {
+    const { course, lesson: lessonSlug } = await params;
+  
+    // ---------------------------------------------------------
+    // 1. Existing file-based Academy lessons
+    // ---------------------------------------------------------
+    const staticLesson = lessons.find(
+      (item) =>
+        item.course === course &&
+        item.slug === lessonSlug
+    );
+  
+    // ---------------------------------------------------------
+    // 2. Database-backed lessons created through Admin
+    // ---------------------------------------------------------
+    if (!staticLesson) {
+      const databaseLesson =
+        await getPublishedLearningLesson(course, lessonSlug);
+  
+      if (!databaseLesson) {
+        notFound();
+      }
+  
+      const databaseLessons =
+        await getPublishedLearningLessons(course);
+  
+      return (
+        <DatabaseLessonPage
+          lesson={databaseLesson}
+          lessons={databaseLessons}
+        />
+      );
+    }
+  
+    // ---------------------------------------------------------
+    // Existing static lesson continues exactly as before
+    // ---------------------------------------------------------
+    const lesson = staticLesson;
+  
+    const courseLessons = lessons
+      .filter((item) => item.course === course)
+      .sort((a, b) => a.order - b.order);
 
   const currentIndex = courseLessons.findIndex((item) => item.slug === lessonSlug);
   const previousLesson =

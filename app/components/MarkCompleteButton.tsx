@@ -20,19 +20,26 @@ export default function MarkCompleteButton({
   const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
-    const sync = () => setCompleted(isLessonComplete(course, lessonSlug));
+    const sync = () => {
+      setCompleted(isLessonComplete(course, lessonSlug));
+    };
 
     sync();
+
     window.addEventListener(PROGRESS_UPDATED_EVENT, sync);
 
-    return () => window.removeEventListener(PROGRESS_UPDATED_EVENT, sync);
+    return () => {
+      window.removeEventListener(PROGRESS_UPDATED_EVENT, sync);
+    };
   }, [course, lessonSlug]);
 
   const handleClick = () => {
-    if (completed) {
-      return;
-    }
-
+    /*
+     * Always call markLessonComplete.
+     *
+     * It is intentionally safe to call even if localStorage already
+     * contains the lesson because the server API is idempotent.
+     */
     markLessonComplete(course, lessonSlug);
     setCompleted(true);
   };
@@ -41,7 +48,6 @@ export default function MarkCompleteButton({
     <button
       type="button"
       onClick={handleClick}
-      disabled={completed}
       className={
         completed
           ? `inline-flex items-center rounded-lg border px-6 py-3 ${accent.borderSubtle} ${accent.bgSubtle} ${accent.text} ${typography.button}`
